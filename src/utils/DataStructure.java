@@ -11,6 +11,18 @@
 
 package utils;
 
+import java.util.List;
+
 public class DataStructure {
+    public int width;
+    public int height;
+    public int pieceCount;
+    public List<Piece> pieces;
     
+    public DataStructure(int width, int height, int pieceCount, List<Piece> pieces) {
+        this.width = width;
+        this.height = height;
+        this.pieceCount = pieceCount;
+        this.pieces = pieces;
+    }
 }
