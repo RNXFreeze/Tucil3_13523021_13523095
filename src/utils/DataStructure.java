@@ -14,15 +14,85 @@ package utils;
 import java.util.List;
 
 public class DataStructure {
-    public int width;
-    public int height;
-    public int pieceCount;
-    public List<Piece> pieces;
+    private int width;
+    private int height;
+    private int pieceCount;
+    private Point keluar;
+    private Board papan;
+    private List<Piece> pieces;
     
-    public DataStructure(int width, int height, int pieceCount, List<Piece> pieces) {
+    public DataStructure(int width, int height, int pieceCount, Point keluar, Board papan, List<Piece> pieces) {
         this.width = width;
         this.height = height;
         this.pieceCount = pieceCount;
+        this.keluar = keluar;
+        this.papan = papan;
         this.pieces = pieces;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getPieceCount() {
+        return pieceCount;
+    }
+
+    public Point getKeluar() {
+        return keluar;
+    }
+
+    public List<Piece> getPieces() {
+        return pieces;
+    }
+
+    public Board getPapan() {
+        return papan;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void setPieceCount(int pieceCount) {
+        this.pieceCount = pieceCount;
+    }
+
+    public void setKeluar(Point keluar) {
+        this.keluar = keluar;
+    }
+
+    public void setPieces(List<Piece> pieces) {
+        this.pieces = pieces;
+    }
+
+    public void setPapan(Board papan) {
+        this.papan = papan;
+    }
+
+    public void printDataStructure() {
+        System.out.println("Width: " + width);
+        System.out.println("Height: " + height);
+        System.out.println("Piece Count: " + pieceCount);
+        System.out.println("Keluar: " + keluar);
+        System.out.println("Pieces: ");
+        for (Piece piece : pieces) {
+            System.out.println("  Type: " + piece.getType() + ", Coordinates: " + piece.getCoordinates() + ", Orientation: " + piece.getOrientation());
+        }
+        System.out.println("Board: ");
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                System.out.print(papan.getCell(i, j) + " ");
+            }
+            System.out.println();
+        }
     }
 }
