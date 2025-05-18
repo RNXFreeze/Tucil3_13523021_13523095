@@ -16,11 +16,11 @@ public class DataStructure {
     private int width;
     private int height;
     private int pieceCount;
-    private List<Piece> pieces;
-    private char[][] board;
     private Point exit;
+    private Board board;
+    private List<Piece> pieces;
     
-    public DataStructure(int width , int height , int pieceCount , List<Piece> pieces , char[][] board , Point exit) {
+    public DataStructure(int width, int height, int pieceCount, Point exit, Board board, List<Piece> pieces) {
         this.width = width;
         this.height = height;
         this.pieceCount = pieceCount;
@@ -45,7 +45,7 @@ public class DataStructure {
         return pieces;
     }
 
-    public char[][] getBoard() {
+    public Board getBoard() {
         return board;
     }
 
@@ -69,11 +69,29 @@ public class DataStructure {
         this.pieces = pieces;
     }
 
-    public void setBoard(char[][] board) {
+    public void setBoard(Board board) {
         this.board = board;
     }
 
     public void setExit(Point exit) {
         this.exit = exit;
+    }
+
+    public void printDataStructure() {
+        System.out.println("Width: " + width);
+        System.out.println("Height: " + height);
+        System.out.println("Piece Count: " + pieceCount);
+        System.out.println("Keluar: " + exit);
+        System.out.println("Pieces: ");
+        for (Piece piece : pieces) {
+            System.out.println("  Type: " + piece.getType() + ", Coordinates: " + piece.getCoordinates() + ", Orientation: " + piece.getOrientation());
+        }
+        System.out.println("Board: ");
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                System.out.print(board.getCell(i, j) + " ");
+            }
+            System.out.println();
+        }
     }
 }

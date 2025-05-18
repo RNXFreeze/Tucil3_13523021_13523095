@@ -16,17 +16,17 @@ import java.util.List;
 
 public class GameState {
     public boolean isSolved(DataStructure dataStructure) {
-        Piece P = dataStructure.pieces.stream().filter(piece -> piece.getType() == 'P').findFirst().orElseThrow();
+        Piece P = dataStructure.getPieces().stream().filter(piece -> piece.getType() == 'P').findFirst().orElseThrow();
         List<Point> cells = P.getCoordinates();
         int orient = P.getOrientation();
         if (orient == 0) {
             int row = cells.get(0).getX();
             int rightMost = cells.stream().mapToInt(Point::getY).max().orElseThrow();
-            return (dataStructure.exit.getX() == row && rightMost < dataStructure.exit.getY());
+            return (dataStructure.getExit().getX() == row && rightMost < dataStructure.getExit().getY());
         } else {
             int col = cells.get(0).getY();
             int bottomMost = cells.stream().mapToInt(Point::getX).max().orElseThrow();
-            return (dataStructure.exit.getY() == col && bottomMost < dataStructure.exit.getX());
+            return (dataStructure.getExit().getY() == col && bottomMost < dataStructure.getExit().getX());
         }
     }
 }
