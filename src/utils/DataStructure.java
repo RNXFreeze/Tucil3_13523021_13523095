@@ -6,41 +6,74 @@
 /* Tanggal    : Senin, 19 Mei 2025                                               */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
 /* File Path  : Tucil3_13523021_13523095/src/utils/DataStructure.java            */
-/* Deskripsi  : F06 - Data Structure Utility                                     */
-/* PIC F06    : K01 - 13523021 - Muhammad Raihan Nazhim Oktana                   */
+/* Deskripsi  : F06A - Data Structure Utility                                    */
+/* PIC F06A   : K01 - 13523021 - Muhammad Raihan Nazhim Oktana                   */
 
 package utils;
+import java.util.List;
 
 public class DataStructure {
-    private int[][] grid;
-    private int rows;
-    private int cols;
-
-    public DataStructure(int rows , int cols) {
-        this.rows = rows;
-        this.cols = cols;
-        this.grid = new int[rows][cols];
+    private int width;
+    private int height;
+    private int pieceCount;
+    private List<Piece> pieces;
+    private char[][] board;
+    private Point exit;
+    
+    public DataStructure(int width , int height , int pieceCount , List<Piece> pieces , char[][] board , Point exit) {
+        this.width = width;
+        this.height = height;
+        this.pieceCount = pieceCount;
+        this.pieces = pieces;
+        this.board = board;
+        this.exit = exit;
     }
 
-    public void setCell(int r, int c, int value) {
-        grid[r][c] = value;
+    public int getWidth() {
+        return width;
     }
 
-    public int getCell(int r, int c) {
-        return grid[r][c];
+    public int getHeight() {
+        return height;
     }
 
-    public int getRows() {
-        return rows;
+    public int getPieceCount() {
+        return pieceCount;
     }
 
-    public int getCols() {
-        return cols;
+    public List<Piece> getPieces() {
+        return pieces;
     }
 
-    public enum Direction {UP , DOWN , LEFT , RIGHT}
-    public enum Orientation {HORIZONTAL , VERTICAL}
-    public record Pos(int r , int c) {
+    public char[][] getBoard() {
+        return board;
+    }
 
+    public Point getExit() {
+        return exit;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void setPieceCount(int pieceCount) {
+        this.pieceCount = pieceCount;
+    }
+
+    public void setPieces(List<Piece> pieces) {
+        this.pieces = pieces;
+    }
+
+    public void setBoard(char[][] board) {
+        this.board = board;
+    }
+
+    public void setExit(Point exit) {
+        this.exit = exit;
     }
 }

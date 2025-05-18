@@ -5,12 +5,14 @@
 /* NIM - 2    : K02 - 13523095 - Teknik Informatika (IF-Ganesha) ITB             */
 /* Tanggal    : Senin, 19 Mei 2025                                               */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
-/* File Path  : Tucil3_13523021_13523095/src/utils/FileReader.java               */
-/* Deskripsi  : F07 - File Reader Utility                                        */
-/* PIC F07    : K02 - 13523095 - Rafif Farras                                    */
+/* File Path  : Tucil3_13523021_13523095/src/game/GameLogic.java                 */
+/* Deskripsi  : F09 - Game Logic Program                                         */
+/* PIC F09    : K01 - 13523021 - Muhammad Raihan Nazhim Oktana                   */
 
-package utils;
+package game;
+import utils.*;
+import algorithm.*;
 
-public class FileReader {
+public class GameLogic {
     
 }
