@@ -22,11 +22,11 @@ public class GameState {
         if (orient == 0) {
             int row = cells.get(0).getX();
             int rightMost = cells.stream().mapToInt(Point::getY).max().orElseThrow();
-            return (dataStructure.getKeluar().getX() == row && rightMost < dataStructure.getKeluar().getY());
+            return (dataStructure.getExit().getX() == row && rightMost < dataStructure.getExit().getY());
         } else {
             int col = cells.get(0).getY();
             int bottomMost = cells.stream().mapToInt(Point::getX).max().orElseThrow();
-            return (dataStructure.getKeluar().getY() == col && bottomMost < dataStructure.getKeluar().getX());
+            return (dataStructure.getExit().getY() == col && bottomMost < dataStructure.getExit().getX());
         }
     }
 }

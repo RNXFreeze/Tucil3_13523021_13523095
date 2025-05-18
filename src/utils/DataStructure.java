@@ -6,28 +6,27 @@
 /* Tanggal    : Senin, 19 Mei 2025                                               */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
 /* File Path  : Tucil3_13523021_13523095/src/utils/DataStructure.java            */
-/* Deskripsi  : F06 - Data Structure Utility                                     */
-/* PIC F06    : K02 - 13523095 - Rafif Farras                                    */
+/* Deskripsi  : F06A - Data Structure Utility                                    */
+/* PIC F06A   : K01 - 13523021 - Muhammad Raihan Nazhim Oktana                   */
 
 package utils;
-
 import java.util.List;
 
 public class DataStructure {
     private int width;
     private int height;
     private int pieceCount;
-    private Point keluar;
-    private Board papan;
+    private Point exit;
+    private Board board;
     private List<Piece> pieces;
     
-    public DataStructure(int width, int height, int pieceCount, Point keluar, Board papan, List<Piece> pieces) {
+    public DataStructure(int width, int height, int pieceCount, Point exit, Board board, List<Piece> pieces) {
         this.width = width;
         this.height = height;
         this.pieceCount = pieceCount;
-        this.keluar = keluar;
-        this.papan = papan;
         this.pieces = pieces;
+        this.board = board;
+        this.exit = exit;
     }
 
     public int getWidth() {
@@ -42,16 +41,16 @@ public class DataStructure {
         return pieceCount;
     }
 
-    public Point getKeluar() {
-        return keluar;
-    }
-
     public List<Piece> getPieces() {
         return pieces;
     }
 
-    public Board getPapan() {
-        return papan;
+    public Board getBoard() {
+        return board;
+    }
+
+    public Point getExit() {
+        return exit;
     }
 
     public void setWidth(int width) {
@@ -66,23 +65,23 @@ public class DataStructure {
         this.pieceCount = pieceCount;
     }
 
-    public void setKeluar(Point keluar) {
-        this.keluar = keluar;
-    }
-
     public void setPieces(List<Piece> pieces) {
         this.pieces = pieces;
     }
 
-    public void setPapan(Board papan) {
-        this.papan = papan;
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+    public void setExit(Point exit) {
+        this.exit = exit;
     }
 
     public void printDataStructure() {
         System.out.println("Width: " + width);
         System.out.println("Height: " + height);
         System.out.println("Piece Count: " + pieceCount);
-        System.out.println("Keluar: " + keluar);
+        System.out.println("Keluar: " + exit);
         System.out.println("Pieces: ");
         for (Piece piece : pieces) {
             System.out.println("  Type: " + piece.getType() + ", Coordinates: " + piece.getCoordinates() + ", Orientation: " + piece.getOrientation());
@@ -90,7 +89,7 @@ public class DataStructure {
         System.out.println("Board: ");
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                System.out.print(papan.getCell(i, j) + " ");
+                System.out.print(board.getCell(i, j) + " ");
             }
             System.out.println();
         }
