@@ -6,13 +6,25 @@
 /* Tanggal    : Senin, 19 Mei 2025                                               */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
 /* File Path  : Tucil3_13523021_13523095/src/utils/DataStructure.java            */
-/* Deskripsi  : F06A - Data Structure Utility                                    */
-/* PIC F06A   : K01 - 13523021 - Muhammad Raihan Nazhim Oktana                   */
+/* Deskripsi  : F07A - Data Structure Utility                                    */
+/* PIC F07A   : K01 - 13523021 - Muhammad Raihan Nazhim Oktana                   */
 
+// Package & Import
 package utils;
 import java.util.List;
 
+// Class Definition & Implementation
 public class DataStructure {
+    // DESKRIPSI
+    // Public Class DataStructure
+    
+    // KAMUS
+    // DataStructure : Constructor Class DataStructure
+    // getWidth , getHeight , getPieceCount , getExit , getBoard , getPieces : Function
+    // setWidth , setHeight , setPieceCount , setExit , setBoard , setPieces : Function
+    // displayDataStructure : Procedure
+
+    // Private Attributes
     private int width;
     private int height;
     private int pieceCount;
@@ -21,6 +33,16 @@ public class DataStructure {
     private List<Piece> pieces;
     
     public DataStructure(int width , int height , int pieceCount , Point exit , Board board , List<Piece> pieces) {
+        // DESKRIPSI LOKAL
+        // Instansiasi Constructor Class DataStructure
+        
+        // KAMUS LOKAL
+        // pieces : List Of Class Piece
+        // board : Class Board
+        // exit : Class Point
+        // width , height , pieceCount : Integer
+
+        // ALGORITMA LOKAL
         this.width = width;
         this.height = height;
         this.pieceCount = pieceCount;
@@ -30,54 +52,149 @@ public class DataStructure {
     }
 
     public int getWidth() {
-        return width;
+        // DESKRIPSI LOKAL
+        // Getter Width
+        
+        // KAMUS LOKAL
+        // width : Integer
+
+        // ALGORITMA LOKAL
+        return this.width;
     }
 
     public int getHeight() {
-        return height;
+        // DESKRIPSI LOKAL
+        // Getter Height
+        
+        // KAMUS LOKAL
+        // height : Integer
+
+        // ALGORITMA LOKAL
+        return this.height;
     }
 
     public int getPieceCount() {
-        return pieceCount;
+        // DESKRIPSI LOKAL
+        // Getter Piece Count
+        
+        // KAMUS LOKAL
+        // pieceCount : Integer
+
+        // ALGORITMA LOKAL
+        return this.pieceCount;
     }
 
     public Point getExit() {
-        return exit;
+        // DESKRIPSI LOKAL
+        // Getter Exit
+        
+        // KAMUS LOKAL
+        // exit : Class Point
+
+        // ALGORITMA LOKAL
+        return this.exit;
     }
 
     public Board getBoard() {
-        return board;
+        // DESKRIPSI LOKAL
+        // Getter Board
+        
+        // KAMUS LOKAL
+        // board : Class Board
+
+        // ALGORITMA LOKAL
+        return this.board;
     }
 
     public List<Piece> getPieces() {
-        return pieces;
+        // DESKRIPSI LOKAL
+        // Getter Pieces
+        
+        // KAMUS LOKAL
+        // pieces : List Of Class Piece
+
+        // ALGORITMA LOKAL
+        return this.pieces;
     }
    
     public void setWidth(int width) {
+        // DESKRIPSI LOKAL
+        // Setter Width
+        
+        // KAMUS LOKAL
+        // width : Integer
+
+        // ALGORITMA LOKAL
         this.width = width;
     }
 
     public void setHeight(int height) {
+        // DESKRIPSI LOKAL
+        // Setter Height
+        
+        // KAMUS LOKAL
+        // height : Integer
+
+        // ALGORITMA LOKAL
         this.height = height;
     }
 
     public void setPieceCount(int pieceCount) {
+        // DESKRIPSI LOKAL
+        // Setter Piece Count
+        
+        // KAMUS LOKAL
+        // pieceCount : Integer
+
+        // ALGORITMA LOKAL
         this.pieceCount = pieceCount;
     }
 
     public void setExit(Point exit) {
+        // DESKRIPSI LOKAL
+        // Setter Exit
+        
+        // KAMUS LOKAL
+        // exit : Class Point
+
+        // ALGORITMA LOKAL
         this.exit = exit;
     }
 
     public void setBoard(Board board) {
+        // DESKRIPSI LOKAL
+        // Setter Board
+        
+        // KAMUS LOKAL
+        // board : Class Board
+
+        // ALGORITMA LOKAL
         this.board = board;
     }
 
     public void setPieces(List<Piece> pieces) {
+        // DESKRIPSI LOKAL
+        // Setter Pieces
+        
+        // KAMUS LOKAL
+        // pieces : List Of Class Piece
+
+        // ALGORITMA LOKAL
         this.pieces = pieces;
     }
 
-    public void printDataStructure() {
+    public void displayDataStructure() {
+        // DESKRIPSI LOKAL
+        // Display Data Structure CLI Terminal
+        
+        // KAMUS LOKAL
+        // pieces : List Of Class Piece
+        // piece : Class Piece
+        // board : Class Board
+        // exit : Class Point
+        // width , height , pieceCount , i , j : Integer
+
+        // ALGORITMA LOKAL
         System.out.println("Width : " + this.width);
         System.out.println("Height : " + this.height);
         System.out.println("Piece Count : " + this.pieceCount);

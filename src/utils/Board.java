@@ -6,11 +6,13 @@
 /* Tanggal    : Senin, 19 Mei 2025                                               */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
 /* File Path  : Tucil3_13523021_13523095/src/utils/Board.java                    */
-/* Deskripsi  : F06B - Data Structure Board Utility                              */
-/* PIC F06B   : K02 - 13523095 - Rafif Farras                                    */
+/* Deskripsi  : F07D - Data Structure Board Utility                              */
+/* PIC F07D   : K02 - 13523095 - Rafif Farras                                    */
 
+// Package & Import
 package utils;
 
+// Class Definition & Implementation
 public class Board {
     private char[][] grid;
     private int width;

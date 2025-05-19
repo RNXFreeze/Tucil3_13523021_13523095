@@ -6,9 +6,10 @@
 /* Tanggal    : Senin, 19 Mei 2025                                               */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
 /* File Path  : Tucil3_13523021_13523095/src/utils/Reader.java                   */
-/* Deskripsi  : F05 - File Reader Utility                                        */
-/* PIC F05    : K02 - 13523095 - Rafif Farras                                    */
+/* Deskripsi  : F08 - File Reader Utility                                        */
+/* PIC F08    : K02 - 13523095 - Rafif Farras                                    */
 
+// Package & Import
 package utils;
 import java.io.*;
 import java.nio.file.Files;
@@ -16,6 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+// Class Definition & Implementation
 public class Reader {
     public static DataStructure readFile(String filePath) throws IOException {
         Path path = Paths.get(filePath);

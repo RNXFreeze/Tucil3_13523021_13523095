@@ -6,12 +6,14 @@
 /* Tanggal    : Senin, 19 Mei 2025                                               */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
 /* File Path  : Tucil3_13523021_13523095/src/utils/Piece.java                    */
-/* Deskripsi  : F06B - Data Structure Piece Utility                              */
-/* PIC F06B   : K02 - 13523095 - Rafif Farras                                    */
+/* Deskripsi  : F07C - Data Structure Piece Utility                              */
+/* PIC F07C   : K02 - 13523095 - Rafif Farras                                    */
 
+// Package & Import
 package utils;
 import java.util.List;
 
+// Class Definition & Implementation
 public class Piece {
     private char type;
     private List<Point> coordinates;
@@ -24,15 +26,15 @@ public class Piece {
     }
 
     public char getType() {
-        return type;
+        return this.type;
     }
     
     public List<Point> getCoordinates() {
-        return coordinates;
+        return this.coordinates;
     }
 
     public int getOrientation() {
-        return orientation;
+        return this.orientation;
     }
 
     public void setType(char type) {

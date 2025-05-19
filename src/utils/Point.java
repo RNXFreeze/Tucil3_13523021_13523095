@@ -6,13 +6,18 @@
 /* Tanggal    : Senin, 19 Mei 2025                                               */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
 /* File Path  : Tucil3_13523021_13523095/src/utils/Point.java                    */
-/* Deskripsi  : F06C - Data Structure Point Utility                              */
-/* PIC F06C   : K02 - 13523095 - Rafif Farras                                    */
+/* Deskripsi  : F07B - Data Structure Point Utility                              */
+/* PIC F07B   : K02 - 13523095 - Rafif Farras                                    */
 
+// Package & Import
 package utils;
 
+// Class Definition & Implementation
 public class Point {
-    private int x , y;
+    
+    // Private Attributes
+    private int x;
+    private int y;
     
     public Point(int x , int y) {
         this.x = x;
@@ -20,11 +25,11 @@ public class Point {
     }
 
     public int getX() {
-        return x;
+        return this.x;
     }
 
     public int getY() {
-        return y;
+        return this.y;
     }
 
     public void setX(int x) {
@@ -45,6 +50,6 @@ public class Point {
 
     @Override
     public String toString() {
-        return "(" + x + ", " + y + ")";
+        return "(" + x + " , " + y + ")";
     }
 }
