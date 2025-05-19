@@ -23,6 +23,9 @@ public class UCS {
     // UCS : Constructor Class UCS
     // solveUCS , solveUCS1 , solveUCS2 , solveUCS3 : Function
 
+    // PRIVATE ATTRIBUTES
+    // None
+
     private UCS() {
         // DESKRIPSI LOKAL
         // Instansiasi Constructor Class UCS

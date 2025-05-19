@@ -20,11 +20,11 @@ public class DataStructure {
     
     // KAMUS
     // DataStructure : Constructor Class DataStructure
-    // getWidth , getHeight , getPieceCount , getExit , getBoard , getPieces : Function
-    // setWidth , setHeight , setPieceCount , setExit , setBoard , setPieces : Function
+    // getWidth , getHeight , getPieceCount , getExit , getBoard , getPieces : Procedure
+    // setWidth , setHeight , setPieceCount , setExit , setBoard , setPieces : Procedure
     // displayDataStructure : Procedure
 
-    // Private Attributes
+    // PRIVATE ATTRIBUTES
     private int width;
     private int height;
     private int pieceCount;

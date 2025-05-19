@@ -22,6 +22,10 @@ public class Main {
     
     // KAMUS
     // main : Main Function
+
+    // PRIVATE ATTRIBUTES
+    // None
+    
     public static void main(String[] args) {
         // DESKRIPSI LOKAL
         // Main Program Function Connection
@@ -30,7 +34,7 @@ public class Main {
         // ...
 
         // ALGORITMA LOKAL
-        String filePath = "test/input/test.txt";
+        String filePath = "test/test.txt";
         try {
             DataStructure data = Reader.readFile(filePath); 
             System.out.println("File berhasil dibaca.");

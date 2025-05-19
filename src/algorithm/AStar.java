@@ -23,6 +23,9 @@ public class AStar {
     // AStar : Constructor Class AStar
     // solveAStar , solveAStar1 , solveAStar2 , solveAStar3 : Function
 
+    // PRIVATE ATTRIBUTES
+    // None
+    
     private AStar() {
         // DESKRIPSI LOKAL
         // Instansiasi Constructor Class AStar

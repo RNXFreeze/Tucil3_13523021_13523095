@@ -24,6 +24,9 @@ public class GameState {
     // GameState : Constructor Class GameState
     // isSolved : Function
 
+    // PRIVATE ATTRIBUTES
+    // None
+
     private GameState() {
         // DESKRIPSI LOKAL
         // Instansiasi Constructor Class GameState

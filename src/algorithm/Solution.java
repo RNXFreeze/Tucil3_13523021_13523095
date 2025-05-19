@@ -23,7 +23,7 @@ public class Solution {
     // Solution : Constructor Class Solution
     // displaySolution : Procedure
 
-    // Private Attributes
+    // PRIVATE ATTRIBUTES
     // ...
 
     public Solution() {

@@ -21,7 +21,10 @@ public class GameLogic {
     
     // KAMUS
     // GameLogic : Constructor Class GameLogic
-    // isSolved : Function
+    // ...
+
+    // PRIVATE ATTRIBUTES
+    // ...
 
     private GameLogic() {
         // DESKRIPSI LOKAL

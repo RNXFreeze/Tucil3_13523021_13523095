@@ -23,6 +23,9 @@ public class GreedyBFS {
     // GreedyBFS : Constructor Class GreedyBFS
     // solveGreedyBFS , solveGreedyBFS1 , solveGreedyBFS2 , solveGreedyBFS3 : Function
 
+    // PRIVATE ATTRIBUTES
+    // None
+    
     private GreedyBFS() {
         // DESKRIPSI LOKAL
         // Instansiasi Constructor Class GreedyBFS

@@ -23,6 +23,9 @@ public class Heuristic {
     // Heuristic : Constructor Class Heuristic
     // solveHeuristic , heuristic1 , heuristic2 , heuristic3 , blockingCount , findPrimary , isBlocking : Function
 
+    // PRIVATE ATTRIBUTES
+    // None
+    
     private Heuristic() {
         // DESKRIPSI LOKAL
         // Instansiasi Constructor Class Heuristic

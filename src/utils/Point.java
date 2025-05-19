@@ -14,42 +14,104 @@ package utils;
 
 // Class Definition & Implementation
 public class Point {
+    // DESKRIPSI
+    // Public Class Point
     
-    // Private Attributes
+    // KAMUS
+    // Point : Constructor Class Point
+    // getX , getY , setX , setY , add , subtract , toString : Procedure
+
+    // PRIVATE ATTRIBUTES
     private int x;
     private int y;
     
     public Point(int x , int y) {
+        // DESKRIPSI LOKAL
+        // Instansiasi Constructor Class Point
+        
+        // KAMUS LOKAL
+        // x , y : Integer
+
+        // ALGORITMA LOKAL
         this.x = x;
         this.y = y;
     }
 
     public int getX() {
+        // DESKRIPSI LOKAL
+        // Getter X
+        
+        // KAMUS LOKAL
+        // x : Integer
+
+        // ALGORITMA LOKAL
         return this.x;
     }
 
     public int getY() {
+        // DESKRIPSI LOKAL
+        // Getter Y
+        
+        // KAMUS LOKAL
+        // y : Integer
+
+        // ALGORITMA LOKAL
         return this.y;
     }
 
     public void setX(int x) {
+        // DESKRIPSI LOKAL
+        // Setter X
+        
+        // KAMUS LOKAL
+        // x : Integer
+
+        // ALGORITMA LOKAL
         this.x = x;
     }
 
     public void setY(int y) {
+        // DESKRIPSI LOKAL
+        // Getter Y
+        
+        // KAMUS LOKAL
+        // y : Integer
+
+        // ALGORITMA LOKAL
         this.y = y;
     }
 
     public Point add(Point other) {
+        // DESKRIPSI LOKAL
+        // Menjumlahkan 2 Point
+        
+        // KAMUS LOKAL
+        // x , y : Integer
+
+        // ALGORITMA LOKAL
         return new Point(this.x + other.x , this.y + other.y);
     }
 
     public Point subtract(Point other) {
+        // DESKRIPSI LOKAL
+        // Mengurangi 2 Point
+        
+        // KAMUS LOKAL
+        // x , y : Integer
+
+        // ALGORITMA LOKAL
         return new Point(this.x - other.x , this.y - other.y);
     }
 
     @Override
     public String toString() {
-        return "(" + x + " , " + y + ")";
+        // DESKRIPSI LOKAL
+        // Mengubah Point menjadi String
+        
+        // KAMUS LOKAL
+        // x , y : Integer
+
+        // ALGORITMA LOKAL
+        return "(" + this.x + " , " + this.y + ")";
     }
 }
