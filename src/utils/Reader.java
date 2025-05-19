@@ -5,12 +5,11 @@
 /* NIM - 2    : K02 - 13523095 - Teknik Informatika (IF-Ganesha) ITB             */
 /* Tanggal    : Senin, 19 Mei 2025                                               */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
-/* File Path  : Tucil3_13523021_13523095/src/utils/FileReader.java               */
+/* File Path  : Tucil3_13523021_13523095/src/utils/Reader.java                   */
 /* Deskripsi  : F05 - File Reader Utility                                        */
 /* PIC F05    : K02 - 13523095 - Rafif Farras                                    */
 
 package utils;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -100,8 +99,6 @@ public class Reader {
             return new DataStructure(width, height, pieceCount, keluar, board, pieces);
         }
     }
-    
-    
 
     public static List<Piece> readPieces(char[][] grid) {
         int height = grid.length;
@@ -141,7 +138,6 @@ public class Reader {
         
         return pieces;
     }
-    
 
     public static int determineOrientation(List<Point> coordinates) {
         boolean isHorizontal = true;
