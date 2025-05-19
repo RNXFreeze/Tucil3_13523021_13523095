@@ -3,7 +3,7 @@
 /* NIM - 1    : K01 - 13523021 - Teknik Informatika (IF-Ganesha) ITB             */
 /* Nama - 2   : Rafif Farras                                                     */
 /* NIM - 2    : K02 - 13523095 - Teknik Informatika (IF-Ganesha) ITB             */
-/* Tanggal    : Senin, 19 Mei 2025                                               */
+/* Tanggal    : Selasa, 20 Mei 2025                                              */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
 /* File Path  : Tucil3_13523021_13523095/src/algorithm/UCS.java                  */
 /* Deskripsi  : F03 - UCS (Uniform Cost Search) Pathfinding Algorithm            */
@@ -12,7 +12,6 @@
 // Package & Import
 package algorithm;
 import utils.*;
-import game.*;
 
 // Class Definition & Implementation
 public class UCS {
@@ -48,11 +47,11 @@ public class UCS {
 
         // ALGORITMA LOKAL
         if (num == 1) {
-            return solveUCS1(dataStructure);
+            solveUCS1(dataStructure);
         } else if (num == 2) {
-            return solveUCS2(dataStructure);
+            solveUCS2(dataStructure);
         } else {
-            return solveUCS3(dataStructure);
+            solveUCS3(dataStructure);
         }
     }
 
