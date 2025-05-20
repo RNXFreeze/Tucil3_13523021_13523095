@@ -58,11 +58,9 @@ public class AStar {
         Solution.Node startNode = new Solution.Node(dataStructure, null, 0, startH, null);
         pq.add(startNode);
         bestCost.put(startKey, 0);
-        System.out.println("DEBUG: Starting A* Search");
-        System.out.println("Initial State:");
-        dataStructure.displayDataStructure();
-        System.out.println("Initial h = " + startH);
-        int cnt = 0;
+    
+        int cnt = 0;// Menambahkan batas maksimum iterasi untuk mencegah loop tak berujung
+        
         while (!pq.isEmpty()) {
             Solution.Node cur = pq.poll();
             String curKey = GameLogic.boardKey(cur.state);
@@ -81,7 +79,7 @@ public class AStar {
             if (GameState.isSolved(cur.state)) {
                 long endTime = System.nanoTime();
                 double timeInMs = (endTime - startTime) / 1_000_000.0;
-                return Solution.buildSolution("A-Star Search", num, cnt, timeInMs, cur);
+                return Solution.buildSolution("A-Star", num, cnt, timeInMs, cur);
             }
             
             // Coba semua gerakan yang mungkin
@@ -99,6 +97,7 @@ public class AStar {
                 }
             }
         }
+        
         return null;
     }
 }
