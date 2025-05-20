@@ -101,7 +101,7 @@ public class AStar {
         long endTime = System.nanoTime();
         double time = (endTime - startTime) / 1000000;
         if (res != null) {
-            return Solution.buildSolution(filePath , "A-Star Search (A*)" , num , cnt + 1 , time , res);
+            return Solution.buildSolution(filePath , "A-Star Search (A*)" , num , cnt , time , res);
         } else {
             return Solution.buildSolution(filePath , "A-Star Search (A*)" , num , cnt , time , new Solution.Node(dataStructure , null , 0 , 0 , null));
         }

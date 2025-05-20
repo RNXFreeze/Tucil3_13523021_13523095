@@ -284,14 +284,14 @@ public class DataStructure {
                 for (int j = 0 ; j < this.exit.getX() ; j++) {
                     System.out.print("  ");
                 }
-                System.out.print(Solution.ANSI_BACKGROUND_GREEN + Solution.ANSI_BOLD + Solution.ANSI_CYAN + "P" + Solution.ANSI_RESET);
+                System.out.println(Solution.ANSI_BACKGROUND_GREEN + Solution.ANSI_BOLD + Solution.ANSI_CYAN + "P " + Solution.ANSI_RESET);
             }
         } else if (this.exit.getY() == this.height) {
             for (int i = 0 ; i < this.pieces.stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize() ; i++) {
                 for (int j = 0 ; j < this.exit.getX() ; j++) {
                     System.out.print("  ");
                 }
-                System.out.print(Solution.ANSI_BACKGROUND_GREEN + Solution.ANSI_BOLD + Solution.ANSI_CYAN + "P" + Solution.ANSI_RESET);
+                System.out.println(Solution.ANSI_BACKGROUND_GREEN + Solution.ANSI_BOLD + Solution.ANSI_CYAN + "P " + Solution.ANSI_RESET);
             }
             for (int i = 0 ; i < this.height ; i++) {
                 for (int j = 0 ; j < this.width ; j++) {

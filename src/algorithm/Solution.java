@@ -450,7 +450,7 @@ public final class Solution {
         } else {
             System.out.printf("Heuristic    : %s%d%s\n" , ANSI_CYAN , this.heuristicId , ANSI_RESET);
         }
-        System.out.printf("Step Count   : %s%d Step%s\n" , ANSI_YELLOW , this.stepCount + 1 , ANSI_RESET);
+        System.out.printf("Step Count   : %s%d Step%s\n" , ANSI_YELLOW , this.stepCount , ANSI_RESET);
         System.out.printf("Visited Node : %s%d Node%s\n" , ANSI_YELLOW , this.nodesVisited , ANSI_RESET);
         System.out.printf("Time Usage   : %s%d ms%s\n" , ANSI_YELLOW , (int) this.time , ANSI_RESET);
         if (this.moves.isEmpty()) {
@@ -465,18 +465,18 @@ public final class Solution {
         } else {
             System.out.println("Display Board Awal :");
             this.path.get(0).displayBoard();
-            for (int i = 0 ; i < this.moves.size() ; i++) {
+            for (int i = 0 ; i < this.moves.size() - 1 ; i++) {
                 System.out.printf("\n%sMOVE %d : %s%s\n" , ANSI_BOLD + ANSI_PURPLE , i + 1 , this.moves.get(i) , ANSI_RESET);
                 displayBoardWithHighlight(this.path.get(i) , this.path.get(i + 1) , this.moves.get(i));
             }
-            System.out.printf("\nMOVE %d : P - OUT %s (%d STEP)\n" , this.moves.size() + 1 , switch (this.moves.get(this.moves.size() - 1).getDirection()) {
+            System.out.printf("\n%sMOVE %d : P - OUT %s (%d STEP)%s\n" , ANSI_BOLD + ANSI_PURPLE , this.moves.size() , switch (this.moves.get(this.moves.size() - 1).getDirection()) {
                 case UP -> "UP";
                 case DOWN -> "DOWN";
                 case RIGHT -> "RIGHT";
                 case LEFT -> "LEFT";
                 default -> "UNKNOWN";
-            } , this.path.get(0).getPieces().stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize());
-            this.path.get(this.moves.size()).displayLastBoard();
+            } , this.path.get(0).getPieces().stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize() + this.moves.get(this.moves.size() - 1).getStepCount() , ANSI_RESET);
+            this.path.get(this.moves.size() - 1).displayLastBoard();
         }
         System.out.println(ANSI_BOLD + "==================================================" + ANSI_RESET);
         System.out.println(ANSI_BOLD + "RECALL INFORMATION SOLUTION RESULT :" + ANSI_RESET);
@@ -487,7 +487,7 @@ public final class Solution {
         } else {
             System.out.printf("Heuristic    : %s%d%s\n" , ANSI_CYAN , this.heuristicId , ANSI_RESET);
         }
-        System.out.printf("Step Count   : %s%d Step%s\n" , ANSI_YELLOW , this.stepCount + 1 , ANSI_RESET);
+        System.out.printf("Step Count   : %s%d Step%s\n" , ANSI_YELLOW , this.stepCount , ANSI_RESET);
         System.out.printf("Visited Node : %s%d Node%s\n" , ANSI_YELLOW , this.nodesVisited , ANSI_RESET);
         System.out.printf("Time Usage   : %s%d ms%s\n" , ANSI_YELLOW , (int) this.time , ANSI_RESET);
         if (this.moves.isEmpty()) {
