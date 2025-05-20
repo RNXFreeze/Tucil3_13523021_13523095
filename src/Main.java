@@ -76,9 +76,6 @@ public class Main {
                 }
             }
             System.out.println("==================================================");
-            System.out.println("Display Board From File :");
-            dataStructure.displayDataStructure();
-            System.out.println("==================================================");
             System.out.println("Opsi Algoritma :");
             System.out.println("1. Uniform Cost Search (UCS)");
             System.out.println("2. Greedy Best First Search (GBFS)");

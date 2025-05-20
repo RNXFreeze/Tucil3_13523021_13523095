@@ -73,8 +73,6 @@ public class AStar {
             visited.add(curKey);
             cnt++;
             
-            int f = cur.gValue + cur.hValue;
-            
             // Periksa apakah puzzle telah diselesaikan
             if (GameState.isSolved(cur.state)) {
                 long endTime = System.nanoTime();

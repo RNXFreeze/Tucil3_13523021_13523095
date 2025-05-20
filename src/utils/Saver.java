@@ -53,18 +53,6 @@ public final class Saver {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             /* Bagian header informasi */
             writer.write("==================================================\n");
-            writer.write("INFORMATION SOLUTION RESULT :\n");
-            writer.write(String.format("Algorithm    : %s%n" , solution.getAlgorithm()));
-            writer.write(String.format("Heuristic    : %d%n" , solution.getHeuristicId()));
-            writer.write(String.format("Step Count   : %d Step%n" , solution.getStepCount()));
-            writer.write(String.format("Visited Node : %d Node%n" , solution.getNodesVisited()));
-            writer.write(String.format("Time Usage   : %d ms%n" , (int) solution.getTime()));
-            if (solution.getMoves().isEmpty()) {
-                writer.write("Success      : NO\n");
-            } else {
-                writer.write("Success      : YES\n");
-            }
-            writer.write("==================================================\n");
 
             /* Bagian papan & langkah */
             if (solution.getMoves().isEmpty()) {
@@ -81,7 +69,7 @@ public final class Saver {
                 }
             }
             writer.write("==================================================\n");
-            writer.write("RECALL INFORMATION SOLUTION RESULT :\n");
+            writer.write("INFORMATION SOLUTION RESULT :\n");
             writer.write(String.format("Algorithm    : %s%n" , solution.getAlgorithm()));
             writer.write(String.format("Heuristic    : %d%n" , solution.getHeuristicId()));
             writer.write(String.format("Step Count   : %d Step%n" , solution.getStepCount()));
