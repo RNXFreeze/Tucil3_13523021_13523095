@@ -62,7 +62,6 @@ public class GBFS {
         int cnt = 0;
         while (!pq.isEmpty()) {
             Solution.Node cur = pq.poll();
-            System.out.println("Count Step : " + cnt + " || Queue Size : " + pq.size());
             if (visited.add(GameLogic.boardKey(cur.state))) {
                 cnt++;
                 if (GameState.isSolved(cur.state)) {
@@ -77,6 +76,8 @@ public class GBFS {
                 }
             }
         }
-        return null;
+        long endTime = System.nanoTime();
+        double time = (endTime - startTime) / 1000000;
+        return Solution.buildSolution("Greedy Best First Search (GBFS)" , num , cnt , time , new Solution.Node(dataStructure , null , 0 , 0 , null));
     }
 }

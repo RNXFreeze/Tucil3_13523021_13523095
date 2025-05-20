@@ -58,6 +58,7 @@ public class Main {
                         filePath = args[0];
                     } else {
                         System.out.print("Masukkan Nama File Test Case (Example.txt) : ");
+                        
                         filePath = "test/" + scanner.nextLine().trim();
                     }
                     try {
@@ -65,7 +66,7 @@ public class Main {
                         System.out.println("Success : File Berhasil Dibaca.");
                         break;
                     } catch (IOException e) {
-                        System.err.println("Error : File Gagal Dibaca : " + e.getMessage());
+                        System.out.println("Error : File Gagal Dibaca : " + e.getMessage());
                         if (args.length >= 1) {
                             System.out.println("Error Args : Tolong Ulangi Running Program");
                             scanner.close();
@@ -105,7 +106,7 @@ public class Main {
                     System.out.println("Opsi Heuristik :");
                     System.out.println("1. Heuristik 1 : Menghitung Blocker");
                     System.out.println("2. Heuristik 2 : Menghitung Blocker + Jarak Kosong");
-                    System.out.println("3. Heuristik 2 : Menghitung Blocker + Ukuran Blocker");
+                    System.out.println("3. Heuristik 3 : Menghitung Blocker + Ukuran Blocker");
                     while (true) {
                         try {
                             System.out.print("Masukkan Pilihan Heuristik (1/2/3) : ");
@@ -120,25 +121,20 @@ public class Main {
                         }
                     }
                 }
-                System.out.println("==================================================");
                 Solution solution = switch (algorithmOption) {
                     case 1 -> UCS.solveUCS(dataStructure , 0);
                     case 2 -> GBFS.solveGBFS(dataStructure , heuristicOption);
                     case 3 -> AStar.solveAStar(dataStructure , heuristicOption);
-                    default -> null;
+                    default -> Solution.buildSolution("Unknown Algorithm" , 0 , 0 , 0 ,  new Solution.Node(dataStructure , null , 0 , 0 , null));
                 };
-                if (solution == null) {
-                    System.out.println("Maaf, Puzzle Rush Hour Tersebut Tidak Memiliki Solusi.");
-                } else {
-                    solution.displaySolution();
-                }
+                solution.displaySolution();
                 System.out.println("==================================================");
                 String response;
                 while (true) {
                     System.out.print("Apakah Anda Ingin Bermain Lagi? (Y/N) : ");
                     response = scanner.nextLine().trim().toUpperCase();
                     switch (response) {
-                        case "Y" -> {}
+                        case "Y" -> check = true;
                         case "N" -> check = false;
                         default -> {
                             System.out.println("Error : Input Respons Tidak Valid.");
@@ -147,7 +143,9 @@ public class Main {
                     }
                     break;
                 }
-                scanner.close();
+                if (!check) {
+                    scanner.close();
+                }
             }
         }
         System.out.println("==================================================");

@@ -53,18 +53,18 @@ public class GameState {
             int rig = piece.getCoordinates().stream().mapToInt(Point::getX).max().orElseThrow();
             int lft = piece.getCoordinates().stream().mapToInt(Point::getX).min().orElseThrow();
             if (exit.getX() == -1) {
-                return ((exit.getY() == row) && (lft <= exit.getX() + 1));
+                return ((exit.getY() == dataStructure.getHeight() - 1 - row) && (lft <= exit.getX() + 1));
             } else {
-                return ((exit.getY() == row) && (rig >= exit.getX() - 1));
+                return ((exit.getY() == dataStructure.getHeight() - 1 - row) && (rig >= exit.getX() - 1));
             }
         } else {
             int col = piece.getCoordinates().get(0).getX();
-            int top = piece.getCoordinates().stream().mapToInt(Point::getY).max().orElseThrow();
-            int bot = piece.getCoordinates().stream().mapToInt(Point::getY).min().orElseThrow();
+            int bot = piece.getCoordinates().stream().mapToInt(Point::getY).max().orElseThrow();
+            int top = piece.getCoordinates().stream().mapToInt(Point::getY).min().orElseThrow();
             if (exit.getY() == -1) {
-                return ((exit.getX() == col) && (bot <= exit.getY() + 1));
+                return ((exit.getX() == col) && (dataStructure.getHeight() - 1 - bot <= exit.getY() + 1));
             } else {
-                return ((exit.getX() == col) && (top >= exit.getY() - 1));
+                return ((exit.getX() == col) && (dataStructure.getHeight() - 1 - top >= exit.getY() - 1));
             }
         }
     }

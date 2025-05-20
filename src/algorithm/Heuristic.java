@@ -125,7 +125,7 @@ public class Heuristic {
             int row = piece.getCoordinates().get(0).getY();
             int rig = piece.getCoordinates().stream().mapToInt(Point::getX).max().orElseThrow();
             for (int x = rig + 1 ; x < board.getWidth() ; x++) {
-                if (board.getCell(x , row) != '.') {
+                if (board.getCell(row , x) != '.') {
                     cnt++;
                 }
             }
@@ -133,7 +133,7 @@ public class Heuristic {
             int col = piece.getCoordinates().get(0).getX();
             int bot = piece.getCoordinates().stream().mapToInt(Point::getY).max().orElseThrow();
             for (int y = bot + 1 ; y < board.getHeight() ; y++) {
-                if (board.getCell(col , y) != '.') {
+                if (board.getCell(y , col) != '.') {
                     cnt++;
                 }
             }

@@ -91,7 +91,7 @@ public class Board {
         // x , y : Integer
 
         // ALGORITMA LOKAL
-        return this.grid[x][y];
+        return this.grid[y][x];
     }
 
     public int getWidth() {
@@ -134,9 +134,10 @@ public class Board {
         // KAMUS LOKAL
         // grid : Matrix of Character
         // x , y : Integer
+        // value : Character
 
         // ALGORITMA LOKAL
-        this.grid[x][y] = value;
+        this.grid[y][x] = value;
     }
 
     public void setWidth(int width) {
@@ -164,9 +165,9 @@ public class Board {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int x = 0 ; x < this.width ; x++) {
-            for (int y = 0 ; y < this.height ; y++) {
-                sb.append(grid[x][y]).append(' ');
+        for (int y = 0 ; y < this.height ; y++) {
+            for (int x = 0 ; x < this.width ; x++) {
+                sb.append(grid[y][x]).append(' ');
             }
             sb.append('\n');
         }
