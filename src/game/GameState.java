@@ -48,12 +48,10 @@ public class GameState {
         // ALGORITMA LOKAL
         Piece piece = dataStructure.getPieces().stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow();
         Point exit = dataStructure.getExit();
-        
         if (piece.getOrientation() == 0) {
             int row = piece.getCoordinates().get(0).getY();
             int rig = piece.getCoordinates().stream().mapToInt(Point::getX).max().orElseThrow();
             int lft = piece.getCoordinates().stream().mapToInt(Point::getX).min().orElseThrow();
-            System.out.printf("EXIT %c ~~~ X : %d , Y : %d , row : %d , R : %d , L : %d\n" , piece.getType() , exit.getX() , exit.getY() , dataStructure.getHeight() - 1 - row , rig , lft);
             if (exit.getX() == -1) {
                 return ((exit.getY() == dataStructure.getHeight() - 1 - row) && (lft <= exit.getX() + 1));
             } else {
@@ -61,13 +59,13 @@ public class GameState {
             }
         } else {
             int col = piece.getCoordinates().get(0).getX();
-            int top = piece.getCoordinates().stream().mapToInt(Point::getY).max().orElseThrow();
-            int bot = piece.getCoordinates().stream().mapToInt(Point::getY).min().orElseThrow();
-            System.out.printf("EXIT %c ~~~ X : %d , Y : %d , T : %d , B : %d\n" , piece.getType() , exit.getX() , exit.getY() , top , bot);
+            int bot = piece.getCoordinates().stream().mapToInt(Point::getY).max().orElseThrow();
+            int top = piece.getCoordinates().stream().mapToInt(Point::getY).min().orElseThrow();
             if (exit.getY() == -1) {
-                return ((exit.getX() == col) && (bot <= exit.getY() + 1));
+                // System.out.printf("EXIT %c ~~~ X : %d , Y : %d , Col : %d , T : %d , B : %d\n" , piece.getType() , exit.getX() , exit.getY() + 1 , col , dataStructure.getHeight() - 1 - top , dataStructure.getHeight() - 1 - bot);
+                return ((exit.getX() == col) && (dataStructure.getHeight() - 1 - bot <= exit.getY() + 1));
             } else {
-                return ((exit.getX() == col) && (top >= exit.getY() - 1));
+                return ((exit.getX() == col) && (dataStructure.getHeight() - 1 - top >= exit.getY() - 1));
             }
         }
     }

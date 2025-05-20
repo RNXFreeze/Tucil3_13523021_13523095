@@ -283,14 +283,6 @@ public final class GameLogic {
         int mnx = piece.getCoordinates().stream().mapToInt(Point::getX).min().orElseThrow();
         int mxx = piece.getCoordinates().stream().mapToInt(Point::getX).max().orElseThrow();
         int cnt = 1;
-        // System.out.println();
-        // for (int i = 0 ; i < grid.length ; i++) {
-        //     for (int j = 0 ; j < grid[0].length ; j++) {
-        //         System.out.print(grid[i][j] + " ");
-        //     }
-        //     System.out.println();
-        // }
-        // System.out.println();
         if (direction == Direction.LEFT) {
             for (int x = mnx - 1 ; x >= 0 ; x--) {
                 if (grid[row][x] == '.') {

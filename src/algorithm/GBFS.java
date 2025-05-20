@@ -61,10 +61,8 @@ public class GBFS {
         pq.add(new Solution.Node(dataStructure , null , 0 , Heuristic.solveHeuristic(dataStructure , num) , null));
         int cnt = 0;
         while (!pq.isEmpty()) {
-            // System.out.println("Count Step : " + cnt + " || Queue Size : " + pq.size());
             Solution.Node cur = pq.poll();
             if (visited.add(GameLogic.boardKey(cur.state))) {
-                // Solution.buildSolution("GBFS Trial" , num , cnt , 1 , cur).displaySolution();
                 cnt++;
                 if (GameState.isSolved(cur.state)) {
                     long endTime = System.nanoTime();
