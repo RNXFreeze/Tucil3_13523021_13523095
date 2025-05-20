@@ -119,15 +119,34 @@ public class Point {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Point other = (Point) obj;
-        return x == other.x && y == other.y;
+        // DESKRIPSI LOKAL
+        // Melakukan override fungsi equals untuk mengecek kesamaan 2 Object Class Point.
+        
+        // KAMUS LOKAL
+        // obj : Object Class Point
+        // other : Class Point
+        // x , y : Integer
+
+        // ALGORITMA LOKAL
+        if (this == obj) {
+            return true;
+        } else if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        } else {
+            Point other = (Point) obj;
+            return ((x == other.x) && (y == other.y));
+        }
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y);
-    }
+        // DESKRIPSI LOKAL
+        // Melakukan override fungsi hashCode untuk menghitung nilai hashnya.
+        
+        // KAMUS LOKAL
+        // x , y : Integer
 
+        // ALGORITMA LOKAL
+        return Objects.hash(this.x , this.y);
+    }
 }
