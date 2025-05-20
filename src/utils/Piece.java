@@ -21,6 +21,7 @@ public class Piece {
     // KAMUS
     // Piece : Constructor Class Piece
     // getType , getCoordinates , getOrientation , setType , setCoordinates , setOrientation : Procedure
+    // solveSize : Function
 
     // PRIVATE ATTRIBUTES
     private char type;
@@ -106,5 +107,24 @@ public class Piece {
 
         // ALGORITMA LOKAL
         this.orientation = orientation;
+    }
+
+    public int solveSize() {
+        // DESKRIPSI LOKAL
+        // Menghitung Ukuran Sebuah Piece
+        
+        // KAMUS LOKAL
+        // rig , lft , top , bot : Integer
+
+        // ALGORITMA LOKAL
+        int rig = this.getCoordinates().stream().mapToInt(Point::getX).max().orElseThrow();
+        int lft = this.getCoordinates().stream().mapToInt(Point::getX).min().orElseThrow();
+        int top = this.getCoordinates().stream().mapToInt(Point::getY).min().orElseThrow();
+        int bot = this.getCoordinates().stream().mapToInt(Point::getY).max().orElseThrow();
+        if (this.getOrientation() == 0) {
+            return Math.abs(rig - lft) + 1;
+        } else {
+            return Math.abs(bot - top) + 1;
+        }
     }
 }

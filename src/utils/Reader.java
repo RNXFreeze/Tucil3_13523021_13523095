@@ -156,10 +156,24 @@ public class Reader {
             if (trimmedLines.size() != height) {
                 throw new IOException("Jumlah baris grid (" + trimmedLines.size() + ") tidak sesuai dimensi height (" + height + ")");
             }
-
-            // Validasi posisi K
-            if (keluar == null) {
-                throw new IOException("Posisi keluar tidak ditemukan.");
+    
+            for (int i = 0; i < height; i++) {
+                String row = trimmedLines.get(i);
+                if (row.startsWith("K")) {
+                    int newY = (i + height - 1);
+                    if (newY >= height) {
+                        newY -= ((newY - (height - 1))*2);
+                    }
+                    keluar = new Point(-1, newY); 
+                    trimmedLines.set(i, row.substring(1));
+                } else if (row.endsWith("K")) {
+                    int newY = (i + height - 1);
+                    if (newY >= height) {
+                        newY -= ((newY - (height - 1))*2);
+                    }
+                    keluar = new Point(width, newY); 
+                    trimmedLines.set(i, row.substring(0, row.length() - 1)); 
+                }
             }
 
             // Validasi posisi keluar sesuai aturan

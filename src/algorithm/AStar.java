@@ -11,14 +11,13 @@
 
 // Package & Import
 package algorithm;
+import game.GameLogic;
+import game.GameState;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
-
-import game.GameLogic;
-import game.GameState;
 import utils.*;
 
 // Class Definition & Implementation
@@ -90,10 +89,10 @@ public class AStar {
                 int g = cur.gValue + 1;
                 
                 // Evaluasi state baru jika belum pernah dikunjungi atau memiliki cost yang lebih baik
-                if (!visited.contains(nxtKey) || g < bestCost.getOrDefault(nxtKey, Integer.MAX_VALUE)) {
-                    int h = Heuristic.solveHeuristic(nxt, num);
-                    bestCost.put(nxtKey, g);
-                    Solution.Node childNode = new Solution.Node(nxt, move, g, h, cur);
+                if (!visited.contains(nxtKey) || g < bestCost.getOrDefault(nxtKey , Integer.MAX_VALUE)) {
+                    int h = Heuristic.solveHeuristic(nxt , num);
+                    bestCost.put(nxtKey , g);
+                    Solution.Node childNode = new Solution.Node(nxt , move , g , h , cur);
                     pq.add(childNode);
                 }
             }

@@ -405,8 +405,12 @@ public final class Solution {
         System.out.println("==================================================");
         System.out.println("INFORMATION SOLUTION RESULT :");
         System.out.printf("Algorithm    : %s\n" , this.algorithm);
-        System.out.printf("Heuristic    : %d\n" , this.heuristicId);
-        System.out.printf("Step Count   : %d Step\n" , this.stepCount);
+        if (this.heuristicId == 0) {
+            System.out.println("Heuristic    : None");
+        } else {
+            System.out.printf("Heuristic    : %d\n" , this.heuristicId);
+        }
+        System.out.printf("Step Count   : %d Step\n" , this.stepCount + 1);
         System.out.printf("Visited Node : %d Node\n" , this.nodesVisited);
         System.out.printf("Time Usage   : %d ms\n" , (int) this.time);
         if (this.moves.isEmpty()) {
@@ -425,12 +429,24 @@ public final class Solution {
                 System.out.printf("\nMOVE %d : %s\n" , (i + 1) , this.moves.get(i));
                 this.path.get(i + 1).displayBoard();
             }
+            System.out.printf("\nMOVE %d : OUT %s (%d STEP)\n" , this.moves.size() + 1 , switch (this.moves.get(this.moves.size() - 1).getDirection()) {
+                case UP -> "UP";
+                case DOWN -> "DOWN";
+                case RIGHT -> "RIGHT";
+                case LEFT -> "LEFT";
+                default -> "UNKNOWN";
+            } , this.path.get(0).getPieces().stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize());
+            this.path.get(this.moves.size() - 1).displayLastBoard();
         }
         System.out.println("==================================================");
         System.out.println("RECALL INFORMATION SOLUTION RESULT :");
         System.out.printf("Algorithm    : %s\n" , this.algorithm);
-        System.out.printf("Heuristic    : %d\n" , this.heuristicId);
-        System.out.printf("Step Count   : %d Step\n" , this.stepCount);
+        if (this.heuristicId == 0) {
+            System.out.println("Heuristic    : None");
+        } else {
+            System.out.printf("Heuristic    : %d\n" , this.heuristicId);
+        }
+        System.out.printf("Step Count   : %d Step\n" , this.stepCount + 1);
         System.out.printf("Visited Node : %d Node\n" , this.nodesVisited);
         System.out.printf("Time Usage   : %d ms\n" , (int) this.time);
         if (this.moves.isEmpty()) {

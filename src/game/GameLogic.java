@@ -252,12 +252,14 @@ public final class GameLogic {
                     case RIGHT -> move.stepCount;
                     case UP -> 0;
                     case DOWN -> 0;
+                    default -> 0;
                 };
                 ny += switch (move.direction) {
                     case LEFT -> 0;
                     case RIGHT -> 0; 
                     case UP -> -move.stepCount;
                     case DOWN -> move.stepCount;
+                    default -> 0;
                 };
                 newCoordinates.add(new Point(nx , ny));
                 newBoard.setCell(nx , ny , move.idType);
