@@ -6,7 +6,7 @@
 /* Tanggal    : Rabu, 21 Mei 2025                                                */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
 /* File Path  : Tucil3_13523021_13523095/src/algorithm/GBFS.java                 */
-/* Deskripsi  : F03 - Greedy BFS (Best First Search) Pathfinding Algorithm       */
+/* Deskripsi  : F03 - GBFS (Greedy Best First Search) Pathfinding Algorithm      */
 /* PIC F03    : K01 - 13523021 - Muhammad Raihan Nazhim Oktana                   */
 
 // Package & Import

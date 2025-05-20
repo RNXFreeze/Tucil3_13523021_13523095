@@ -72,6 +72,7 @@ public class AStar {
         pq.add(new Solution.Node(dataStructure , null , 0 , Heuristic.solveHeuristic(dataStructure , num) , null));
         bestCost.put(key , 0);
         int cnt = 0;
+        Solution.Node res = null;
         while (!pq.isEmpty()) {
             Solution.Node cur = pq.poll();
             key = GameLogic.boardKey(cur.state);
@@ -79,9 +80,9 @@ public class AStar {
                 cnt++;
                 visited.add(key);
                 if (GameState.isSolved(cur.state)) {
-                    long endTime = System.nanoTime();
-                    double time = (endTime - startTime) / 1000000;
-                    return Solution.buildSolution(filePath , "A-Star Search (A*)" , num , cnt , time, cur);
+                    if (res == null || cur.gValue < res.gValue) {
+                        res = cur;
+                    }
                 } else {
                     for (GameLogic.Move move : GameLogic.generateMoves(cur.state)) {
                         DataStructure nxt = GameLogic.applyMove(cur.state , move);
@@ -99,6 +100,10 @@ public class AStar {
         }
         long endTime = System.nanoTime();
         double time = (endTime - startTime) / 1000000;
-        return Solution.buildSolution(filePath , "A-Star Search (A*)" , num , cnt , time , new Solution.Node(dataStructure , null , 0 , 0 , null));
+        if (res != null) {
+            return Solution.buildSolution(filePath , "A-Star Search (A*)" , num , cnt + 1 , time , res);
+        } else {
+            return Solution.buildSolution(filePath , "A-Star Search (A*)" , num , cnt , time , new Solution.Node(dataStructure , null , 0 , 0 , null));
+        }
     }
 }

@@ -546,7 +546,11 @@ public final class Solution {
                     if (prevDataStructure != null && oldPositions.contains(point) && !newPositions.contains(point)) {
                         System.out.print(ANSI_BACKGROUND_RED + " " + ANSI_RESET + " ");
                     } else if (prevDataStructure != null && newPositions.contains(point)) {
-                        System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
+                        if (cell == 'P') {
+                            System.out.print(ANSI_BACKGROUND_GREEN + ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
+                        } else {
+                            System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
+                        }
                     } else if (cell == 'P') {
                         System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
                     } else {
@@ -563,7 +567,11 @@ public final class Solution {
                     if (prevDataStructure != null && oldPositions.contains(point) && !newPositions.contains(point)) {
                         System.out.print(ANSI_BACKGROUND_RED + " " + ANSI_RESET + " ");
                     } else if (prevDataStructure != null && newPositions.contains(point)) {
-                        System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
+                        if (cell == 'P') {
+                            System.out.print(ANSI_BACKGROUND_GREEN + ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
+                        } else {
+                            System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
+                        }
                     } else if (cell == 'P') {
                         System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
                     } else {
@@ -588,7 +596,11 @@ public final class Solution {
                     if (prevDataStructure != null && oldPositions.contains(point) && !newPositions.contains(point)) {
                         System.out.print(ANSI_BACKGROUND_RED + " " + ANSI_RESET + " ");
                     } else if (prevDataStructure != null && newPositions.contains(point)) {
-                        System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
+                        if (cell == 'P') {
+                            System.out.print(ANSI_BACKGROUND_GREEN + ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
+                        } else {
+                            System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
+                        }
                     } else if (cell == 'P') {
                         System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
                     } else {
@@ -605,7 +617,11 @@ public final class Solution {
                     if (prevDataStructure != null && oldPositions.contains(point) && !newPositions.contains(point)) {
                         System.out.print(ANSI_BACKGROUND_RED + " " + ANSI_RESET + " ");
                     } else if (prevDataStructure != null && newPositions.contains(point)) {
-                        System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
+                        if (cell == 'P') {
+                            System.out.print(ANSI_BACKGROUND_GREEN + ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
+                        } else {
+                            System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
+                        }
                     } else if (cell == 'P') {
                         System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
                     } else {
