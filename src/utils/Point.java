@@ -12,6 +12,8 @@
 // Package & Import
 package utils;
 
+import java.util.Objects;
+
 // Class Definition & Implementation
 public class Point {
     // DESKRIPSI
@@ -114,4 +116,18 @@ public class Point {
         // ALGORITMA LOKAL
         return "(" + this.x + " , " + this.y + ")";
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Point other = (Point) obj;
+        return x == other.x && y == other.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
+
 }
