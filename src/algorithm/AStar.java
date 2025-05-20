@@ -11,6 +11,14 @@
 
 // Package & Import
 package algorithm;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Set;
+
+import game.GameLogic;
+import game.GameState;
 import utils.*;
 
 // Class Definition & Implementation
@@ -36,23 +44,84 @@ public class AStar {
         // None
     }
 
-    public static Solution solveAStar(DataStructure dataStructure , int num) {
-        // DESKRIPSI LOKAL
-        // Fungsi Utama AStar : Menyelesaikan pencarian jalur terpendek dari dataStructure dan tipe heuristiknya.
-        // AStar : Menyelesaikan pencarian jalur terpendek dengan algoritma AStar dan modifikasi heuristik.
-        
-        // KAMUS LOKAL
-        // dataStructure : Class DataStructure
-        // cur : Class Solution Sub Class Node
-        // startTime , endTime : Long
-        // num , cnt : Integer
-
-        // ALGORITMA LOKAL
+    public static Solution solveAStar(DataStructure dataStructure, int num) {
         long startTime = System.nanoTime();
+        Set<String> visited = new HashSet<>();
+        Map<String, Integer> bestCost = new HashMap<>();
+        PriorityQueue<Solution.Node> pq = new PriorityQueue<>((node1, node2) -> {
+            int f1 = node1.gValue + node1.hValue;
+            int f2 = node2.gValue + node2.hValue;
+            return f1 != f2 ? Integer.compare(f1, f2) : Integer.compare(node1.hValue, node2.hValue);
+        });
+    
+        String startKey = GameLogic.boardKey(dataStructure);
+        int startH = Heuristic.solveHeuristic(dataStructure, num);
+        Solution.Node startNode = new Solution.Node(dataStructure, null, 0, startH, null);
+        pq.add(startNode);
+        bestCost.put(startKey, 0);
+        
+        System.out.println("DEBUG: Starting A* Search");
+        System.out.println("Initial State:");
+        dataStructure.displayDataStructure();
+        System.out.println("Initial h = " + startH);
+    
         int cnt = 0;
-        Solution.Node cur = null;
-        long endTime = System.nanoTime();
-        double time = (endTime - startTime) / 1000000;
-        return Solution.buildSolution("A-Star" , num , cnt , time , cur);
+        int maxIterations = 100000; // Menambahkan batas maksimum iterasi untuk mencegah loop tak berujung
+        
+        while (!pq.isEmpty() && cnt < maxIterations) {
+            Solution.Node cur = pq.poll();
+            String curKey = GameLogic.boardKey(cur.state);
+            
+            // Skip jika state sudah dikunjungi dan cost-nya tidak lebih baik
+            if (visited.contains(curKey) && bestCost.get(curKey) <= cur.gValue) {
+                continue;
+            }
+            
+            visited.add(curKey);
+            cnt++;
+            
+            int f = cur.gValue + cur.hValue;
+            System.out.println("\nDEBUG: Step " + cnt);
+            System.out.println("Current state:");
+            System.out.println("g = " + cur.gValue + ", h = " + cur.hValue + ", f = " + f);
+            
+            // Periksa apakah puzzle telah diselesaikan
+            if (GameState.isSolved(cur.state)) {
+                long endTime = System.nanoTime();
+                double timeInMs = (endTime - startTime) / 1_000_000.0;
+                System.out.println("DEBUG: Solution found!");
+                System.out.println("Total steps explored: " + cnt);
+                System.out.println("Execution time: " + timeInMs + " ms");
+                return Solution.buildSolution("A-Star", num, cnt, timeInMs, cur);
+            }
+            
+            // Coba semua gerakan yang mungkin
+            for (GameLogic.Move move : GameLogic.generateMoves(cur.state)) {
+                DataStructure nxt = GameLogic.applyMove(cur.state, move);
+                String nxtKey = GameLogic.boardKey(nxt);
+                int g = cur.gValue + 1;
+                
+                // Evaluasi state baru jika belum pernah dikunjungi atau memiliki cost yang lebih baik
+                if (!visited.contains(nxtKey) || g < bestCost.getOrDefault(nxtKey, Integer.MAX_VALUE)) {
+                    int h = Heuristic.solveHeuristic(nxt, num);
+                    bestCost.put(nxtKey, g);
+                    Solution.Node childNode = new Solution.Node(nxt, move, g, h, cur);
+                    pq.add(childNode);
+                    
+                    System.out.println("DEBUG: Added child state with move: " + move);
+                    System.out.println("    g = " + g + ", h = " + h + ", f = " + (g + h));
+                    // Uncomment untuk mencetak state
+                    // nxt.displayBoard();
+                }
+            }
+        }
+        
+        if (cnt >= maxIterations) {
+            System.out.println("DEBUG: Stopped after " + maxIterations + " iterations to prevent infinite loop.");
+        } else {
+            System.out.println("DEBUG: No solution found after exploring " + cnt + " states.");
+        }
+        
+        return null;
     }
 }

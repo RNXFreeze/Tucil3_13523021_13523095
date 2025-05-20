@@ -118,13 +118,14 @@ public class Heuristic {
         // cnt , row , col , rig , bot , x , y : Integer
 
         // ALGORITMA LOKAL
+        System.out.println("width = " + dataStructure.getBoard().getWidth()+ "height = " + dataStructure.getBoard().getHeight());
         Piece piece  = findPrimary(dataStructure);
         Board board = dataStructure.getBoard();
         int cnt = 0;
         if (piece.getOrientation() == 0) {
             int row = piece.getCoordinates().get(0).getY();
             int rig = piece.getCoordinates().stream().mapToInt(Point::getX).max().orElseThrow();
-            for (int x = rig + 1 ; x < board.getWidth() ; x++) {
+            for (int x = rig + 1 ; x < board.getHeight() ; x++) {
                 if (board.getCell(row , x) != '.') {
                     cnt++;
                 }
