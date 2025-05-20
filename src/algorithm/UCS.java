@@ -6,8 +6,8 @@
 /* Tanggal    : Selasa, 20 Mei 2025                                              */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
 /* File Path  : Tucil3_13523021_13523095/src/algorithm/UCS.java                  */
-/* Deskripsi  : F03 - UCS (Uniform Cost Search) Pathfinding Algorithm            */
-/* PIC F03    : K01 - 13523021 - Muhammad Raihan Nazhim Oktana                   */
+/* Deskripsi  : F02 - UCS (Uniform Cost Search) Pathfinding Algorithm            */
+/* PIC F02    : K01 - 13523021 - Muhammad Raihan Nazhim Oktana                   */
 
 // Package & Import
 package algorithm;
