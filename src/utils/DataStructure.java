@@ -11,6 +11,7 @@
 
 // Package & Import
 package utils;
+import algorithm.Solution;
 import java.util.*;
 
 // Class Definition & Implementation
@@ -254,14 +255,14 @@ public class DataStructure {
             for (int i = 0 ; i < this.height ; i++) {
                 for (int j = 0 ; j < this.pieces.stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize() ; j++) {
                     if (this.height - 1 - this.exit.getY() == i) {
-                        System.out.print("P ");
+                        System.out.print(Solution.ANSI_RED + "P ");
                     } else {
                         System.out.print("  ");
                     }
                 }
                 for (int j = 0 ; j < this.width ; j++) {
                     if (board.getCell(j , i) == 'P') {
-                        System.out.print(". ");
+                        System.out.print(Solution.ANSI_BACKGROUND_RED + "." + Solution.ANSI_RESET + " ");
                     } else {
                         System.out.print(board.getCell(j , i) + " ");
                     }
@@ -272,7 +273,7 @@ public class DataStructure {
             for (int i = 0 ; i < this.height ; i++) {
                 for (int j = 0 ; j < this.width ; j++) {
                     if (board.getCell(j , i) == 'P') {
-                        System.out.print(". ");
+                        System.out.print(Solution.ANSI_BACKGROUND_RED + "." + Solution.ANSI_RESET + " ");
                     } else {
                         System.out.print(board.getCell(j , i) + " ");
                     }
@@ -295,7 +296,7 @@ public class DataStructure {
             for (int i = 0 ; i < this.height ; i++) {
                 for (int j = 0 ; j < this.width ; j++) {
                     if (board.getCell(j , i) == 'P') {
-                        System.out.print(". ");
+                        System.out.print(Solution.ANSI_BACKGROUND_RED + "." + Solution.ANSI_RESET + " ");
                     } else {
                         System.out.print(board.getCell(j , i) + " ");
                     }
@@ -306,7 +307,7 @@ public class DataStructure {
             for (int i = 0 ; i < this.height ; i++) {
                 for (int j = 0 ; j < this.width ; j++) {
                     if (board.getCell(j , i) == 'P') {
-                        System.out.print(". ");
+                        System.out.print(Solution.ANSI_BACKGROUND_RED + "." + Solution.ANSI_RESET + " ");
                     } else {
                         System.out.print(board.getCell(j , i) + " ");
                     }
@@ -319,6 +320,11 @@ public class DataStructure {
                 System.out.println();
             }
         }
+        System.out.println("\nNotes :");
+        System.out.println(Solution.ANSI_BACKGROUND_RED + " " + Solution.ANSI_RESET + "  : Old Position Piece P");
+        System.out.println(Solution.ANSI_BACKGROUND_GREEN + "P " + Solution.ANSI_RESET + " : New Position Piece P");
+        System.out.println(Solution.ANSI_BOLD + Solution.ANSI_CYAN + "P" + Solution.ANSI_RESET + "  : Primary Piece");
+        System.out.println(Solution.ANSI_BOLD + Solution.ANSI_PURPLE + "K" + Solution.ANSI_RESET + "  : Exit Position");
     }
 
     public void displayDataStructure() {

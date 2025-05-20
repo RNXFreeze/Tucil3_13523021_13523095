@@ -38,15 +38,15 @@ public final class Solution {
     private List<GameLogic.Move> moves;
 
     // PRIVATE ATTRIBUTES - ANSI Color Codes
-    private static final String ANSI_RESET = "\u001B[0m";
-    private static final String ANSI_RED = "\u001B[31m";
-    private static final String ANSI_GREEN = "\u001B[32m";
-    private static final String ANSI_YELLOW = "\u001B[33m";
-    private static final String ANSI_PURPLE = "\u001B[35m";
-    private static final String ANSI_CYAN = "\u001B[36m";
-    private static final String ANSI_BOLD = "\u001B[1m";
-    private static final String ANSI_BACKGROUND_RED = "\u001B[41m";
-    private static final String ANSI_BACKGROUND_GREEN = "\u001B[42m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_BOLD = "\u001B[1m";
+    public static final String ANSI_BACKGROUND_RED = "\u001B[41m";
+    public static final String ANSI_BACKGROUND_GREEN = "\u001B[42m";
 
     public Solution(String filePath , String algorithm , int heuristicId , int nodesVisited , double time , List<DataStructure> path , List<GameLogic.Move> moves) {
         // DESKRIPSI LOKAL
