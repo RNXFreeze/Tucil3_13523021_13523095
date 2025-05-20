@@ -3,7 +3,7 @@
 /* NIM - 1    : K01 - 13523021 - Teknik Informatika (IF-Ganesha) ITB             */
 /* Nama - 2   : Rafif Farras                                                     */
 /* NIM - 2    : K02 - 13523095 - Teknik Informatika (IF-Ganesha) ITB             */
-/* Tanggal    : Selasa, 20 Mei 2025                                              */
+/* Tanggal    : Rabu, 21 Mei 2025                                                */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
 /* File Path  : Tucil3_13523021_13523095/src/algorithm/Solution.java             */
 /* Deskripsi  : F06 - Solution Pathfinding Algorithm                             */
@@ -424,21 +424,14 @@ public final class Solution {
                 System.out.printf("\n%sMOVE %d : %s%s\n", ANSI_BOLD + ANSI_PURPLE, (i + 1), this.moves.get(i), ANSI_RESET);
                 displayBoardWithHighlight(this.path.get(i), this.path.get(i + 1), this.moves.get(i));
             }
-            
-            System.out.printf("\n%sMOVE %d : OUT %s (%d STEP)%s\n", 
-                ANSI_BOLD + ANSI_GREEN, 
-                this.moves.size() + 1, 
-                switch (this.moves.get(this.moves.size() - 1).getDirection()) {
-                    case UP -> "UP";
-                    case DOWN -> "DOWN";
-                    case RIGHT -> "RIGHT";
-                    case LEFT -> "LEFT";
-                    default -> "UNKNOWN";
-                },
-                this.path.get(0).getPieces().stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize(),
-                ANSI_RESET);
-                
-            displayLastBoardColored(this.path.get(this.moves.size()));
+            System.out.printf("\nMOVE %d : P - OUT %s (%d STEP)\n" , this.moves.size() + 1 , switch (this.moves.get(this.moves.size() - 1).getDirection()) {
+                case UP -> "UP";
+                case DOWN -> "DOWN";
+                case RIGHT -> "RIGHT";
+                case LEFT -> "LEFT";
+                default -> "UNKNOWN";
+            } , this.path.get(0).getPieces().stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize());
+            this.path.get(this.moves.size() - 1).displayLastBoard();
         }
         
         System.out.println(ANSI_BOLD + "==================================================" + ANSI_RESET);

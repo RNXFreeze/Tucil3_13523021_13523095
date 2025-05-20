@@ -3,7 +3,7 @@
 /* NIM - 1    : K01 - 13523021 - Teknik Informatika (IF-Ganesha) ITB             */
 /* Nama - 2   : Rafif Farras                                                     */
 /* NIM - 2    : K02 - 13523095 - Teknik Informatika (IF-Ganesha) ITB             */
-/* Tanggal    : Selasa, 20 Mei 2025                                              */
+/* Tanggal    : Rabu, 21 Mei 2025                                                */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
 /* File Path  : Tucil3_13523021_13523095/src/utils/DataStructure.java            */
 /* Deskripsi  : F07A - Data Structure Utility                                    */
@@ -252,10 +252,12 @@ public class DataStructure {
         // ALGORITMA LOKAL
         if (this.exit.getX() == -1) {
             for (int i = 0 ; i < this.height ; i++) {
-                if (this.height - 1 - this.exit.getY() == i) {
-                    System.out.print("K ");
-                } else {
-                    System.out.print("  ");
+                for (int j = 0 ; j < this.pieces.stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize() ; j++) {
+                    if (this.height - 1 - this.exit.getY() == i) {
+                        System.out.print("P ");
+                    } else {
+                        System.out.print("  ");
+                    }
                 }
                 for (int j = 0 ; j < this.width ; j++) {
                     if (board.getCell(j , i) == 'P') {
@@ -277,15 +279,19 @@ public class DataStructure {
                 }
                 System.out.println();
             }
-            for (int i = 0 ; i < this.exit.getX() ; i++) {
-                System.out.print("  ");
+            for (int i = 0 ; i < this.pieces.stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize() ; i++) {
+                for (int j = 0 ; j < this.exit.getX() ; j++) {
+                    System.out.print("  ");
+                }
+                System.out.println("P");
             }
-            System.out.println("K");
         } else if (this.exit.getY() == this.height) {
-            for (int i = 0 ; i < this.exit.getX() ; i++) {
-                System.out.print("  ");
+            for (int i = 0 ; i < this.pieces.stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize() ; i++) {
+                for (int j = 0 ; j < this.exit.getX() ; j++) {
+                    System.out.print("  ");
+                }
+                System.out.println("P");
             }
-            System.out.println("K");
             for (int i = 0 ; i < this.height ; i++) {
                 for (int j = 0 ; j < this.width ; j++) {
                     if (board.getCell(j , i) == 'P') {
@@ -306,7 +312,9 @@ public class DataStructure {
                     }
                 }
                 if (this.height - 1 - this.exit.getY() == i) {
-                    System.out.print("K");
+                    for (int j = 0 ; j < this.pieces.stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize() ; j++) {
+                        System.out.print("P ");
+                    }
                 }
                 System.out.println();
             }
