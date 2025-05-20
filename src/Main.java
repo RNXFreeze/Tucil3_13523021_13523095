@@ -10,9 +10,9 @@
 /* PIC F01    : K01 - 13523021 - Muhammad Raihan Nazhim Oktana                   */
 
 // Package & Import
+import algorithm.*;
 import java.io.IOException;
 import java.util.*;
-import algorithm.*;
 import utils.*;
 
 // Class Definition & Implementation
@@ -31,64 +31,131 @@ public class Main {
         // Main Program Function Connection
         
         // KAMUS LOKAL
-        // ...
+        // args : Array of String
+        // scanner : Java Util Scanner
+        // displayDataStructure , displaySolution : Procedure
+        // solveUCS , solveGBFS , solveAStar : Function
+        // algorithmOption , heuristicOption : Integer
+        // dataStructure : Class DataStructure
+        // filePath , response : String
+        // check : Boolean
 
         // ALGORITMA LOKAL
-        /* ---------------- Scanner in try-with-resources ----------------- */
-        try (Scanner in = new Scanner(System.in)) {
-
-            /* ---------- Path file ---------- */
-            String filePath = (args.length >= 1)
-                    ? args[0]
-                    : prompt(in, "Masukkan path file test-case : ");
-
-            /* ---------- Baca file ---------- */
-            DataStructure start;
-            try {
-                start = Reader.readFile(filePath);
-                System.out.println("\nFile berhasil dibaca.\n");
-            } catch (IOException e) {
-                System.err.println("Gagal membaca file : " + e.getMessage());
-                return;
-            }
-
-            /* ---------- Pilih algoritma ---------- */
-            System.out.println("Pilih algoritma:");
-            System.out.println("  1. Uniform-Cost Search (UCS)");
-            System.out.println("  2. Greedy Best-First Search");
-            System.out.println("  3. A* Search");
-            int algoOpt = Integer.parseInt(prompt(in, "Pilihan [1/2/3] : "));
-
-            /* ---------- Pilih heuristik bila perlu ---------- */
-            int heurOpt = 0;
-            if (algoOpt == 2 || algoOpt == 3) {
-                System.out.println("\nPilih heuristik:");
-                System.out.println("  1. H1 – blocker + 1");
-                System.out.println("  2. H2 – blocker + jarak kosong");
-                System.out.println("  3. H3 – blocker + size blocker");
-                heurOpt = Integer.parseInt(prompt(in, "Pilihan [1..3] : "));
-            }
-
-            /* ---------- Jalankan solver ---------- */
-            Solution sol = switch (algoOpt) {
-                case 1 -> UCS.solveUCS(start , 0);
-                case 2 -> GBFS.solveGBFS(start , heurOpt);
-                case 3 -> AStar.solveAStar(start , heurOpt);
-                default -> null;
-            };
-
-            /* ---------- Tampilkan ---------- */
-            if (sol == null) {
-                System.out.println("❌  Puzzle tidak memiliki solusi / pilihan salah.");
-            } else {
-                sol.displaySolution();
+        System.out.println("==================================================");
+        System.out.println("!!! SELAMAT DATANG DI PUZZLE RUSH HOUR SOLVER !!!");
+        System.out.println("Dibuat Oleh :");
+        System.out.println("Kelompok Tucil 3 | Tucil3_13523021_13523095");
+        System.out.println("1. 13523021 - Muhammad Raihan Nazhim Oktana");
+        System.out.println("2. 13523095 - Rafif Farras");
+        boolean check = true;
+        while (check) {
+            System.out.println("==================================================");
+            try (Scanner scanner = new Scanner(System.in)) {
+                DataStructure dataStructure;
+                String filePath;
+                while (true) {
+                    if (args.length > 0) {
+                        filePath = args[0];
+                    } else {
+                        System.out.print("Masukkan Nama File Test Case (Example.txt) : ");
+                        filePath = "test/" + scanner.nextLine().trim();
+                    }
+                    try {
+                        dataStructure = Reader.readFile(filePath);
+                        System.out.println("Success : File Berhasil Dibaca.");
+                        break;
+                    } catch (IOException e) {
+                        System.err.println("Error : File Gagal Dibaca : " + e.getMessage());
+                        if (args.length >= 1) {
+                            System.out.println("Error Args : Tolong Ulangi Running Program");
+                            scanner.close();
+                            return;
+                        } else {
+                            System.out.println("Silakan Ulangi Input Nama File Test Case.");
+                        }
+                    }
+                }
+                System.out.println("==================================================");
+                System.out.println("Display Board From File :");
+                dataStructure.displayDataStructure();
+                System.out.println("==================================================");
+                System.out.println("Opsi Algoritma :");
+                System.out.println("1. Uniform Cost Search (UCS)");
+                System.out.println("2. Greedy Best First Search (GBFS)");
+                System.out.println("3. A-Star Search (A*)");
+                int algorithmOption = -1;
+                while (true) {
+                    try {
+                        System.out.print("Masukkan Pilihan Algoritma (1/2/3) : ");
+                        algorithmOption = Integer.parseInt(scanner.nextLine().trim());
+                        if (1 <= algorithmOption && algorithmOption <= 3) {
+                            break;
+                        } else {
+                            System.out.println("Error : Input Pilihan Algoritma Tidak Valid : Harus Integer (1/2/3).");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error : Input Pilihan Algoritma Tidak Valid : Harus Integer (1/2/3).");
+                    }
+                }
+                System.out.println("==================================================");
+                int heuristicOption = 0;
+                if (algorithmOption == 1) {
+                    System.out.println("Algoritma UCS (Uniform Cost Search) melakukan blind search tanpa heuristik apapun.");
+                } else {
+                    System.out.println("Opsi Heuristik :");
+                    System.out.println("1. Heuristik 1 : Menghitung Blocker");
+                    System.out.println("2. Heuristik 2 : Menghitung Blocker + Jarak Kosong");
+                    System.out.println("3. Heuristik 2 : Menghitung Blocker + Ukuran Blocker");
+                    while (true) {
+                        try {
+                            System.out.print("Masukkan Pilihan Heuristik (1/2/3) : ");
+                            heuristicOption = Integer.parseInt(scanner.nextLine().trim());
+                            if (1 <= heuristicOption && heuristicOption <= 3) {
+                                break;
+                            } else {
+                                System.out.println("Error : Input Pilihan Heuristik Tidak Valid : Harus Integer (1/2/3).");
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Error : Input Pilihan Heuristik Tidak Valid : Harus Integer (1/2/3).");
+                        }
+                    }
+                }
+                System.out.println("==================================================");
+                Solution solution = switch (algorithmOption) {
+                    case 1 -> UCS.solveUCS(dataStructure , 0);
+                    case 2 -> GBFS.solveGBFS(dataStructure , heuristicOption);
+                    case 3 -> AStar.solveAStar(dataStructure , heuristicOption);
+                    default -> null;
+                };
+                if (solution == null) {
+                    System.out.println("Maaf, Puzzle Rush Hour Tersebut Tidak Memiliki Solusi.");
+                } else {
+                    solution.displaySolution();
+                }
+                System.out.println("==================================================");
+                String response;
+                while (true) {
+                    System.out.print("Apakah Anda Ingin Bermain Lagi? (Y/N) : ");
+                    response = scanner.nextLine().trim().toUpperCase();
+                    switch (response) {
+                        case "Y" -> {}
+                        case "N" -> check = false;
+                        default -> {
+                            System.out.println("Error : Input Respons Tidak Valid.");
+                            continue;
+                        }
+                    }
+                    break;
+                }
+                scanner.close();
             }
         }
-    }
-
-    /* --------------------- Helper prompt --------------------- */
-    private static String prompt(Scanner in, String msg) {
-        System.out.print(msg);
-        return in.nextLine().trim();
+        System.out.println("==================================================");
+        System.out.println("!!! TERIMA KASIH & SAMPAI JUMPA LAGI !!!");
+        System.out.println("Dibuat Oleh :");
+        System.out.println("Kelompok Tucil 3 | Tucil3_13523021_13523095");
+        System.out.println("1. 13523021 - Muhammad Raihan Nazhim Oktana");
+        System.out.println("2. 13523095 - Rafif Farras");
+        System.out.println("==================================================");
     }
 }

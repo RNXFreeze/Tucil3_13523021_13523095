@@ -241,7 +241,7 @@ public final class GameLogic {
             return dataStructure;
         } else {
             for (Point point : movedPiece.getCoordinates()) {
-                newBoard.setCell(point.getY() , point.getX() , '.');
+                newBoard.setCell(point.getX() , point.getY() , '.');
             }
             List<Point> newCoordinates = new ArrayList<>();
             for (Point point : movedPiece.getCoordinates()) {
@@ -255,7 +255,7 @@ public final class GameLogic {
                     default : /*None*/;
                 }
                 newCoordinates.add(new Point(nx , ny));
-                newBoard.setCell(ny , nx , move.idType);
+                newBoard.setCell(nx , ny , move.idType);
             }
             newPieces.add(new Piece(move.idType , newCoordinates , movedPiece.getOrientation()));
             return new DataStructure(dataStructure.getWidth() , dataStructure.getHeight() , dataStructure.getPieceCount() , dataStructure.getExit() , newBoard , newPieces);

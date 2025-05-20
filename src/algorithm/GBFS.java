@@ -62,6 +62,7 @@ public class GBFS {
         int cnt = 0;
         while (!pq.isEmpty()) {
             Solution.Node cur = pq.poll();
+            System.out.println("Count Step : " + cnt + " || Queue Size : " + pq.size());
             if (visited.add(GameLogic.boardKey(cur.state))) {
                 cnt++;
                 if (GameState.isSolved(cur.state)) {

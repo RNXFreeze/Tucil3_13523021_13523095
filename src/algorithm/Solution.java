@@ -404,16 +404,24 @@ public final class Solution {
         // i : Integer
 
         // ALGORITMA LOKAL
-        System.out.println("\u250C\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 SOLUTION \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510");
-        System.out.printf("\u2502  Algorithm : %-10s   Heuristic : %d%n" , this.algorithm , this.heuristicId);
-        System.out.printf("\u2502  Depth     : %-10d   Visited   : %d%n" , this.stepCount , this.nodesVisited);
-        System.out.printf("\u2502  Time      : %.3f ms%n" , this.time);
-        System.out.println("\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n");
-        System.out.println("Papan Awal :");
+        System.out.println("==================================================");
+        System.out.println("INFORMATION SOLUTION RESULT :");
+        System.out.printf("Algorithm    : %s\n" , this.algorithm);
+        System.out.printf("Heuristic    : %d\n" , this.heuristicId);
+        System.out.printf("Step Count   : %d Step\n" , this.stepCount);
+        System.out.printf("Visited Node : %d Node\n" , this.nodesVisited);
+        System.out.printf("Time Usage   : %d ms\n" , (int) this.time);
+        System.out.println("==================================================");
+        System.out.println("Display Board Awal :");
         System.out.print(this.path.get(0).getBoard().toString());
-        for (int i = 0 ; i < this.moves.size() ; i++) {
-            System.out.printf("%nGerakan %d : %state%n" , (i + 1) , this.moves.get(i));
-            System.out.print(this.path.get(i + 1).getBoard().toString());
+        if (this.moves.isEmpty()) {
+            System.out.println("\nDisplay Board Akhir :");
+            System.out.print(this.path.get(0).getBoard().toString());
+        } else {
+            for (int i = 0 ; i < this.moves.size() ; i++) {
+                System.out.printf("\nMOVE %d : %STATE\n" , (i + 1) , this.moves.get(i));
+                System.out.print(this.path.get(i + 1).getBoard().toString());
+            }
         }
     }
 }

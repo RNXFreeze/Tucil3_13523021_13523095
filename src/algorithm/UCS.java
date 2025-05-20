@@ -63,6 +63,7 @@ public class UCS {
         while (!pq.isEmpty()) {
             cnt++;
             Solution.Node cur = pq.poll();
+            System.out.println("Count Step : " + cnt + " || Queue Size : " + pq.size());
             if (GameState.isSolved(cur.state)) {
                 long endTime = System.nanoTime();
                 double time = (endTime - startTime) / 1000000;

@@ -43,18 +43,19 @@ public class GameState {
         // KAMUS LOKAL
         // dataStructure : Class DataStructure
         // piece , pc : Class Piece
-        // row , col , rig , bot : Integer
+        // row , col , rig , lft , top , bot : Integer
 
         // ALGORITMA LOKAL
         Piece piece = dataStructure.getPieces().stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow();
         if (piece.getOrientation() == 0) {
-            int row = piece.getCoordinates().get(0).getX();
-            int rig = piece.getCoordinates().stream().mapToInt(Point::getY).max().orElseThrow();
-            return ((dataStructure.getExit().getX() == row) && (rig < dataStructure.getExit().getY()));
+            int row = piece.getCoordinates().get(0).getY();
+            int rig = piece.getCoordinates().stream().mapToInt(Point::getX).max().orElseThrow();
+            int lft = piece.getCoordinates().stream().mapToInt(Point::getX).min().orElseThrow();
+            return ((dataStructure.getExit().getY() == row) && ((rig >= dataStructure.getExit().getX()) || (lft <= dataStructure.getExit().getX())));
         } else {
-            int col = piece.getCoordinates().get(0).getY();
-            int bot = piece.getCoordinates().stream().mapToInt(Point::getX).max().orElseThrow();
-            return ((dataStructure.getExit().getY() == col) && (bot < dataStructure.getExit().getX()));
+            int col = piece.getCoordinates().get(0).getX();
+            int bot = piece.getCoordinates().stream().mapToInt(Point::getY).min().orElseThrow();
+            return ((dataStructure.getExit().getX() == col) && (bot < dataStructure.getExit().getY()));
         }
     }
 }

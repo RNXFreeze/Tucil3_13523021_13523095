@@ -65,8 +65,8 @@ public class Board {
         // ALGORITMA LOKAL
         this.width = board.getWidth();
         this.height = board.getHeight();
-        this.grid = new char[height][width];
-        for (int i = 0; i < height; i++) {
+        this.grid = new char[this.height][this.width];
+        for (int i = 0 ; i < this.height ; i++) {
             System.arraycopy(board.getGrid()[i] , 0 , this.grid[i] , 0 , width);
         }
     }
@@ -91,7 +91,7 @@ public class Board {
         // x , y : Integer
 
         // ALGORITMA LOKAL
-        return this.grid[y][x];
+        return this.grid[x][y];
     }
 
     public int getWidth() {
@@ -136,7 +136,7 @@ public class Board {
         // x , y : Integer
 
         // ALGORITMA LOKAL
-        this.grid[y][x] = value;
+        this.grid[x][y] = value;
     }
 
     public void setWidth(int width) {
@@ -159,5 +159,17 @@ public class Board {
 
         // ALGORITMA LOKAL
         this.height = height;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int x = 0 ; x < this.width ; x++) {
+            for (int y = 0 ; y < this.height ; y++) {
+                sb.append(grid[x][y]).append(' ');
+            }
+            sb.append('\n');
+        }
+        return sb.toString();
     }
 }
