@@ -66,7 +66,7 @@ public class GBFS {
             if (visited.add(GameLogic.boardKey(cur.state))) {
                 // Solution.buildSolution("GBFS Trial" , num , cnt , 1 , cur).displaySolution();
                 cnt++;
-                if (GameState.isSolved(cur.state) || cnt == 10) {
+                if (GameState.isSolved(cur.state)) {
                     long endTime = System.nanoTime();
                     double time = (endTime - startTime) / 1000000;
                     return Solution.buildSolution("Greedy Best First Search (GBFS)" , num , cnt , time , cur);

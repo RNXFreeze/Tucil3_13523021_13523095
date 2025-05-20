@@ -53,11 +53,11 @@ public class GameState {
             int row = piece.getCoordinates().get(0).getY();
             int rig = piece.getCoordinates().stream().mapToInt(Point::getX).max().orElseThrow();
             int lft = piece.getCoordinates().stream().mapToInt(Point::getX).min().orElseThrow();
-            System.out.printf("EXIT %c ~~~ X : %d , Y : %d , R : %d , L : %d\n" , piece.getType() , exit.getX() , exit.getY() , rig , lft);
+            System.out.printf("EXIT %c ~~~ X : %d , Y : %d , row : %d , R : %d , L : %d\n" , piece.getType() , exit.getX() , exit.getY() , dataStructure.getHeight() - 1 - row , rig , lft);
             if (exit.getX() == -1) {
-                return ((exit.getY() == row) && (lft <= exit.getX() + 1));
+                return ((exit.getY() == dataStructure.getHeight() - 1 - row) && (lft <= exit.getX() + 1));
             } else {
-                return ((exit.getY() == row) && (rig >= exit.getX() - 1));
+                return ((exit.getY() == dataStructure.getHeight() - 1 - row) && (rig >= exit.getX() - 1));
             }
         } else {
             int col = piece.getCoordinates().get(0).getX();
