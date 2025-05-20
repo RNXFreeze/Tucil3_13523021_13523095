@@ -47,15 +47,25 @@ public class GameState {
 
         // ALGORITMA LOKAL
         Piece piece = dataStructure.getPieces().stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow();
+        Point exit = dataStructure.getExit();
         if (piece.getOrientation() == 0) {
             int row = piece.getCoordinates().get(0).getY();
             int rig = piece.getCoordinates().stream().mapToInt(Point::getX).max().orElseThrow();
             int lft = piece.getCoordinates().stream().mapToInt(Point::getX).min().orElseThrow();
-            return ((dataStructure.getExit().getY() == row) && ((rig >= dataStructure.getExit().getX()) || (lft <= dataStructure.getExit().getX())));
+            if (exit.getX() == -1) {
+                return ((exit.getY() == row) && (lft <= exit.getX() + 1));
+            } else {
+                return ((exit.getY() == row) && (rig >= exit.getX() - 1));
+            }
         } else {
             int col = piece.getCoordinates().get(0).getX();
+            int top = piece.getCoordinates().stream().mapToInt(Point::getY).max().orElseThrow();
             int bot = piece.getCoordinates().stream().mapToInt(Point::getY).min().orElseThrow();
-            return ((dataStructure.getExit().getX() == col) && (bot < dataStructure.getExit().getY()));
+            if (exit.getY() == -1) {
+                return ((exit.getX() == col) && (bot <= exit.getY() + 1));
+            } else {
+                return ((exit.getX() == col) && (top >= exit.getY() - 1));
+            }
         }
     }
 }
