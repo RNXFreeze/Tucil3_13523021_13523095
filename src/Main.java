@@ -59,15 +59,20 @@ public class Main {
                 } else {
                     System.out.print("Masukkan Nama File Test Case (Example.txt) : ");
                     filePath = "test/input/" + scanner.nextLine().trim();
+                    if (!filePath.endsWith(".txt")) {
+                        System.out.println("Error : File Gagal Dibaca : Harus Ekstensi File TXT (.txt).");
+                        System.out.println("Silakan Ulangi Input Nama File Test Case.");
+                        continue;
+                    }
                 }
                 try {
                     dataStructure = Reader.readFile(filePath);
                     System.out.println("Success : File Berhasil Dibaca.");
                     break;
                 } catch (IOException e) {
-                    System.out.println("Error : File Gagal Dibaca : " + e.getMessage());
+                    System.out.println("Error : File Gagal Dibaca : " + e.getMessage() + ".");
                     if (args.length >= 1) {
-                        System.out.println("Error Args : Tolong Ulangi Running Program");
+                        System.out.println("Error Args : Tolong Ulangi Running Program.");
                         scanner.close();
                         return;
                     } else {
@@ -143,12 +148,17 @@ public class Main {
                 while (true) {
                     System.out.print("Masukkan Nama File Penyimpanan Solusi (Example.txt) : ");
                     response = "test/output/" + scanner.nextLine().trim();
+                    if (!response.endsWith(".txt")) {
+                        System.out.println("Error : File Gagal Disimpan : Harus Ekstensi File TXT (.txt).");
+                        System.out.println("Silakan Ulangi Input Nama File Penyimpanan Solusi.");
+                        continue;
+                    }
                     try {
                         Saver.saveFile(response , solution);
                         System.out.println("Success : File Berhasil Disimpan.");
                         break;
                     } catch (IOException e) {
-                        System.out.println("Error : File Gagal Disimpan : " + e.getMessage());
+                        System.out.println("Error : File Gagal Disimpan : " + e.getMessage() + ".");
                         System.out.println("Silakan Ulangi Input Nama File Penyimpanan Solusi.");
                     }
                 }
