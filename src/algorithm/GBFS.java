@@ -67,7 +67,7 @@ public class GBFS {
                 if (GameState.isSolved(cur.state)) {
                     long endTime = System.nanoTime();
                     double time = (endTime - startTime) / 1000000;
-                    return Solution.buildSolution("Greedy Best First Search (GBFS)" , num , cnt , time , cur);
+                    return Solution.buildSolution("Greedy Best First Search (GBFS)" , num , cnt + 1 , time , cur);
                 } else {
                     for (GameLogic.Move move : GameLogic.generateMoves(cur.state)) {
                         DataStructure nxt = GameLogic.applyMove(cur.state , move);

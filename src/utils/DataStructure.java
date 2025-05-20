@@ -22,7 +22,7 @@ public class DataStructure {
     // DataStructure : Constructor Class DataStructure
     // getWidth , getHeight , getPieceCount , getExit , getBoard , getPieces : Procedure
     // setWidth , setHeight , setPieceCount , setExit , setBoard , setPieces : Procedure
-    // displayBoard , displayDataStructure : Procedure
+    // displayBoard , displayLastBoard , displayDataStructure : Procedure
 
     // PRIVATE ATTRIBUTES
     private int width;
@@ -195,8 +195,8 @@ public class DataStructure {
         // ALGORITMA LOKAL
         if (this.exit.getX() == -1) {
             for (int i = 0 ; i < this.height ; i++) {
-                if (this.exit.getY() - 1 == i) {
-                    System.out.print("K");
+                if (this.height - 1 - this.exit.getY() == i) {
+                    System.out.print("K ");
                 } else {
                     System.out.print("  ");
                 }
@@ -232,7 +232,80 @@ public class DataStructure {
                 for (int j = 0 ; j < this.width ; j++) {
                     System.out.print(board.getCell(j , i) + " ");
                 }
-                if (this.exit.getY() - 1 == i) {
+                if (this.height - 1 - this.exit.getY() == i) {
+                    System.out.print("K");
+                }
+                System.out.println();
+            }
+        }
+    }
+
+    public void displayLastBoard() {
+        // DESKRIPSI LOKAL
+        // Display Board From Data Structure To CLI Terminal
+        
+        // KAMUS LOKAL
+        // board : Class Board
+        // exit : Class Point
+        // width , height , i , j : Integer
+
+        // ALGORITMA LOKAL
+        if (this.exit.getX() == -1) {
+            for (int i = 0 ; i < this.height ; i++) {
+                if (this.height - 1 - this.exit.getY() == i) {
+                    System.out.print("K ");
+                } else {
+                    System.out.print("  ");
+                }
+                for (int j = 0 ; j < this.width ; j++) {
+                    if (board.getCell(j , i) == 'P') {
+                        System.out.print(". ");
+                    } else {
+                        System.out.print(board.getCell(j , i) + " ");
+                    }
+                }
+                System.out.println();
+            }
+        } else if (this.exit.getY() == -1) {
+            for (int i = 0 ; i < this.height ; i++) {
+                for (int j = 0 ; j < this.width ; j++) {
+                    if (board.getCell(j , i) == 'P') {
+                        System.out.print(". ");
+                    } else {
+                        System.out.print(board.getCell(j , i) + " ");
+                    }
+                }
+                System.out.println();
+            }
+            for (int i = 0 ; i < this.exit.getX() ; i++) {
+                System.out.print("  ");
+            }
+            System.out.println("K");
+        } else if (this.exit.getY() == this.height) {
+            for (int i = 0 ; i < this.exit.getX() ; i++) {
+                System.out.print("  ");
+            }
+            System.out.println("K");
+            for (int i = 0 ; i < this.height ; i++) {
+                for (int j = 0 ; j < this.width ; j++) {
+                    if (board.getCell(j , i) == 'P') {
+                        System.out.print(". ");
+                    } else {
+                        System.out.print(board.getCell(j , i) + " ");
+                    }
+                }
+                System.out.println();
+            }
+        } else {
+            for (int i = 0 ; i < this.height ; i++) {
+                for (int j = 0 ; j < this.width ; j++) {
+                    if (board.getCell(j , i) == 'P') {
+                        System.out.print(". ");
+                    } else {
+                        System.out.print(board.getCell(j , i) + " ");
+                    }
+                }
+                if (this.height - 1 - this.exit.getY() == i) {
                     System.out.print("K");
                 }
                 System.out.println();
@@ -255,7 +328,15 @@ public class DataStructure {
         System.out.println("Width Size    : " + this.width);
         System.out.println("Height Size   : " + this.height);
         System.out.println("Piece Count   : " + this.pieceCount);
-        System.out.println("Exit Position : " + this.exit);
+        Point exitPoint = new Point(this.exit.getX() , this.exit.getY());
+        if (this.exit.getY() == -1) {
+            exitPoint.setY(this.height);
+        } else if (this.exit.getY() == this.height) {
+            exitPoint.setY(-1);
+        } else {
+            exitPoint.setY(this.height - 1 - this.exit.getY());
+        }
+        System.out.println("Exit Position : " + exitPoint);
         System.out.println("Pieces :");
         for (Piece piece : this.pieces) {
             if (piece.getType() == '.') {
