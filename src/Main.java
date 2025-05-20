@@ -105,9 +105,9 @@ public class Main {
                 System.out.println("Algoritma Uniform Cost Search (UCS) melakukan blind search tanpa heuristik apapun.");
             } else {
                 System.out.println("Opsi Heuristik :");
-                System.out.println("1. Heuristik 1 : Menghitung Blocker");
-                System.out.println("2. Heuristik 2 : Menghitung Blocker + Jarak Kosong");
-                System.out.println("3. Heuristik 3 : Menghitung Blocker + Ukuran Blocker");
+                System.out.println("1. Heuristik 1 : Jumlah Blocker");
+                System.out.println("2. Heuristik 2 : Jumlah Blocker + Jarak Tersisa");
+                System.out.println("3. Heuristik 3 : Jumlah Blocker + Ukuran Blocker");
                 while (true) {
                     try {
                         System.out.print("Masukkan Pilihan Heuristik (1/2/3) : ");

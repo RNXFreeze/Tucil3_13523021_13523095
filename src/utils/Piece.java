@@ -11,7 +11,7 @@
 
 // Package & Import
 package utils;
-import java.util.List;
+import java.util.*;
 
 // Class Definition & Implementation
 public class Piece {

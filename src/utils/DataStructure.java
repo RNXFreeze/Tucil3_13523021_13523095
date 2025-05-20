@@ -11,7 +11,7 @@
 
 // Package & Import
 package utils;
-import algorithm.Solution;
+import algorithm.*;
 import java.util.*;
 
 // Class Definition & Implementation

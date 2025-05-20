@@ -57,42 +57,44 @@ public class AStar {
 
         // ALGORITMA LOKAL
         long startTime = System.nanoTime();
-        Set<String> visited = new HashSet<>();
-        Map<String , Integer> bestCost = new HashMap<>();
-        PriorityQueue<Solution.Node> pq = new PriorityQueue<>((node1 , node2) -> {
-            int f1 = node1.solveF();
-            int f2 = node2.solveF();
-            if (f1 != f2) {
-                return Integer.compare(f1 , f2);
-            } else {
-                return Integer.compare(node1.hValue , node2.hValue);
-            } 
-        });
-        String key = GameLogic.boardKey(dataStructure);
-        pq.add(new Solution.Node(dataStructure , null , 0 , Heuristic.solveHeuristic(dataStructure , num) , null));
-        bestCost.put(key , 0);
         int cnt = 0;
         Solution.Node res = null;
-        while (!pq.isEmpty()) {
-            Solution.Node cur = pq.poll();
-            key = GameLogic.boardKey(cur.state);
-            if (!visited.contains(key) || bestCost.get(key) > cur.gValue) {
-                cnt++;
-                visited.add(key);
-                if (GameState.isSolved(cur.state)) {
-                    if (res == null || cur.gValue < res.gValue) {
-                        res = cur;
-                    }
+        if (Heuristic.solveHeuristic(dataStructure , 9) == 1) {
+            Set<String> visited = new HashSet<>();
+            Map<String , Integer> bestCost = new HashMap<>();
+            PriorityQueue<Solution.Node> pq = new PriorityQueue<>((node1 , node2) -> {
+                int f1 = node1.solveF();
+                int f2 = node2.solveF();
+                if (f1 != f2) {
+                    return Integer.compare(f1 , f2);
                 } else {
-                    for (GameLogic.Move move : GameLogic.generateMoves(cur.state)) {
-                        DataStructure nxt = GameLogic.applyMove(cur.state , move);
-                        String nxtKey = GameLogic.boardKey(nxt);
-                        int gValue = cur.gValue + 1;
-                        if (!visited.contains(nxtKey) || gValue < bestCost.getOrDefault(nxtKey , Integer.MAX_VALUE)) {
-                            int hValue = Heuristic.solveHeuristic(nxt , num);
-                            bestCost.put(nxtKey , gValue);
-                            Solution.Node childNode = new Solution.Node(nxt , move , gValue , hValue , cur);
-                            pq.add(childNode);
+                    return Integer.compare(node1.hValue , node2.hValue);
+                } 
+            });
+            String key = GameLogic.boardKey(dataStructure);
+            pq.add(new Solution.Node(dataStructure , null , 0 , Heuristic.solveHeuristic(dataStructure , num) , null));
+            bestCost.put(key , 0);
+            while (!pq.isEmpty()) {
+                Solution.Node cur = pq.poll();
+                key = GameLogic.boardKey(cur.state);
+                if (!visited.contains(key) || bestCost.get(key) > cur.gValue) {
+                    cnt++;
+                    visited.add(key);
+                    if (GameState.isSolved(cur.state)) {
+                        if (res == null || cur.gValue < res.gValue) {
+                            res = cur;
+                        }
+                    } else {
+                        for (GameLogic.Move move : GameLogic.generateMoves(cur.state)) {
+                            DataStructure nxt = GameLogic.applyMove(cur.state , move);
+                            String nxtKey = GameLogic.boardKey(nxt);
+                            int gValue = cur.gValue + 1;
+                            if (!visited.contains(nxtKey) || gValue < bestCost.getOrDefault(nxtKey , Integer.MAX_VALUE)) {
+                                int hValue = Heuristic.solveHeuristic(nxt , num);
+                                bestCost.put(nxtKey , gValue);
+                                Solution.Node childNode = new Solution.Node(nxt , move , gValue , hValue , cur);
+                                pq.add(childNode);
+                            }
                         }
                     }
                 }

@@ -11,8 +11,7 @@
 
 // Package & Import
 package utils;
-
-import java.util.Objects;
+import java.util.*;
 
 // Class Definition & Implementation
 public class Point {

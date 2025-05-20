@@ -42,7 +42,7 @@ public class Heuristic {
         
         // KAMUS LOKAL
         // dataStructure : Class DataStructure
-        // heuristic1 , heuristic2 , heuristic3 : Function
+        // heuristic1 , heuristic2 , heuristic3 , heuristicBaseChecking : Function
         // num : Integer
 
         // ALGORITMA LOKAL
@@ -50,8 +50,36 @@ public class Heuristic {
             case 1 -> heuristic1(dataStructure);
             case 2 -> heuristic2(dataStructure);
             case 3 -> heuristic3(dataStructure);
+            case 9 -> heuristicBaseChecking(dataStructure);
             default -> 0;
         };
+    }
+
+    private static int heuristicBaseChecking(DataStructure dataStructure) {
+        // DESKRIPSI LOKAL
+        // Heuristic Base Case : Mengecek primary piece sudah berada di baris atau kolom yang sama dengan exit.
+
+        // KAMUS LOKAL
+        // dataStructure : Class DataStructure
+        // piece : Class Piece
+        // exit : Class Point
+
+        // ALGORITMA LOKAL
+        Piece piece = findPrimary(dataStructure);
+        Point exit = dataStructure.getExit();
+        if (piece.getOrientation() == 0) {
+            if (exit.getY() >= 0 && exit.getY() < dataStructure.getHeight() && piece.getCoordinates().get(0).getY() == exit.getY()) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } else {
+            if (exit.getX() >= 0 && exit.getX() < dataStructure.getWidth() && piece.getCoordinates().get(0).getX() == exit.getX()) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
     }
 
     private static int heuristic1(DataStructure dataStructure) {
@@ -68,7 +96,7 @@ public class Heuristic {
 
     private static int heuristic2(DataStructure dataStructure) {
         // DESKRIPSI LOKAL
-        // Heuristik 2 : Menghitung jumlah piece yang menghalangi primary piece dan jarak kosong yang tersedia.
+        // Heuristik 2 : Menghitung jumlah piece yang menghalangi primary piece dan jarak yang tersisa.
         
         // KAMUS LOKAL
         // dataStructure : Class DataStructure
