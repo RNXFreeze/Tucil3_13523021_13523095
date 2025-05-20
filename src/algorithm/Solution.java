@@ -465,7 +465,7 @@ public final class Solution {
         } else {
             System.out.println("Display Board Awal :");
             this.path.get(0).displayBoard();
-            for (int i = 0; i < this.moves.size(); i++) {
+            for (int i = 0 ; i < this.moves.size() ; i++) {
                 System.out.printf("\n%sMOVE %d : %s%s\n" , ANSI_BOLD + ANSI_PURPLE , i + 1 , this.moves.get(i) , ANSI_RESET);
                 displayBoardWithHighlight(this.path.get(i) , this.path.get(i + 1) , this.moves.get(i));
             }
@@ -476,7 +476,7 @@ public final class Solution {
                 case LEFT -> "LEFT";
                 default -> "UNKNOWN";
             } , this.path.get(0).getPieces().stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize());
-            this.path.get(this.moves.size() - 1).displayLastBoard();
+            this.path.get(this.moves.size()).displayLastBoard();
         }
         System.out.println(ANSI_BOLD + "==================================================" + ANSI_RESET);
         System.out.println(ANSI_BOLD + "RECALL INFORMATION SOLUTION RESULT :" + ANSI_RESET);

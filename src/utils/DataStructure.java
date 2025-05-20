@@ -202,14 +202,14 @@ public class DataStructure {
                     System.out.print("  ");
                 }
                 for (int j = 0 ; j < this.width ; j++) {
-                    System.out.print(board.getCell(j , i) + " ");
+                    System.out.print(this.board.getCell(j , i) + " ");
                 }
                 System.out.println();
             }
         } else if (this.exit.getY() == -1) {
             for (int i = 0 ; i < this.height ; i++) {
                 for (int j = 0 ; j < this.width ; j++) {
-                    System.out.print(board.getCell(j , i) + " ");
+                    System.out.print(this.board.getCell(j , i) + " ");
                 }
                 System.out.println();
             }
@@ -224,14 +224,14 @@ public class DataStructure {
             System.out.println("K");
             for (int i = 0 ; i < this.height ; i++) {
                 for (int j = 0 ; j < this.width ; j++) {
-                    System.out.print(board.getCell(j , i) + " ");
+                    System.out.print(this.board.getCell(j , i) + " ");
                 }
                 System.out.println();
             }
         } else {
             for (int i = 0 ; i < this.height ; i++) {
                 for (int j = 0 ; j < this.width ; j++) {
-                    System.out.print(board.getCell(j , i) + " ");
+                    System.out.print(this.board.getCell(j , i) + " ");
                 }
                 if (this.height - 1 - this.exit.getY() == i) {
                     System.out.print("K");
@@ -255,16 +255,16 @@ public class DataStructure {
             for (int i = 0 ; i < this.height ; i++) {
                 for (int j = 0 ; j < this.pieces.stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize() ; j++) {
                     if (this.height - 1 - this.exit.getY() == i) {
-                        System.out.print(Solution.ANSI_RED + "P ");
+                        System.out.print(Solution.ANSI_BACKGROUND_GREEN + Solution.ANSI_BOLD + Solution.ANSI_CYAN + "P " + Solution.ANSI_RESET);
                     } else {
                         System.out.print("  ");
                     }
                 }
                 for (int j = 0 ; j < this.width ; j++) {
-                    if (board.getCell(j , i) == 'P') {
+                    if (this.board.getCell(j , i) == 'P') {
                         System.out.print(Solution.ANSI_BACKGROUND_RED + "." + Solution.ANSI_RESET + " ");
                     } else {
-                        System.out.print(board.getCell(j , i) + " ");
+                        System.out.print(this.board.getCell(j , i) + " ");
                     }
                 }
                 System.out.println();
@@ -272,10 +272,10 @@ public class DataStructure {
         } else if (this.exit.getY() == -1) {
             for (int i = 0 ; i < this.height ; i++) {
                 for (int j = 0 ; j < this.width ; j++) {
-                    if (board.getCell(j , i) == 'P') {
+                    if (this.board.getCell(j , i) == 'P') {
                         System.out.print(Solution.ANSI_BACKGROUND_RED + "." + Solution.ANSI_RESET + " ");
                     } else {
-                        System.out.print(board.getCell(j , i) + " ");
+                        System.out.print(this.board.getCell(j , i) + " ");
                     }
                 }
                 System.out.println();
@@ -284,21 +284,21 @@ public class DataStructure {
                 for (int j = 0 ; j < this.exit.getX() ; j++) {
                     System.out.print("  ");
                 }
-                System.out.println("P");
+                System.out.print(Solution.ANSI_BACKGROUND_GREEN + Solution.ANSI_BOLD + Solution.ANSI_CYAN + "P" + Solution.ANSI_RESET);
             }
         } else if (this.exit.getY() == this.height) {
             for (int i = 0 ; i < this.pieces.stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize() ; i++) {
                 for (int j = 0 ; j < this.exit.getX() ; j++) {
                     System.out.print("  ");
                 }
-                System.out.println("P");
+                System.out.print(Solution.ANSI_BACKGROUND_GREEN + Solution.ANSI_BOLD + Solution.ANSI_CYAN + "P" + Solution.ANSI_RESET);
             }
             for (int i = 0 ; i < this.height ; i++) {
                 for (int j = 0 ; j < this.width ; j++) {
-                    if (board.getCell(j , i) == 'P') {
+                    if (this.board.getCell(j , i) == 'P') {
                         System.out.print(Solution.ANSI_BACKGROUND_RED + "." + Solution.ANSI_RESET + " ");
                     } else {
-                        System.out.print(board.getCell(j , i) + " ");
+                        System.out.print(this.board.getCell(j , i) + " ");
                     }
                 }
                 System.out.println();
@@ -306,15 +306,15 @@ public class DataStructure {
         } else {
             for (int i = 0 ; i < this.height ; i++) {
                 for (int j = 0 ; j < this.width ; j++) {
-                    if (board.getCell(j , i) == 'P') {
+                    if (this.board.getCell(j , i) == 'P') {
                         System.out.print(Solution.ANSI_BACKGROUND_RED + "." + Solution.ANSI_RESET + " ");
                     } else {
-                        System.out.print(board.getCell(j , i) + " ");
+                        System.out.print(this.board.getCell(j , i) + " ");
                     }
                 }
                 if (this.height - 1 - this.exit.getY() == i) {
                     for (int j = 0 ; j < this.pieces.stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize() ; j++) {
-                        System.out.print("P ");
+                        System.out.print(Solution.ANSI_BACKGROUND_GREEN + Solution.ANSI_BOLD + Solution.ANSI_CYAN + "P " + Solution.ANSI_RESET);
                     }
                 }
                 System.out.println();
