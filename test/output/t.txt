@@ -4,7 +4,7 @@ Algorithm    : Uniform Cost Search (UCS)
 Heuristic    : 0
 Step Count   : 5 Step
 Visited Node : 218 Node
-Time Usage   : 29 ms
+Time Usage   : 30 ms
 Success      : YES
 ==================================================
 Display Board Awal :
@@ -68,6 +68,6 @@ Algorithm    : Uniform Cost Search (UCS)
 Heuristic    : 0
 Step Count   : 5 Step
 Visited Node : 218 Node
-Time Usage   : 29 ms
+Time Usage   : 30 ms
 Success      : YES
 ==================================================

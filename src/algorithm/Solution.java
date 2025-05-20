@@ -18,13 +18,16 @@ import utils.*;
 // Class Definition & Implementation
 public final class Solution {
     // DESKRIPSI
-    // Public Class Solution - Menyimpan hasil lengkap path-finding dan prosedur tampilan
+    // Public Class Solution
 
     // KAMUS
     // Solution : Constructor Class Solution
-    // displaySolution : Procedure cetak hasil solusi
-
-    // PRIVATE ATTRIBUTES
+    // Node : Sub Class Node
+    // getAlgorithm , getHeuristicId , getNodesVisited , getStepCount , getTime , getPath , getMoves : Procedure
+    // setAlgorithm , setHeuristicId , setNodesVisited , setStepCount , setTime , setPath , setMoves : Procedure
+    // buildSolution , displaySolution , displayColoredBoard , displayBoardWithHighlight : Procedure
+    
+    // PRIVATE ATTRIBUTES - Main
     private final String algorithm;
     private final int heuristicId;
     private int nodesVisited;
@@ -33,7 +36,7 @@ public final class Solution {
     private List<DataStructure> path;
     private List<GameLogic.Move> moves;
 
-    // ANSI color codes
+    // PRIVATE ATTRIBUTES - ANSI Color Codes
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String ANSI_RED = "\u001B[31m";
     private static final String ANSI_GREEN = "\u001B[32m";
@@ -225,7 +228,7 @@ public final class Solution {
         // Public Class Node
         
         // KAMUS SUBCLASS
-        // Node : Constructor Sub Class Node
+        // Node : Constructor Class Solution Sub Class Node
         // solveF : Function
         // getState , getMove , getGValue , getHValue , getParent : Procedure
         // setState , setMove , setGValue , setHValue , setParent : Procedure
@@ -379,7 +382,7 @@ public final class Solution {
 
     public static Solution buildSolution(String algorithm , int heuristicId , int visitedCount , double time , Node goal) {
         // DESKRIPSI LOKAL
-        // Membangun tipe data Solution dari hasil algoritma pencarian
+        // Membangun tipe curDataStructure Solution dari hasil algoritma pencarian
 
         // KAMUS LOKAL
         // moves : List of Class GameLogic Sub Class Move
@@ -403,26 +406,42 @@ public final class Solution {
 
     public void displaySolution() {
         // DESKRIPSI LOKAL
-        // Menampilkan solusi dalam format CLI yang terstruktur dengan highlighting perubahan
+        // Display Solution To CLI Terminal
 
         // KAMUS LOKAL
         // algorithm : String
-        // heuristicId, nodesVisited, i : Integer
+        // heuristicId , nodesVisited , i : Integer
         // time : Double
         // path : List of Class DataStructure
         // moves : List of Class GameLogic Sub Class Move
 
         // ALGORITMA LOKAL
+        System.out.println(ANSI_BOLD + "==================================================" + ANSI_RESET);
+        System.out.println(ANSI_BOLD + "INFORMATION SOLUTION RESULT :" + ANSI_RESET);
+        System.out.printf("Algorithm    : %s%s%s\n" , ANSI_CYAN , this.algorithm , ANSI_RESET);
+        if (this.heuristicId == 0) {
+            System.out.println("Heuristic    : None");
+        } else {
+            System.out.printf("Heuristic    : %s%d%s\n" , ANSI_CYAN , this.heuristicId , ANSI_RESET);
+        }
+        System.out.printf("Step Count   : %s%d Step%s\n" , ANSI_YELLOW , this.stepCount + 1 , ANSI_RESET);
+        System.out.printf("Visited Node : %s%d Node%s\n" , ANSI_YELLOW , this.nodesVisited , ANSI_RESET);
+        System.out.printf("Time Usage   : %s%d ms%s\n" , ANSI_YELLOW , (int) this.time , ANSI_RESET);
         if (this.moves.isEmpty()) {
-            System.out.println("\nDisplay Board Awal & Akhir :");
+            System.out.println("Success      : " + ANSI_RED + "NO" + ANSI_RESET);
+        } else {
+            System.out.println("Success      : " + ANSI_GREEN + "YES" + ANSI_RESET);
+        }
+        System.out.println(ANSI_BOLD + "==================================================" + ANSI_RESET);
+        if (this.moves.isEmpty()) {
+            System.out.println("Display Board Awal & Akhir :");
             this.path.get(0).displayBoard();
         } else {
-            System.out.println("\nDisplay Board Awal :");
+            System.out.println("Display Board Awal :");
             this.path.get(0).displayBoard();
-            
             for (int i = 0; i < this.moves.size(); i++) {
-                System.out.printf("\n%sMOVE %d : %s%s\n", ANSI_BOLD + ANSI_PURPLE, (i + 1), this.moves.get(i), ANSI_RESET);
-                displayBoardWithHighlight(this.path.get(i), this.path.get(i + 1), this.moves.get(i));
+                System.out.printf("\n%sMOVE %d : %s%s\n" , ANSI_BOLD + ANSI_PURPLE , i + 1 , this.moves.get(i) , ANSI_RESET);
+                displayBoardWithHighlight(this.path.get(i) , this.path.get(i + 1) , this.moves.get(i));
             }
             System.out.printf("\nMOVE %d : P - OUT %s (%d STEP)\n" , this.moves.size() + 1 , switch (this.moves.get(this.moves.size() - 1).getDirection()) {
                 case UP -> "UP";
@@ -433,18 +452,17 @@ public final class Solution {
             } , this.path.get(0).getPieces().stream().filter(pc -> pc.getType() == 'P').findFirst().orElseThrow().solveSize());
             this.path.get(this.moves.size() - 1).displayLastBoard();
         }
-        
         System.out.println(ANSI_BOLD + "==================================================" + ANSI_RESET);
         System.out.println(ANSI_BOLD + "RECALL INFORMATION SOLUTION RESULT :" + ANSI_RESET);
-        System.out.printf("Algorithm    : %s%s%s\n", ANSI_CYAN, this.algorithm, ANSI_RESET);
+        System.out.printf("Algorithm    : %s%s%s\n" , ANSI_CYAN , this.algorithm , ANSI_RESET);
         if (this.heuristicId == 0) {
             System.out.println("Heuristic    : None");
         } else {
-            System.out.printf("Heuristic    : %s%d%s\n", ANSI_CYAN, this.heuristicId, ANSI_RESET);
+            System.out.printf("Heuristic    : %s%d%s\n" , ANSI_CYAN , this.heuristicId , ANSI_RESET);
         }
-        System.out.printf("Step Count   : %s%d Step%s\n", ANSI_YELLOW, this.stepCount + 1, ANSI_RESET);
-        System.out.printf("Visited Node : %s%d Node%s\n", ANSI_YELLOW, this.nodesVisited, ANSI_RESET);
-        System.out.printf("Time Usage   : %s%d ms%s\n", ANSI_YELLOW, (int) this.time, ANSI_RESET);
+        System.out.printf("Step Count   : %s%d Step%s\n" , ANSI_YELLOW , this.stepCount + 1 , ANSI_RESET);
+        System.out.printf("Visited Node : %s%d Node%s\n" , ANSI_YELLOW , this.nodesVisited , ANSI_RESET);
+        System.out.printf("Time Usage   : %s%d ms%s\n" , ANSI_YELLOW , (int) this.time , ANSI_RESET);
         if (this.moves.isEmpty()) {
             System.out.println("Success      : " + ANSI_RED + "NO" + ANSI_RESET);
         } else {
@@ -452,142 +470,118 @@ public final class Solution {
         }
     }
 
-    private void displayColoredBoard(DataStructure data, DataStructure prevData, GameLogic.Move move) {
+    private void displayColoredBoard(DataStructure curDataStructure , DataStructure prevDataStructure , GameLogic.Move move) {
         // DESKRIPSI LOKAL
-        // Display Board From Data Structure To CLI Terminal dengan warna
+        // Display Board From Data Structure To CLI Terminal With Color
 
         // KAMUS LOKAL
+        // curDataStructure , prevDataStructure : Class DataStructure
+        // move : Class GameLogic Sub Class Move
         // board : Class Board
         // exit : Class Point
-        // width, height, i, j : Integer
-        // changedPositions : Set<Point> - posisi yang berubah jika ada move
-        
-        int width = data.getWidth();
-        int height = data.getHeight();
-        Point exit = data.getExit();
-        Board board = data.getBoard();
-        
-        // Informasi untuk highlighting perubahan (jika ada)
+        // piece : Class Piece
+        // movingPiece , cell : Character
+        // width , height , i , j : Integer
+        // oldPositions , newPositions : Set of Class Point
+
+        // ALGORITMA LOKAL
+        int width = curDataStructure.getWidth();
+        int height = curDataStructure.getHeight();
+        Point exit = curDataStructure.getExit();
+        Board board = curDataStructure.getBoard();
         Set<Point> oldPositions = new HashSet<>();
         Set<Point> newPositions = new HashSet<>();
-        
-        if (prevData != null && move != null) {
+        if (prevDataStructure != null && move != null) {
             char movingPiece = move.getIdType();
-            
-            // Dapatkan posisi lama
-            for (Piece piece : prevData.getPieces()) {
+            for (Piece piece : prevDataStructure.getPieces()) {
                 if (piece.getType() == movingPiece) {
                     oldPositions.addAll(piece.getCoordinates());
                     break;
                 }
             }
-            
-            // Dapatkan posisi baru
-            for (Piece piece : data.getPieces()) {
+            for (Piece piece : curDataStructure.getPieces()) {
                 if (piece.getType() == movingPiece) {
                     newPositions.addAll(piece.getCoordinates());
                     break;
                 }
             }
         }
-
-        // ALGORITMA LOKAL - Mengikuti format asli tapi dengan warna
         if (exit.getX() == -1) {
-            for (int i = 0; i < height; i++) {
+            for (int i = 0 ; i < height ; i++) {
                 if (height - 1 - exit.getY() == i) {
                     System.out.print(ANSI_BOLD + ANSI_PURPLE + "K " + ANSI_RESET);
                 } else {
                     System.out.print("  ");
                 }
-                for (int j = 0; j < width; j++) {
-                    Point currentPoint = new Point(j, i);
-                    char cell = board.getCell(j, i);
-                    
-                    // Warna untuk piece P
-                    if (cell == 'P') {
-                        System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
-                    } 
-                    // Posisi lama dari piece yang bergerak
-                    else if (prevData != null && oldPositions.contains(currentPoint) && !newPositions.contains(currentPoint)) {
+                for (int j = 0 ; j < width ; j++) {
+                    Point point = new Point(j , i);
+                    char cell = board.getCell(j , i);
+                    if (prevDataStructure != null && oldPositions.contains(point) && !newPositions.contains(point)) {
                         System.out.print(ANSI_BACKGROUND_RED + " " + ANSI_RESET + " ");
-                    } 
-                    // Posisi baru dari piece yang bergerak
-                    else if (prevData != null && newPositions.contains(currentPoint)) {
+                    } else if (prevDataStructure != null && newPositions.contains(point)) {
                         System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
-                    }
-                    // Warna default
-                    else {
+                    } else if (cell == 'P') {
+                        System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
+                    } else {
                         System.out.print(cell + " ");
                     }
                 }
                 System.out.println();
             }
         } else if (exit.getY() == -1) {
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    Point currentPoint = new Point(j, i);
-                    char cell = board.getCell(j, i);
-                    
-                    if (cell == 'P') {
-                        System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
-                    } 
-                    else if (prevData != null && oldPositions.contains(currentPoint) && !newPositions.contains(currentPoint)) {
+            for (int i = 0 ; i < height ; i++) {
+                for (int j = 0 ; j < width ; j++) {
+                    Point point = new Point(j , i);
+                    char cell = board.getCell(j , i);
+                    if (prevDataStructure != null && oldPositions.contains(point) && !newPositions.contains(point)) {
                         System.out.print(ANSI_BACKGROUND_RED + " " + ANSI_RESET + " ");
-                    } 
-                    else if (prevData != null && newPositions.contains(currentPoint)) {
+                    } else if (prevDataStructure != null && newPositions.contains(point)) {
                         System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
-                    }
-                    else {
+                    } else if (cell == 'P') {
+                        System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
+                    } else {
                         System.out.print(cell + " ");
                     }
                 }
                 System.out.println();
             }
-            for (int i = 0; i < exit.getX(); i++) {
+            for (int i = 0 ; i < exit.getX() ; i++) {
                 System.out.print("  ");
             }
             System.out.println(ANSI_BOLD + ANSI_PURPLE + "K" + ANSI_RESET);
         } else if (exit.getY() == height) {
-            for (int i = 0; i < exit.getX(); i++) {
+            for (int i = 0 ; i < exit.getX() ; i++) {
                 System.out.print("  ");
             }
             System.out.println(ANSI_BOLD + ANSI_PURPLE + "K" + ANSI_RESET);
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    Point currentPoint = new Point(j, i);
-                    char cell = board.getCell(j, i);
-                    
-                    if (cell == 'P') {
-                        System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
-                    } 
-                    else if (prevData != null && oldPositions.contains(currentPoint) && !newPositions.contains(currentPoint)) {
+            for (int i = 0 ; i < height ; i++) {
+                for (int j = 0 ; j < width ; j++) {
+                    Point point = new Point(j , i);
+                    char cell = board.getCell(j , i);
+                    if (prevDataStructure != null && oldPositions.contains(point) && !newPositions.contains(point)) {
                         System.out.print(ANSI_BACKGROUND_RED + " " + ANSI_RESET + " ");
-                    } 
-                    else if (prevData != null && newPositions.contains(currentPoint)) {
+                    } else if (prevDataStructure != null && newPositions.contains(point)) {
                         System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
-                    }
-                    else {
+                    } else if (cell == 'P') {
+                        System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
+                    } else {
                         System.out.print(cell + " ");
                     }
                 }
                 System.out.println();
             }
         } else {
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    Point currentPoint = new Point(j, i);
-                    char cell = board.getCell(j, i);
-                    
-                    if (cell == 'P') {
-                        System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
-                    } 
-                    else if (prevData != null && oldPositions.contains(currentPoint) && !newPositions.contains(currentPoint)) {
+            for (int i = 0 ; i < height ; i++) {
+                for (int j = 0 ; j < width ; j++) {
+                    Point point = new Point(j , i);
+                    char cell = board.getCell(j , i);
+                    if (prevDataStructure != null && oldPositions.contains(point) && !newPositions.contains(point)) {
                         System.out.print(ANSI_BACKGROUND_RED + " " + ANSI_RESET + " ");
-                    } 
-                    else if (prevData != null && newPositions.contains(currentPoint)) {
+                    } else if (prevDataStructure != null && newPositions.contains(point)) {
                         System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
-                    }
-                    else {
+                    } else if (cell == 'P') {
+                        System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
+                    } else {
                         System.out.print(cell + " ");
                     }
                 }
@@ -599,12 +593,20 @@ public final class Solution {
         }
     }
 
-    private void displayBoardWithHighlight(DataStructure prevBoard, DataStructure currentBoard, GameLogic.Move move) {
-        displayColoredBoard(currentBoard, prevBoard, move);
-        System.out.println("\nKeterangan:");
-        System.out.println(ANSI_BACKGROUND_RED + " " + ANSI_RESET + " : Posisi lama dari piece " + move.getIdType());
-        System.out.println(ANSI_BACKGROUND_GREEN + move.getIdType() + " " + ANSI_RESET + " : Posisi baru dari piece " + move.getIdType());
-        System.out.println(ANSI_BOLD + ANSI_CYAN + "P" + ANSI_RESET + " : Piece yang harus keluar");
-        System.out.println(ANSI_BOLD + ANSI_PURPLE + "K" + ANSI_RESET + " : Posisi pintu keluar");
+    private void displayBoardWithHighlight(DataStructure prevDataStructure , DataStructure curDataStructure , GameLogic.Move move) {
+        // DESKRIPSI LOKAL
+        // Display Board From Data Structure To CLI Terminal With Color And Notes
+
+        // KAMUS LOKAL
+        // curDataStructure , prevDataStructure : Class DataStructure
+        // move : Class GameLogic Sub Class Move
+
+        // ALGORITMA LOKAL
+        displayColoredBoard(curDataStructure , prevDataStructure , move);
+        System.out.println("\nNotes :");
+        System.out.println(ANSI_BACKGROUND_RED + " " + ANSI_RESET + "  : Old Position Piece " + move.getIdType());
+        System.out.println(ANSI_BACKGROUND_GREEN + move.getIdType() + " " + ANSI_RESET + " : New Position Piece " + move.getIdType());
+        System.out.println(ANSI_BOLD + ANSI_CYAN + "P" + ANSI_RESET + "  : Primary Piece");
+        System.out.println(ANSI_BOLD + ANSI_PURPLE + "K" + ANSI_RESET + "  : Exit Position");
     }
 }

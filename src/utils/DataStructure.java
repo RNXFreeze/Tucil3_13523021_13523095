@@ -242,7 +242,7 @@ public class DataStructure {
 
     public void displayLastBoard() {
         // DESKRIPSI LOKAL
-        // Display Board From Data Structure To CLI Terminal
+        // Display Last Board From Data Structure To CLI Terminal
         
         // KAMUS LOKAL
         // board : Class Board
