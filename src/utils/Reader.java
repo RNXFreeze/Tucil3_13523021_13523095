@@ -58,73 +58,102 @@ public class Reader {
         // ALGORITMA LOKAL
         Path path = Paths.get(filePath);
         try (BufferedReader reader = Files.newBufferedReader(path)) {
+            /* ========================================= */
+            /* ==========  DEBUGGED AREA  ============== */
+            /* ========================================= */
             String[] dimensions = reader.readLine().trim().split("\\s+");
-            int width = Integer.parseInt(dimensions[0]);
-            int height = Integer.parseInt(dimensions[1]);
-            int pieceCount = Integer.parseInt(reader.readLine().trim());
-            List<String> rawLines = new ArrayList<>();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                rawLines.add(line);
-            }
-            Point exit = null;
-            if (!rawLines.isEmpty() && rawLines.get(0).trim().equals("K")) {
-                String firstLine = rawLines.get(0); 
-                int x = firstLine.indexOf('K');
-                exit = new Point(x, height);
-                rawLines.remove(0);
-            }
-            if (!rawLines.isEmpty() && rawLines.get(rawLines.size() - 1).trim().equals("K")) {
-                String lastLine = rawLines.get(rawLines.size() - 1);
-                int x = lastLine.indexOf('K');
-                exit = new Point(x, -1);
-                rawLines.remove(rawLines.size() - 1);
-            }
-            List<String> trimmedLines = new ArrayList<>();
-            for (String lines : rawLines) {
-                if (lines != null) {
-                    String trimmed = lines.trim();
-                    if (!trimmed.isEmpty()) {
-                        trimmedLines.add(trimmed);
-                    }
-                }
-            }
-            if (trimmedLines.size() != height) {
-                throw new IOException("Jumlah baris grid (" + trimmedLines.size() + ") tidak sesuai dimensi height (" + height + ")");
+            if (dimensions.length != 2) {
+                throw new IOException("Baris Ke-1 Harus Berisi 2 Bilangan Bulat : Width & Height (A & B)");
             } else {
-                for (int i = 0 ; i < height ; i++) {
-                    String row = trimmedLines.get(i);
-                    if (row.startsWith("K")) {
-                        int newY = (i + height - 1);
-                        if (newY >= height) {
-                            newY -= ((newY - (height - 1)) * 2);
+                int width , height;
+                try {
+                    width  = Integer.parseInt(dimensions[0]);
+                    height = Integer.parseInt(dimensions[1]);
+                } catch (NumberFormatException e) {
+                    throw new IOException("Width & Height Harus Bilangan Bulat Positif");
+                }
+                if (width <= 0 || height <= 0) {
+                    throw new IOException("Width & Height Harus Bilangan Bulat Positif");
+                } else {
+                    int pieceCount;
+                    try {
+                        pieceCount = Integer.parseInt(reader.readLine().trim());
+                    } catch (NumberFormatException e) {
+                        throw new IOException("Baris Ke-2 Harus Berisi 1 Bilangan Bulat : Piece Count (N)");
+                    }
+                    int area = width * height;
+                    int maxn = (area - 2) / 2;
+                    if (pieceCount > maxn || pieceCount >= 25) {
+                        throw new IOException("Nilai N Harus Kurang Dari 1/2 * (area - 2) & Kurang dari 25.");
+                    }
+                    /* ========================================= */
+                    /* =========  UNDEBUGGED AREA  ============= */
+                    /* ========================================= */
+                    List<String> rawLines = new ArrayList<>();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        rawLines.add(line);
+                    }
+                    Point exit = null;
+                    if (!rawLines.isEmpty() && rawLines.get(0).trim().equals("K")) {
+                        String firstLine = rawLines.get(0); 
+                        int x = firstLine.indexOf('K');
+                        exit = new Point(x, height);
+                        rawLines.remove(0);
+                    }
+                    if (!rawLines.isEmpty() && rawLines.get(rawLines.size() - 1).trim().equals("K")) {
+                        String lastLine = rawLines.get(rawLines.size() - 1);
+                        int x = lastLine.indexOf('K');
+                        exit = new Point(x, -1);
+                        rawLines.remove(rawLines.size() - 1);
+                    }
+                    List<String> trimmedLines = new ArrayList<>();
+                    for (String lines : rawLines) {
+                        if (lines != null) {
+                            String trimmed = lines.trim();
+                            if (!trimmed.isEmpty()) {
+                                trimmedLines.add(trimmed);
+                            }
                         }
-                        exit = new Point(-1 , newY); 
-                        trimmedLines.set(i , row.substring(1)); 
-                    } else if (row.endsWith("K")) {
-                        int newY = (i + height - 1);
-                        if (newY >= height) {
-                            newY -= ((newY - (height - 1)) * 2);
+                    }
+                    if (trimmedLines.size() != height) {
+                        throw new IOException("Jumlah baris grid (" + trimmedLines.size() + ") tidak sesuai dimensi height (" + height + ")");
+                    } else {
+                        for (int i = 0 ; i < height ; i++) {
+                            String row = trimmedLines.get(i);
+                            if (row.startsWith("K")) {
+                                int newY = (i + height - 1);
+                                if (newY >= height) {
+                                    newY -= ((newY - (height - 1)) * 2);
+                                }
+                                exit = new Point(-1 , newY); 
+                                trimmedLines.set(i , row.substring(1)); 
+                            } else if (row.endsWith("K")) {
+                                int newY = (i + height - 1);
+                                if (newY >= height) {
+                                    newY -= ((newY - (height - 1)) * 2);
+                                }
+                                exit = new Point(width , newY); 
+                                trimmedLines.set(i , row.substring(0 , row.length() - 1)); 
+                            }
                         }
-                        exit = new Point(width , newY); 
-                        trimmedLines.set(i , row.substring(0 , row.length() - 1)); 
+                        char[][] grid = new char[height][width];
+                        Board board = new Board(width , height);
+                        for (int i = 0 ; i < height ; i++) {
+                            String row = trimmedLines.get(i);
+                            for (int j = 0 ; j < width ; j++) {
+                                char c = '.';
+                                if ((j < row.length())) {
+                                    c = row.charAt(j);
+                                }
+                                grid[i][j] = c;
+                                board.setCell(j , i , c);
+                            }
+                        }
+                        List<Piece> pieces = readPieces(grid);
+                        return new DataStructure(width , height , pieceCount , exit , board , pieces);
                     }
                 }
-                char[][] grid = new char[height][width];
-                Board board = new Board(width , height);
-                for (int i = 0 ; i < height ; i++) {
-                    String row = trimmedLines.get(i);
-                    for (int j = 0 ; j < width ; j++) {
-                        char c = '.';
-                        if ((j < row.length())) {
-                            c = row.charAt(j);
-                        }
-                        grid[i][j] = c;
-                        board.setCell(j , i , c);
-                    }
-                }
-                List<Piece> pieces = readPieces(grid);
-                return new DataStructure(width , height , pieceCount , exit , board , pieces);
             }
         }
     }

@@ -202,12 +202,14 @@ public final class GameLogic {
         List<Move> listMoves = new ArrayList<>();
         char[][] grid = dataStructure.getBoard().getGrid();
         for (Piece piece : dataStructure.getPieces()) {
-            if (piece.getOrientation() == 0) {
-                listMoves.addAll(scanHorizontal(piece , grid , Direction.LEFT));
-                listMoves.addAll(scanHorizontal(piece , grid , Direction.RIGHT));
-            } else {
-                listMoves.addAll(scanVertical(piece , grid , Direction.UP));
-                listMoves.addAll(scanVertical(piece , grid , Direction.DOWN));
+            if (piece.getType() != '.') {
+                if (piece.getOrientation() == 0) {
+                    listMoves.addAll(scanHorizontal(piece , grid , Direction.LEFT));
+                    listMoves.addAll(scanHorizontal(piece , grid , Direction.RIGHT));
+                } else {
+                    listMoves.addAll(scanVertical(piece , grid , Direction.UP));
+                    listMoves.addAll(scanVertical(piece , grid , Direction.DOWN));
+                }
             }
         }
         return listMoves;
