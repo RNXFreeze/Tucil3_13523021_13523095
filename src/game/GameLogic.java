@@ -145,14 +145,12 @@ public final class GameLogic {
 
             // ALGORITMA SUBCLASS LOKAL
             String res = this.idType + " - ";
-            if (this.direction == Direction.LEFT) {
-                res += "KIRI ";
-            } else if (this.direction == Direction.RIGHT) {
-                res += "KANAN ";
-            } else if (this.direction == Direction.UP) {
-                res += "ATAS ";
-            } else {
-                res += "BAWAH ";
+            switch (this.direction) {
+                case LEFT : res += "LEFT ";
+                case RIGHT : res += "RIGHT ";
+                case UP : res += "UP ";
+                case DOWN : res += "DOWN ";
+                default : res += "UNKNOWN ";
             }
             res = res + "(" + this.stepCount + " STEP)";
             return res;
@@ -249,14 +247,12 @@ public final class GameLogic {
             for (Point point : movedPiece.getCoordinates()) {
                 int nx = point.getX();
                 int ny = point.getY();
-                if (move.direction == Direction.LEFT) {
-                    nx -= move.stepCount;
-                } else if (move.direction == Direction.RIGHT) {
-                    nx += move.stepCount;
-                } else if (move.direction == Direction.UP) {
-                    ny -= move.stepCount;
-                } else {
-                    ny += move.stepCount;
+                switch (move.direction) {
+                    case LEFT : nx -= move.stepCount;
+                    case RIGHT : nx += move.stepCount;
+                    case UP : ny -= move.stepCount;
+                    case DOWN : ny += move.stepCount;
+                    default : /*None*/;
                 }
                 newCoordinates.add(new Point(nx , ny));
                 newBoard.setCell(ny , nx , move.idType);

@@ -22,7 +22,7 @@ public class GBFS {
     
     // KAMUS
     // GBFS : Constructor Class GBFS
-    // solveGreedyBFS : Function
+    // solveGBFS : Function
 
     // PRIVATE ATTRIBUTES
     // None
@@ -38,7 +38,7 @@ public class GBFS {
         // None
     }
 
-    public static Solution solveGreedyBFS(DataStructure dataStructure , int num) {
+    public static Solution solveGBFS(DataStructure dataStructure , int num) {
         // DESKRIPSI LOKAL
         // Fungsi Utama GBFS : Menyelesaikan pencarian jalur terpendek dari dataStructure dan tipe heuristiknya.
         // GBFS : Greedy Best First Search berdasarkan heuristik yang dihitung.

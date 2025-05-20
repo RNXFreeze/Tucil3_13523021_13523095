@@ -46,13 +46,12 @@ public class Heuristic {
         // num : Integer
 
         // ALGORITMA LOKAL
-        if (num == 1) {
-            return heuristic1(dataStructure);
-        } else if (num == 2) {
-            return heuristic2(dataStructure);
-        } else {
-            return heuristic3(dataStructure);
-        }
+        return switch (num) {
+            case 1 -> heuristic1(dataStructure);
+            case 2 -> heuristic2(dataStructure);
+            case 3 -> heuristic3(dataStructure);
+            default -> 0;
+        };
     }
 
     private static int heuristic1(DataStructure dataStructure) {
@@ -103,7 +102,7 @@ public class Heuristic {
         // ALGORITMA LOKAL
         int blocker = blockingCount(dataStructure);
         Piece piece = findPrimary(dataStructure);
-        int extra = dataStructure.getPieces().stream().filter(pc -> pc != piece && isBlocking(pc , piece , dataStructure.getExit())).mapToInt(pc -> pc.getCoordinates().size()).sum();
+        int extra = dataStructure.getPieces().stream().filter(pc -> pc != piece && isBlocking(pc , piece)).mapToInt(pc -> pc.getCoordinates().size()).sum();
         return blocker + extra;
     }
 
@@ -154,9 +153,9 @@ public class Heuristic {
         return dataStructure.getPieces().stream().filter(piece -> piece.getType() == 'P').findFirst().orElseThrow();
     }
 
-    private static boolean isBlocking(Piece otherPiece , Piece primaryPiece , Point exit) {
+    private static boolean isBlocking(Piece otherPiece , Piece primaryPiece) {
         // DESKRIPSI LOKAL
-        // Fungsi Bantuan : Mengecek apakah piece lain menghalangi primary piece menuju exit.
+        // Fungsi Bantuan : Mengecek apakah piece lain menghalangi primary piece.
         
         // KAMUS LOKAL
         // dataStructure : Class DataStructure
