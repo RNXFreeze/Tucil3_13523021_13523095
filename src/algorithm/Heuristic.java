@@ -118,7 +118,6 @@ public class Heuristic {
         // cnt , row , col , rig , bot , x , y : Integer
 
         // ALGORITMA LOKAL
-        System.out.println("width = " + dataStructure.getBoard().getWidth()+ "height = " + dataStructure.getBoard().getHeight());
         Piece piece  = findPrimary(dataStructure);
         Board board = dataStructure.getBoard();
         int cnt = 0;

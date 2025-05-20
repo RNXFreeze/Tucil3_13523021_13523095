@@ -59,16 +59,10 @@ public class AStar {
         Solution.Node startNode = new Solution.Node(dataStructure, null, 0, startH, null);
         pq.add(startNode);
         bestCost.put(startKey, 0);
-        
-        System.out.println("DEBUG: Starting A* Search");
-        System.out.println("Initial State:");
-        dataStructure.displayDataStructure();
-        System.out.println("Initial h = " + startH);
     
-        int cnt = 0;
-        int maxIterations = 100000; // Menambahkan batas maksimum iterasi untuk mencegah loop tak berujung
+        int cnt = 0;// Menambahkan batas maksimum iterasi untuk mencegah loop tak berujung
         
-        while (!pq.isEmpty() && cnt < maxIterations) {
+        while (!pq.isEmpty()) {
             Solution.Node cur = pq.poll();
             String curKey = GameLogic.boardKey(cur.state);
             
@@ -81,17 +75,11 @@ public class AStar {
             cnt++;
             
             int f = cur.gValue + cur.hValue;
-            System.out.println("\nDEBUG: Step " + cnt);
-            System.out.println("Current state:");
-            System.out.println("g = " + cur.gValue + ", h = " + cur.hValue + ", f = " + f);
             
             // Periksa apakah puzzle telah diselesaikan
             if (GameState.isSolved(cur.state)) {
                 long endTime = System.nanoTime();
                 double timeInMs = (endTime - startTime) / 1_000_000.0;
-                System.out.println("DEBUG: Solution found!");
-                System.out.println("Total steps explored: " + cnt);
-                System.out.println("Execution time: " + timeInMs + " ms");
                 return Solution.buildSolution("A-Star", num, cnt, timeInMs, cur);
             }
             
@@ -107,19 +95,8 @@ public class AStar {
                     bestCost.put(nxtKey, g);
                     Solution.Node childNode = new Solution.Node(nxt, move, g, h, cur);
                     pq.add(childNode);
-                    
-                    System.out.println("DEBUG: Added child state with move: " + move);
-                    System.out.println("    g = " + g + ", h = " + h + ", f = " + (g + h));
-                    // Uncomment untuk mencetak state
-                    // nxt.displayBoard();
                 }
             }
-        }
-        
-        if (cnt >= maxIterations) {
-            System.out.println("DEBUG: Stopped after " + maxIterations + " iterations to prevent infinite loop.");
-        } else {
-            System.out.println("DEBUG: No solution found after exploring " + cnt + " states.");
         }
         
         return null;
