@@ -43,59 +43,67 @@ public class AStar {
         // None
     }
 
-    public static Solution solveAStar(DataStructure dataStructure, int num) {
+    public static Solution solveAStar(DataStructure dataStructure , int num) {
+        // DESKRIPSI LOKAL
+        // Fungsi Utama AStar : Menyelesaikan pencarian jalur terpendek dari dataStructure dan tipe heuristiknya.
+        // AStar : A* Algorithm Search berdasarkan heuristik yang dihitung.
+        
+        // KAMUS LOKAL
+        // dataStructure , nxt : Class DataStructure
+        // pq : Priority Queue of Class Solution Sub Class Node
+        // node1 , node2 , cur , childNode : Class Solution Sub Class Node
+        // solveHeuristic : Function Class Heuristic
+        // visited : HashSet of String
+        // bestCost : HashMap of String To Integer
+        // startTime , endTime : Long
+        // num , cnt , f1 , f2 , gValue , hValue : Integer
+        // time : Double
+        // startKey , curKey : String
+
+        // ALGORITMA LOKAL
         long startTime = System.nanoTime();
         Set<String> visited = new HashSet<>();
-        Map<String, Integer> bestCost = new HashMap<>();
-        PriorityQueue<Solution.Node> pq = new PriorityQueue<>((node1, node2) -> {
-            int f1 = node1.gValue + node1.hValue;
-            int f2 = node2.gValue + node2.hValue;
-            return f1 != f2 ? Integer.compare(f1, f2) : Integer.compare(node1.hValue, node2.hValue);
+        Map<String , Integer> bestCost = new HashMap<>();
+        PriorityQueue<Solution.Node> pq = new PriorityQueue<>((node1 , node2) -> {
+            int f1 = node1.solveF();
+            int f2 = node2.solveF();
+            if (f1 != f2) {
+                return Integer.compare(f1 , f2);
+            } else {
+                return Integer.compare(node1.hValue , node2.hValue);
+            } 
         });
-    
         String startKey = GameLogic.boardKey(dataStructure);
-        int startH = Heuristic.solveHeuristic(dataStructure, num);
-        Solution.Node startNode = new Solution.Node(dataStructure, null, 0, startH, null);
-        pq.add(startNode);
-        bestCost.put(startKey, 0);
-    
-        int cnt = 0;// Menambahkan batas maksimum iterasi untuk mencegah loop tak berujung
-        
+        pq.add(new Solution.Node(dataStructure , null , 0 , Heuristic.solveHeuristic(dataStructure , num) , null));
+        bestCost.put(startKey , 0);
+        int cnt = 0;
         while (!pq.isEmpty()) {
             Solution.Node cur = pq.poll();
             String curKey = GameLogic.boardKey(cur.state);
-            
-            // Skip jika state sudah dikunjungi dan cost-nya tidak lebih baik
-            if (visited.contains(curKey) && bestCost.get(curKey) <= cur.gValue) {
-                continue;
-            }
-            
-            visited.add(curKey);
-            cnt++;
-            
-            // Periksa apakah puzzle telah diselesaikan
-            if (GameState.isSolved(cur.state)) {
-                long endTime = System.nanoTime();
-                double timeInMs = (endTime - startTime) / 1_000_000.0;
-                return Solution.buildSolution("A-Star", num, cnt, timeInMs, cur);
-            }
-            
-            // Coba semua gerakan yang mungkin
-            for (GameLogic.Move move : GameLogic.generateMoves(cur.state)) {
-                DataStructure nxt = GameLogic.applyMove(cur.state, move);
-                String nxtKey = GameLogic.boardKey(nxt);
-                int g = cur.gValue + 1;
-                
-                // Evaluasi state baru jika belum pernah dikunjungi atau memiliki cost yang lebih baik
-                if (!visited.contains(nxtKey) || g < bestCost.getOrDefault(nxtKey , Integer.MAX_VALUE)) {
-                    int h = Heuristic.solveHeuristic(nxt , num);
-                    bestCost.put(nxtKey , g);
-                    Solution.Node childNode = new Solution.Node(nxt , move , g , h , cur);
-                    pq.add(childNode);
+            if (!visited.contains(curKey) || bestCost.get(curKey) > cur.gValue) {
+                cnt++;
+                visited.add(curKey);
+                if (GameState.isSolved(cur.state)) {
+                    long endTime = System.nanoTime();
+                    double time = (endTime - startTime) / 1000000;
+                    return Solution.buildSolution("A-Star Search (A*)" , num , cnt , time, cur);
+                } else {
+                    for (GameLogic.Move move : GameLogic.generateMoves(cur.state)) {
+                        DataStructure nxt = GameLogic.applyMove(cur.state , move);
+                        String nxtKey = GameLogic.boardKey(nxt);
+                        int gValue = cur.gValue + 1;
+                        if (!visited.contains(nxtKey) || gValue < bestCost.getOrDefault(nxtKey , Integer.MAX_VALUE)) {
+                            int hValue = Heuristic.solveHeuristic(nxt , num);
+                            bestCost.put(nxtKey , gValue);
+                            Solution.Node childNode = new Solution.Node(nxt , move , gValue , hValue , cur);
+                            pq.add(childNode);
+                        }
+                    }
                 }
             }
         }
-        
-        return null;
+        long endTime = System.nanoTime();
+        double time = (endTime - startTime) / 1000000;
+        return Solution.buildSolution("A-Star Search (A*)" , num , cnt , time , new Solution.Node(dataStructure , null , 0 , 0 , null));
     }
 }
