@@ -253,6 +253,8 @@ public final class GameLogic {
         // KAMUS LOKAL
         // row , mnx , mxx , cnt , x : Integer
         // res : List of Sub Class Move
+        // grid : Matrix of Character
+        // direction : Sub Class Move
 
         // ALGORITMA LOKAL
         List<Move> res = new ArrayList<>();
@@ -287,7 +289,10 @@ public final class GameLogic {
         // Melakukan scanning kemungkinan move secara vertical.
         
         // KAMUS LOKAL
-        // ...
+        // col , mny , mxy , cnt , y : Integer
+        // res : List of Sub Class Move
+        // grid : Matrix of Character
+        // direction : Sub Class Move
 
         // ALGORITMA LOKAL
         List<Move> res = new ArrayList<>();
