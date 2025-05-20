@@ -121,18 +121,13 @@ public class Main {
                         }
                     }
                 }
-                System.out.println("==================================================");
                 Solution solution = switch (algorithmOption) {
                     case 1 -> UCS.solveUCS(dataStructure , 0);
                     case 2 -> GBFS.solveGBFS(dataStructure , heuristicOption);
                     case 3 -> AStar.solveAStar(dataStructure , heuristicOption);
-                    default -> null;
+                    default -> Solution.buildSolution("Unknown Algorithm" , 0 , 0 , 0 ,  new Solution.Node(dataStructure , null , 0 , 0 , null));
                 };
-                if (solution == null) {
-                    System.out.println("Maaf, Puzzle Rush Hour Tersebut Tidak Memiliki Solusi.");
-                } else {
-                    solution.displaySolution();
-                }
+                solution.displaySolution();
                 System.out.println("==================================================");
                 String response;
                 while (true) {

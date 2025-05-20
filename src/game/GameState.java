@@ -62,7 +62,6 @@ public class GameState {
             int bot = piece.getCoordinates().stream().mapToInt(Point::getY).max().orElseThrow();
             int top = piece.getCoordinates().stream().mapToInt(Point::getY).min().orElseThrow();
             if (exit.getY() == -1) {
-                // System.out.printf("EXIT %c ~~~ X : %d , Y : %d , Col : %d , T : %d , B : %d\n" , piece.getType() , exit.getX() , exit.getY() + 1 , col , dataStructure.getHeight() - 1 - top , dataStructure.getHeight() - 1 - bot);
                 return ((exit.getX() == col) && (dataStructure.getHeight() - 1 - bot <= exit.getY() + 1));
             } else {
                 return ((exit.getX() == col) && (dataStructure.getHeight() - 1 - top >= exit.getY() - 1));

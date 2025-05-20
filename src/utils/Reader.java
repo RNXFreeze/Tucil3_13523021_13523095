@@ -114,7 +114,6 @@ public class Reader {
                     pieceCoordinates.put(cell, new ArrayList<>());
                 }
                 pieceCoordinates.get(cell).add(new Point(j, i));  // X=j, Y=i (kolom, baris)
-                System.out.println("Found piece " + cell + " at (" + j + ", " + i + ")");
             }
         }
         

@@ -76,6 +76,8 @@ public class GBFS {
                 }
             }
         }
-        return null;
+        long endTime = System.nanoTime();
+        double time = (endTime - startTime) / 1000000;
+        return Solution.buildSolution("Greedy Best First Search (GBFS)" , num , cnt , time , new Solution.Node(dataStructure , null , 0 , 0 , null));
     }
 }

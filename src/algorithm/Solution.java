@@ -396,12 +396,10 @@ public final class Solution {
 
         // KAMUS LOKAL
         // algorithm : String
-        // heuristicId : Integer
-        // nodesVisited : Integer
+        // heuristicId , nodesVisited , i : Integer
         // time : Double
         // path : List of Class DataStructure
         // moves : List of Class GameLogic Sub Class Move
-        // i : Integer
 
         // ALGORITMA LOKAL
         System.out.println("==================================================");
@@ -411,17 +409,34 @@ public final class Solution {
         System.out.printf("Step Count   : %d Step\n" , this.stepCount);
         System.out.printf("Visited Node : %d Node\n" , this.nodesVisited);
         System.out.printf("Time Usage   : %d ms\n" , (int) this.time);
-        System.out.println("==================================================");
-        System.out.println("Display Board Awal :");
-        System.out.print(this.path.get(0).getBoard().toString());
         if (this.moves.isEmpty()) {
-            System.out.println("\nDisplay Board Akhir :");
-            System.out.print(this.path.get(0).getBoard().toString());
+            System.out.println("Success      : NO");
         } else {
+            System.out.println("Success      : YES");
+        }
+        System.out.println("==================================================");
+        if (this.moves.isEmpty()) {
+            System.out.println("\nDisplay Board Awal & Akhir :");
+            this.path.get(0).displayBoard();
+        } else {
+            System.out.println("Display Board Awal :");
+            this.path.get(0).displayBoard();
             for (int i = 0 ; i < this.moves.size() ; i++) {
                 System.out.printf("\nMOVE %d : %s\n" , (i + 1) , this.moves.get(i));
-                System.out.print(this.path.get(i + 1).getBoard().toString());
+                this.path.get(i + 1).displayBoard();
             }
+        }
+        System.out.println("==================================================");
+        System.out.println("RECALL INFORMATION SOLUTION RESULT :");
+        System.out.printf("Algorithm    : %s\n" , this.algorithm);
+        System.out.printf("Heuristic    : %d\n" , this.heuristicId);
+        System.out.printf("Step Count   : %d Step\n" , this.stepCount);
+        System.out.printf("Visited Node : %d Node\n" , this.nodesVisited);
+        System.out.printf("Time Usage   : %d ms\n" , (int) this.time);
+        if (this.moves.isEmpty()) {
+            System.out.println("Success      : NO");
+        } else {
+            System.out.println("Success      : YES");
         }
     }
 }

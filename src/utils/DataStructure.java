@@ -22,7 +22,7 @@ public class DataStructure {
     // DataStructure : Constructor Class DataStructure
     // getWidth , getHeight , getPieceCount , getExit , getBoard , getPieces : Procedure
     // setWidth , setHeight , setPieceCount , setExit , setBoard , setPieces : Procedure
-    // displayDataStructure : Procedure
+    // displayBoard , displayDataStructure : Procedure
 
     // PRIVATE ATTRIBUTES
     private int width;
@@ -183,6 +183,63 @@ public class DataStructure {
         this.pieces = pieces;
     }
 
+    public void displayBoard() {
+        // DESKRIPSI LOKAL
+        // Display Board From Data Structure To CLI Terminal
+        
+        // KAMUS LOKAL
+        // board : Class Board
+        // exit : Class Point
+        // width , height , i , j : Integer
+
+        // ALGORITMA LOKAL
+        if (this.exit.getX() == -1) {
+            for (int i = 0 ; i < this.height ; i++) {
+                if (this.exit.getY() - 1 == i) {
+                    System.out.print("K");
+                } else {
+                    System.out.print("  ");
+                }
+                for (int j = 0 ; j < this.width ; j++) {
+                    System.out.print(board.getCell(j , i) + " ");
+                }
+                System.out.println();
+            }
+        } else if (this.exit.getY() == -1) {
+            for (int i = 0 ; i < this.height ; i++) {
+                for (int j = 0 ; j < this.width ; j++) {
+                    System.out.print(board.getCell(j , i) + " ");
+                }
+                System.out.println();
+            }
+            for (int i = 0 ; i < this.exit.getX() ; i++) {
+                System.out.print("  ");
+            }
+            System.out.println("K");
+        } else if (this.exit.getY() == this.height) {
+            for (int i = 0 ; i < this.exit.getX() ; i++) {
+                System.out.print("  ");
+            }
+            System.out.println("K");
+            for (int i = 0 ; i < this.height ; i++) {
+                for (int j = 0 ; j < this.width ; j++) {
+                    System.out.print(board.getCell(j , i) + " ");
+                }
+                System.out.println();
+            }
+        } else {
+            for (int i = 0 ; i < this.height ; i++) {
+                for (int j = 0 ; j < this.width ; j++) {
+                    System.out.print(board.getCell(j , i) + " ");
+                }
+                if (this.exit.getY() - 1 == i) {
+                    System.out.print("K");
+                }
+                System.out.println();
+            }
+        }
+    }
+
     public void displayDataStructure() {
         // DESKRIPSI LOKAL
         // Display Data Structure CLI Terminal
@@ -195,20 +252,23 @@ public class DataStructure {
         // width , height , pieceCount , i , j : Integer
 
         // ALGORITMA LOKAL
-        System.out.println("Width : " + this.width);
-        System.out.println("Height : " + this.height);
-        System.out.println("Piece Count : " + this.pieceCount);
-        System.out.println("Keluar : " + this.exit);
-        System.out.println("Pieces : ");
+        System.out.println("Width Size    : " + this.width);
+        System.out.println("Height Size   : " + this.height);
+        System.out.println("Piece Count   : " + this.pieceCount);
+        System.out.println("Exit Position : " + this.exit);
+        System.out.println("Pieces :");
         for (Piece piece : this.pieces) {
-            System.out.println("\tType : " + piece.getType() + " , Coordinates : " + piece.getCoordinates() + " , Orientation : " + piece.getOrientation());
-        }
-        System.out.println("Board : ");
-        for (int i = 0 ; i < this.height ; i++) {
-            for (int j = 0 ; j < this.width ; j++) {
-                System.out.print(board.getCell(j , i) + " ");
+            if (piece.getType() == '.') {
+                System.out.println("  Type : " + piece.getType() + " , Coordinates : [Other]" + " , Orientation : Point Dot Blank Space (-)");
+            } else {
+                if (piece.getOrientation() == 0) {
+                    System.out.println("  Type : " + piece.getType() + " , Coordinates : " + piece.getCoordinates() + " , Orientation : Horizontal (0)");
+                } else {
+                    System.out.println("  Type : " + piece.getType() + " , Coordinates : " + piece.getCoordinates() + " , Orientation : Vertical (1)");
+                }
             }
-            System.out.println();
         }
+        System.out.println("Puzzle Board :");
+        this.displayBoard();
     }
 }

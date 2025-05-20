@@ -66,7 +66,7 @@ public class UCS {
             if (GameState.isSolved(cur.state)) {
                 long endTime = System.nanoTime();
                 double time = (endTime - startTime) / 1000000;
-                return Solution.buildSolution("UCS" , num , cnt , time , cur);
+                return Solution.buildSolution("Uniform Cost Search (UCS)" , num , cnt , time , cur);
             } else {
                 for (GameLogic.Move move : GameLogic.generateMoves(cur.state)) {
                     DataStructure nxt = GameLogic.applyMove(cur.state , move);
@@ -77,6 +77,8 @@ public class UCS {
                 }
             }
         }
-        return null;
+        long endTime = System.nanoTime();
+        double time = (endTime - startTime) / 1000000;
+        return Solution.buildSolution("Uniform Cost Search (UCS)" , num , cnt , time , new Solution.Node(dataStructure , null , 0 , 0 , null));
     }
 }
