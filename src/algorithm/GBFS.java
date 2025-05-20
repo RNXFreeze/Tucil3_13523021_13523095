@@ -38,7 +38,7 @@ public class GBFS {
         // None
     }
 
-    public static Solution solveGBFS(DataStructure dataStructure , int num) {
+    public static Solution solveGBFS(String filePath , DataStructure dataStructure , int num) {
         // DESKRIPSI LOKAL
         // Fungsi Utama GBFS : Menyelesaikan pencarian jalur terpendek dari dataStructure dan tipe heuristiknya.
         // GBFS : Greedy Best First Search berdasarkan heuristik yang dihitung.
@@ -52,7 +52,7 @@ public class GBFS {
         // startTime , endTime : Long
         // num , cnt : Integer
         // time : Double
-        // key : String
+        // filePath , key : String
 
         // ALGORITMA LOKAL
         long startTime = System.nanoTime();
@@ -67,7 +67,7 @@ public class GBFS {
                 if (GameState.isSolved(cur.state)) {
                     long endTime = System.nanoTime();
                     double time = (endTime - startTime) / 1000000;
-                    return Solution.buildSolution("Greedy Best First Search (GBFS)" , num , cnt + 1 , time , cur);
+                    return Solution.buildSolution(filePath , "Greedy Best First Search (GBFS)" , num , cnt + 1 , time , cur);
                 } else {
                     for (GameLogic.Move move : GameLogic.generateMoves(cur.state)) {
                         DataStructure nxt = GameLogic.applyMove(cur.state , move);
@@ -78,6 +78,6 @@ public class GBFS {
         }
         long endTime = System.nanoTime();
         double time = (endTime - startTime) / 1000000;
-        return Solution.buildSolution("Greedy Best First Search (GBFS)" , num , cnt , time , new Solution.Node(dataStructure , null , 0 , 0 , null));
+        return Solution.buildSolution(filePath , "Greedy Best First Search (GBFS)" , num , cnt , time , new Solution.Node(dataStructure , null , 0 , 0 , null));
     }
 }

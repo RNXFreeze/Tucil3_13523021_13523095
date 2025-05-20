@@ -38,7 +38,7 @@ public class UCS {
         // None
     }
 
-    public static Solution solveUCS(DataStructure dataStructure , int num) {
+    public static Solution solveUCS(String filePath , DataStructure dataStructure , int num) {
         // DESKRIPSI LOKAL
         // Fungsi Utama UCS : Menyelesaikan pencarian jalur terpendek dari dataStructure dan tipe heuristiknya.
         // UCS Blind Search : Tidak Menggunakan Heuristik Apapun (BFS Uniform).
@@ -51,7 +51,7 @@ public class UCS {
         // startTime , endTime : Long
         // num , cnt : Integer
         // time : Double
-        // key : String
+        // filePath , key : String
 
         // ALGORITMA LOKAL
         long startTime = System.nanoTime();
@@ -66,7 +66,7 @@ public class UCS {
             if (GameState.isSolved(cur.state)) {
                 long endTime = System.nanoTime();
                 double time = (endTime - startTime) / 1000000;
-                return Solution.buildSolution("Uniform Cost Search (UCS)" , num , cnt + 1 , time , cur);
+                return Solution.buildSolution(filePath , "Uniform Cost Search (UCS)" , num , cnt + 1 , time , cur);
             } else {
                 for (GameLogic.Move move : GameLogic.generateMoves(cur.state)) {
                     DataStructure nxt = GameLogic.applyMove(cur.state , move);
@@ -79,6 +79,6 @@ public class UCS {
         }
         long endTime = System.nanoTime();
         double time = (endTime - startTime) / 1000000;
-        return Solution.buildSolution("Uniform Cost Search (UCS)" , num , cnt , time , new Solution.Node(dataStructure , null , 0 , 0 , null));
+        return Solution.buildSolution(filePath , "Uniform Cost Search (UCS)" , num , cnt , time , new Solution.Node(dataStructure , null , 0 , 0 , null));
     }
 }

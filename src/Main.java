@@ -67,7 +67,7 @@ public class Main {
                 }
                 try {
                     dataStructure = Reader.readFile(filePath);
-                    System.out.println("Success : File Berhasil Dibaca.");
+                    System.out.printf("Success : File Berhasil Dibaca : %s\n" , filePath);
                     break;
                 } catch (IOException e) {
                     System.out.println("Error : File Gagal Dibaca : " + e.getMessage() + ".");
@@ -123,10 +123,10 @@ public class Main {
                 }
             }
             Solution solution = switch (algorithmOption) {
-                case 1 -> UCS.solveUCS(dataStructure , 0);
-                case 2 -> GBFS.solveGBFS(dataStructure , heuristicOption);
-                case 3 -> AStar.solveAStar(dataStructure , heuristicOption);
-                default -> Solution.buildSolution("Unknown Algorithm" , 0 , 0 , 0 ,  new Solution.Node(dataStructure , null , 0 , 0 , null));
+                case 1 -> UCS.solveUCS(filePath , dataStructure , 0);
+                case 2 -> GBFS.solveGBFS(filePath , dataStructure , heuristicOption);
+                case 3 -> AStar.solveAStar(filePath , dataStructure , heuristicOption);
+                default -> Solution.buildSolution(filePath , "Unknown Algorithm" , 0 , 0 , 0 ,  new Solution.Node(dataStructure , null , 0 , 0 , null));
             };
             solution.displaySolution();
             System.out.println("==================================================");
@@ -155,7 +155,7 @@ public class Main {
                     }
                     try {
                         Saver.saveFile(response , solution);
-                        System.out.println("Success : File Berhasil Disimpan.");
+                        System.out.printf("Success : File Berhasil Disimpan : %s\n" , response);
                         break;
                     } catch (IOException e) {
                         System.out.println("Error : File Gagal Disimpan : " + e.getMessage() + ".");

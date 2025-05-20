@@ -23,13 +23,14 @@ public final class Solution {
     // KAMUS
     // Solution : Constructor Class Solution
     // Node : Sub Class Node
-    // getAlgorithm , getHeuristicId , getNodesVisited , getStepCount , getTime , getPath , getMoves : Procedure
-    // setAlgorithm , setHeuristicId , setNodesVisited , setStepCount , setTime , setPath , setMoves : Procedure
+    // getFilePath , getAlgorithm , getHeuristicId , getNodesVisited , getStepCount , getTime , getPath , getMoves : Procedure
+    // setFilePath , setAlgorithm , setHeuristicId , setNodesVisited , setStepCount , setTime , setPath , setMoves : Procedure
     // buildSolution , displaySolution , displayColoredBoard , displayBoardWithHighlight : Procedure
     
     // PRIVATE ATTRIBUTES - Main
-    private final String algorithm;
-    private final int heuristicId;
+    private String filePath;
+    private String algorithm;
+    private int heuristicId;
     private int nodesVisited;
     private int stepCount;
     private double time;
@@ -47,11 +48,12 @@ public final class Solution {
     private static final String ANSI_BACKGROUND_RED = "\u001B[41m";
     private static final String ANSI_BACKGROUND_GREEN = "\u001B[42m";
 
-    public Solution(String algorithm , int heuristicId , int nodesVisited , double time , List<DataStructure> path , List<GameLogic.Move> moves) {
+    public Solution(String filePath , String algorithm , int heuristicId , int nodesVisited , double time , List<DataStructure> path , List<GameLogic.Move> moves) {
         // DESKRIPSI LOKAL
         // Instansiasi Constructor Class Solution
 
         // KAMUS LOKAL
+        // filePath : String
         // algorithm : String
         // heuristicId : Integer
         // nodesVisited : Integer
@@ -60,6 +62,7 @@ public final class Solution {
         // moves : List of Class GameLogic Sub Class Move
 
         // ALGORITMA LOKAL
+        this.filePath = filePath;
         this.algorithm = algorithm;
         this.heuristicId = heuristicId;
         this.nodesVisited = nodesVisited;
@@ -67,6 +70,17 @@ public final class Solution {
         this.path = path;
         this.moves = moves;
         this.stepCount = moves.size();
+    }
+
+    public String getFilePath() {
+        // DESKRIPSI LOKAL
+        // Getter File Path
+
+        // KAMUS LOKAL
+        // filePath : String
+
+        // ALGORITMA LOKAL
+        return this.filePath;
     }
 
     public String getAlgorithm() {
@@ -146,7 +160,18 @@ public final class Solution {
         return this.moves;
     }
 
-    public String setAlgorithm() {
+    public void setFilePath(String filePath) {
+        // DESKRIPSI LOKAL
+        // Setter File Path
+
+        // KAMUS LOKAL
+        // filePath : String
+
+        // ALGORITMA LOKAL
+        this.filePath = filePath;
+    }
+
+    public void setAlgorithm(String algorithm) {
         // DESKRIPSI LOKAL
         // Setter Algorithm
 
@@ -154,10 +179,10 @@ public final class Solution {
         // algorithm : String
 
         // ALGORITMA LOKAL
-        return this.algorithm;
+        this.algorithm = algorithm;
     }
 
-    public int setHeuristicId() {
+    public void setHeuristicId(int heuristicId) {
         // DESKRIPSI LOKAL
         // Setter Heuristic ID
 
@@ -165,7 +190,7 @@ public final class Solution {
         // heuristicId : Integer
 
         // ALGORITMA LOKAL
-        return this.heuristicId;
+        this.heuristicId = heuristicId;
     }
 
     public void setNodesVisited(int nodesVisited) {
@@ -380,7 +405,7 @@ public final class Solution {
         }
     }
 
-    public static Solution buildSolution(String algorithm , int heuristicId , int visitedCount , double time , Node goal) {
+    public static Solution buildSolution(String filePath , String algorithm , int heuristicId , int visitedCount , double time , Node goal) {
         // DESKRIPSI LOKAL
         // Membangun tipe curDataStructure Solution dari hasil algoritma pencarian
 
@@ -401,7 +426,7 @@ public final class Solution {
                 moves.addFirst(node.move);
             }
         }
-        return new Solution(algorithm , heuristicId , visitedCount , time , boards , moves);
+        return new Solution(filePath , algorithm , heuristicId , visitedCount , time , boards , moves);
     }
 
     public void displaySolution() {
@@ -418,6 +443,7 @@ public final class Solution {
         // ALGORITMA LOKAL
         System.out.println(ANSI_BOLD + "==================================================" + ANSI_RESET);
         System.out.println(ANSI_BOLD + "INFORMATION SOLUTION RESULT :" + ANSI_RESET);
+        System.out.printf("File Path    : %s\n" , this.filePath);
         System.out.printf("Algorithm    : %s%s%s\n" , ANSI_CYAN , this.algorithm , ANSI_RESET);
         if (this.heuristicId == 0) {
             System.out.println("Heuristic    : None");
@@ -454,6 +480,7 @@ public final class Solution {
         }
         System.out.println(ANSI_BOLD + "==================================================" + ANSI_RESET);
         System.out.println(ANSI_BOLD + "RECALL INFORMATION SOLUTION RESULT :" + ANSI_RESET);
+        System.out.printf("File Path    : %s\n" , this.filePath);
         System.out.printf("Algorithm    : %s%s%s\n" , ANSI_CYAN , this.algorithm , ANSI_RESET);
         if (this.heuristicId == 0) {
             System.out.println("Heuristic    : None");
