@@ -20,7 +20,7 @@ public class AStar {
     
     // KAMUS
     // AStar : Constructor Class AStar
-    // solveAStar , solveAStar1 , solveAStar2 , solveAStar3 : Function
+    // solveAStar : Function
 
     // PRIVATE ATTRIBUTES
     // None
@@ -36,58 +36,23 @@ public class AStar {
         // None
     }
 
-    public static void solveAStar(DataStructure dataStructure , int num) {
+    public static Solution solveAStar(DataStructure dataStructure , int num) {
         // DESKRIPSI LOKAL
         // Fungsi Utama AStar : Menyelesaikan pencarian jalur terpendek dari dataStructure dan tipe heuristiknya.
+        // AStar : Menyelesaikan pencarian jalur terpendek dengan algoritma AStar dan modifikasi heuristik.
         
         // KAMUS LOKAL
         // dataStructure : Class DataStructure
-        // solveAStar1 , solveAStar2 , solveAStar3 : Function
-        // num : Integer
+        // cur : Class Solution Sub Class Node
+        // startTime , endTime : Long
+        // num , cnt : Integer
 
         // ALGORITMA LOKAL
-        if (num == 1) {
-            solveAStar1(dataStructure);
-        } else if (num == 2) {
-            solveAStar2(dataStructure);
-        } else {
-            solveAStar3(dataStructure);
-        }
-    }
-
-    private static void solveAStar1(DataStructure dataStructure) {
-        // DESKRIPSI LOKAL
-        // AStar 1 : Menyelesaikan pencarian jalur terpendek dari dataStructure dengan menggunakan AStar Heuristik 1.
-        
-        // KAMUS LOKAL
-        // dataStructure : Class DataStructure
-        // ...
-
-        // ALGORITMA LOKAL
-        // ...
-    }
-
-    private static void solveAStar2(DataStructure dataStructure) {
-        // DESKRIPSI LOKAL
-        // AStar 2 : Menyelesaikan pencarian jalur terpendek dari dataStructure dengan menggunakan AStar Heuristik 2.
-        
-        // KAMUS LOKAL
-        // dataStructure : Class DataStructure
-        // ...
-
-        // ALGORITMA LOKAL
-        // ...
-    }
-
-    private static void solveAStar3(DataStructure dataStructure) {
-        // DESKRIPSI LOKAL
-        // AStar 3 : Menyelesaikan pencarian jalur terpendek dari dataStructure dengan menggunakan AStar Heuristik 3.
-        
-        // KAMUS LOKAL
-        // dataStructure : Class DataStructure
-        // ...
-
-        // ALGORITMA LOKAL
-        // ...
+        long startTime = System.nanoTime();
+        int cnt = 0;
+        Solution.Node cur = null;
+        long endTime = System.nanoTime();
+        double time = (endTime - startTime) / 1000000;
+        return Solution.buildSolution("A-Star" , num , cnt , time , cur);
     }
 }

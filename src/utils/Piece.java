@@ -24,16 +24,16 @@ public class Piece {
 
     // PRIVATE ATTRIBUTES
     private char type;
-    private List<Piece> coordinates;
+    private List<Point> coordinates;
     private int orientation;
 
-    public Piece(char type , List<Piece> coordinates , int orientation) {
+    public Piece(char type , List<Point> coordinates , int orientation) {
         // DESKRIPSI LOKAL
         // Instansiasi Constructor Class Piece
         
         // KAMUS LOKAL
         // type : Character
-        // coordinates : List Of Class Piece
+        // coordinates : List Of Class Point
         // orientation : Integer
 
         // ALGORITMA LOKAL
@@ -53,12 +53,12 @@ public class Piece {
         return this.type;
     }
     
-    public List<Piece> getCoordinates() {
+    public List<Point> getCoordinates() {
         // DESKRIPSI LOKAL
         // Getter Coordinates
         
         // KAMUS LOKAL
-        // coordinates : List Of Class Piece
+        // coordinates : List Of Class Point
 
         // ALGORITMA LOKAL
         return this.coordinates;
@@ -86,12 +86,12 @@ public class Piece {
         this.type = type;
     }
 
-    public void setCoordinates(List<Piece> coordinates) {
+    public void setCoordinates(List<Point> coordinates) {
         // DESKRIPSI LOKAL
         // Setter Coordinates
         
         // KAMUS LOKAL
-        // coordinates : List Of Class Piece
+        // coordinates : List Of Class Point
 
         // ALGORITMA LOKAL
         this.coordinates = coordinates;

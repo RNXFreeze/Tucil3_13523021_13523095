@@ -40,7 +40,7 @@ public final class GameLogic {
 
     public static class Move {
         // DESKRIPSI SUBCLASS
-        // Public Class GameLogic
+        // Public Class Move
         
         // KAMUS SUBCLASS
         // Move : Constructor Sub Class Move
@@ -158,6 +158,26 @@ public final class GameLogic {
             return res;
         }
     }
+
+    public static String boardKey(DataStructure dataStructure) {
+        // DESKRIPSI LOKAL
+        // Membangun string linear dari dataStructure untuk digunakan sebagai key pada HashSet & HashMap
+
+        // KAMUS LOKAL
+        // dataStructure : Class DataStructure
+        // sb : StringBuilder
+        // row : Array of Character
+        // grid : Matrix of Character
+
+        // ALGORITMA LOKAL
+        StringBuilder sb = new StringBuilder();
+        char[][] grid = dataStructure.getBoard().getGrid();
+        for (char[] row : grid) {
+            sb.append(row);
+        }
+        return sb.toString();
+    }
+
 
     private GameLogic() {
         // DESKRIPSI LOKAL

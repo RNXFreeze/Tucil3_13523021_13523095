@@ -11,6 +11,8 @@
 
 // Package & Import
 package algorithm;
+import game.*;
+import java.util.*;
 import utils.*;
 
 // Class Definition & Implementation
@@ -20,7 +22,7 @@ public class UCS {
     
     // KAMUS
     // UCS : Constructor Class UCS
-    // solveUCS , solveUCS1 , solveUCS2 , solveUCS3 : Function
+    // solveUCS : Function
 
     // PRIVATE ATTRIBUTES
     // None
@@ -36,58 +38,45 @@ public class UCS {
         // None
     }
 
-    public static void solveUCS(DataStructure dataStructure , int num) {
+    public static Solution solveUCS(DataStructure dataStructure , int num) {
         // DESKRIPSI LOKAL
         // Fungsi Utama UCS : Menyelesaikan pencarian jalur terpendek dari dataStructure dan tipe heuristiknya.
+        // UCS Blind Search : Tidak Menggunakan Heuristik Apapun (BFS Uniform).
         
         // KAMUS LOKAL
-        // dataStructure : Class DataStructure
-        // solveUCS1 , solveUCS2 , solveUCS3 : Function
-        // num : Integer
+        // dataStructure , nxt : Class DataStructure
+        // pq : Priority Queue of Class Solution Sub Class Node
+        // node , cur : Class Solution Sub Class Node
+        // visited : HashSet of String
+        // startTime , endTime : Long
+        // num , cnt : Integer
+        // time : Double
+        // key : String
 
         // ALGORITMA LOKAL
-        if (num == 1) {
-            solveUCS1(dataStructure);
-        } else if (num == 2) {
-            solveUCS2(dataStructure);
-        } else {
-            solveUCS3(dataStructure);
+        long startTime = System.nanoTime();
+        PriorityQueue<Solution.Node> pq = new PriorityQueue<>(Comparator.comparingInt(node -> node.gValue));
+        Set<String> visited = new HashSet<>();
+        pq.add(new Solution.Node(dataStructure , null , 0 , 0 , null));
+        visited.add(GameLogic.boardKey(dataStructure));
+        int cnt = 0;
+        while (!pq.isEmpty()) {
+            cnt++;
+            Solution.Node cur = pq.poll();
+            if (GameState.isSolved(cur.state)) {
+                long endTime = System.nanoTime();
+                double time = (endTime - startTime) / 1000000;
+                return Solution.buildSolution("UCS" , num , cnt , time , cur);
+            } else {
+                for (GameLogic.Move move : GameLogic.generateMoves(cur.state)) {
+                    DataStructure nxt = GameLogic.applyMove(cur.state , move);
+                    String key = GameLogic.boardKey(nxt);
+                    if (visited.add(key)) {
+                        pq.add(new Solution.Node(nxt , move , cur.gValue + 1 , 0 , cur));
+                    }
+                }
+            }
         }
-    }
-
-    private static void solveUCS1(DataStructure dataStructure) {
-        // DESKRIPSI LOKAL
-        // UCS 1 : Menyelesaikan pencarian jalur terpendek dari dataStructure dengan menggunakan UCS Heuristik 1.
-        
-        // KAMUS LOKAL
-        // dataStructure : Class DataStructure
-        // ...
-
-        // ALGORITMA LOKAL
-        // ...
-    }
-
-    private static void solveUCS2(DataStructure dataStructure) {
-        // DESKRIPSI LOKAL
-        // UCS 2 : Menyelesaikan pencarian jalur terpendek dari dataStructure dengan menggunakan UCS Heuristik 2.
-        
-        // KAMUS LOKAL
-        // dataStructure : Class DataStructure
-        // ...
-
-        // ALGORITMA LOKAL
-        // ...
-    }
-
-    private static void solveUCS3(DataStructure dataStructure) {
-        // DESKRIPSI LOKAL
-        // UCS 3 : Menyelesaikan pencarian jalur terpendek dari dataStructure dengan menggunakan UCS Heuristik 3.
-        
-        // KAMUS LOKAL
-        // dataStructure : Class DataStructure
-        // ...
-
-        // ALGORITMA LOKAL
-        // ...
+        return null;
     }
 }

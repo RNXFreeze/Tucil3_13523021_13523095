@@ -10,7 +10,6 @@
 /* PIC F01    : K01 - 13523021 - Muhammad Raihan Nazhim Oktana                   */
 
 // Package & Import
-package src;
 import java.io.*;
 import utils.DataStructure;
 import utils.Reader;

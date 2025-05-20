@@ -12,7 +12,6 @@
 // Package & Import
 package game;
 import utils.*;
-import algorithm.*;
 
 // Class Definition & Implementation
 public class GameState {
@@ -37,7 +36,7 @@ public class GameState {
         // None
     }
 
-    public boolean isSolved(DataStructure dataStructure) {
+    public static boolean isSolved(DataStructure dataStructure) {
         // DESKRIPSI LOKAL
         // Mengecek apakah puzzle telah solved atau belum.
         

@@ -12,7 +12,7 @@
 // Package & Import
 package algorithm;
 import game.*;
-import java.util.List;
+import java.util.*;
 import utils.*;
 
 // Class Definition & Implementation
@@ -25,8 +25,8 @@ public final class Solution {
     // displaySolution : Procedure cetak hasil solusi
 
     // PRIVATE ATTRIBUTES
-    private String algorithm;
-    private int heuristicId;
+    private final String algorithm;
+    private final int heuristicId;
     private int nodesVisited;
     private int stepCount;
     private double time;
@@ -209,6 +209,187 @@ public final class Solution {
         this.moves = moves;
     }
 
+    public static class Node {
+        // DESKRIPSI SUBCLASS
+        // Public Class Node
+        
+        // KAMUS SUBCLASS
+        // Node : Constructor Sub Class Node
+        // solveF : Function
+        // getState , getMove , getGValue , getHValue , getParent : Procedure
+        // setState , setMove , setGValue , setHValue , setParent : Procedure
+
+        // PRIVATE ATTRIBUTES SUBCLASS
+        public DataStructure state;
+        public GameLogic.Move move;
+        public int gValue;
+        public int hValue;
+        public Node parent;
+
+        public Node(DataStructure state , GameLogic.Move move , int gValue , int hValue , Node parent) {
+            // DESKRIPSI SUBCLASS LOKAL
+            // Instansiasi Constructor Class Node
+            
+            // KAMUS SUBCLASS LOKAL
+            // state : Class DataStructure
+            // move : Class GameLogic Sub Class Move
+            // parent : Class Solution Sub Class Node
+            // gValue , hValue : Integer
+
+            // ALGORITMA SUBCLASS LOKAL
+            this.state = state;
+            this.move = move;
+            this.gValue = gValue;
+            this.hValue = hValue;
+            this.parent = parent;
+        }
+
+        public DataStructure getState() {
+            // DESKRIPSI LOKAL
+            // Getter State
+
+            // KAMUS LOKAL
+            // state : Class DataStructure
+
+            // ALGORITMA LOKAL
+            return this.state;
+        }
+
+        public GameLogic.Move getMove() {
+            // DESKRIPSI LOKAL
+            // Getter Move
+
+            // KAMUS LOKAL
+            // move : Class GameLogic Sub Class Move
+
+            // ALGORITMA LOKAL
+            return this.move;
+        }
+
+        public int getGValue() {
+            // DESKRIPSI LOKAL
+            // Getter G Value
+
+            // KAMUS LOKAL
+            // gValue : Integer
+
+            // ALGORITMA LOKAL
+            return this.gValue;
+        }
+
+        public int getHValue() {
+            // DESKRIPSI LOKAL
+            // Getter H Value
+
+            // KAMUS LOKAL
+            // hValue : Integer
+            
+            // ALGORITMA LOKAL
+            return this.hValue;
+        }
+
+        public Node getParent() {
+            // DESKRIPSI LOKAL
+            // Getter Parent
+
+            // KAMUS LOKAL
+            // parent : Class Solution Sub Class Node
+
+            // ALGORITMA LOKAL
+            return this.parent;
+        }
+
+        public void setState(DataStructure state) {
+            // DESKRIPSI LOKAL
+            // Setter State
+
+            // KAMUS LOKAL
+            // state : Class DataStructure
+
+            // ALGORITMA LOKAL
+            this.state = state;
+        }
+
+        public void setMove(GameLogic.Move move) {
+            // DESKRIPSI LOKAL
+            // Setter Move
+
+            // KAMUS LOKAL
+            // move : Class GameLogic Sub Class Move
+
+            // ALGORITMA LOKAL
+            this.move = move;
+        }
+
+        public void setGValue(int gValue) {
+            // DESKRIPSI LOKAL
+            // Setter G Value
+
+            // KAMUS LOKAL
+            // gValue : Integer
+
+            // ALGORITMA LOKAL
+            this.gValue = gValue;
+        }
+
+        public void setHValue(int hValue) {
+            // DESKRIPSI LOKAL
+            // Setter H Value
+
+            // KAMUS LOKAL
+            // hValue : Integer
+            
+            // ALGORITMA LOKAL
+            this.hValue = hValue;
+        }
+
+        public void setParent(Node parent) {
+            // DESKRIPSI LOKAL
+            // Setter Parent
+
+            // KAMUS LOKAL
+            // parent : Class Solution Sub Class Node
+
+            // ALGORITMA LOKAL
+            this.parent = parent;
+        }
+
+        public int solveF() {
+            // DESKRIPSI SUBCLASS LOKAL
+            // Menghitung nilai F pada algoritma pencarian A-Star
+            
+            // KAMUS SUBCLASS LOKAL
+            // gValue , hValue : Integer
+
+            // ALGORITMA SUBCLASS LOKAL
+            return this.gValue + this.hValue;
+        }
+    }
+
+    public static Solution buildSolution(String algorithm , int heuristicId , int visitedCount , double time , Node goal) {
+        // DESKRIPSI LOKAL
+        // Membangun tipe data Solution dari hasil algoritma pencarian
+
+        // KAMUS LOKAL
+        // moves : List of Class GameLogic Sub Class Move
+        // boards : List of Class DataStructure
+        // node , goal : Sub Class Node
+        // heuristicId , visitedCount : Integer
+        // algorithm : String
+        // time : Double
+
+        // ALGORITMA LOKAL
+        LinkedList<DataStructure> boards = new LinkedList<>();
+        LinkedList<GameLogic.Move> moves = new LinkedList<>();
+        for (Node node = goal ; node != null ; node = node.parent) {
+            boards.addFirst(node.state);
+            if (node.move != null) {
+                moves.addFirst(node.move);
+            }
+        }
+        return new Solution(algorithm , heuristicId , visitedCount , time , boards , moves);
+    }
+
     public void displaySolution() {
         // DESKRIPSI LOKAL
         // Menampilkan solusi dalam format CLI yang terstruktur
@@ -231,7 +412,7 @@ public final class Solution {
         System.out.println("Papan Awal :");
         System.out.print(this.path.get(0).getBoard().toString());
         for (int i = 0 ; i < this.moves.size() ; i++) {
-            System.out.printf("%nGerakan %d : %s%n" , (i + 1) , this.moves.get(i));
+            System.out.printf("%nGerakan %d : %state%n" , (i + 1) , this.moves.get(i));
             System.out.print(this.path.get(i + 1).getBoard().toString());
         }
     }

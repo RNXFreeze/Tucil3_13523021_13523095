@@ -12,9 +12,7 @@
 // Package & Import
 package utils;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.*;
 
 // Class Definition & Implementation
@@ -125,12 +123,12 @@ public class Reader {
             char type = entry.getKey();
             List<Point> coords = entry.getValue();
 
-            for (Point p : coords) {
-                int newY = (p.getY() + height - 1);
+            for (Point point : coords) {
+                int newY = (point.getY() + height - 1);
                 if (newY >= height) {
                     newY -= ((newY - (height - 1))*2);
                 }
-                p.setY(newY);
+                point.setY(newY);
             }
         
             int orientation = determineOrientation(coords);
@@ -143,22 +141,17 @@ public class Reader {
 
     public static int determineOrientation(List<Point> coordinates) {
         boolean isHorizontal = true;
-        boolean isVertical = true;
-
         int firstX = coordinates.get(0).getX();
         int firstY = coordinates.get(0).getY();
-
-        for (Point p : coordinates) {
-            if (p.getY() != firstY) {
+        for (Point point : coordinates) {
+            if (point.getY() != firstY) {
                 isHorizontal = false;
                 break;
             }
-            if (p.getX() != firstX) {
-                isVertical = false;
+            if (point.getX() != firstX) {
                 break;
             }
         }
-
         if (isHorizontal) {
             return 0; 
         } else {

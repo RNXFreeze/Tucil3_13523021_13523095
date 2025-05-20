@@ -12,7 +12,6 @@
 // Package & Import
 package algorithm;
 import utils.*;
-import game.*;
 
 // Class Definition & Implementation
 public class Heuristic {
@@ -77,18 +76,15 @@ public class Heuristic {
         // blockingCount , findPrimary : Function
         // piece : Class Piece
         // board : Class Board
-        // blocker , row , rig , col , bot : Integer
+        // blocker , rig , bot : Integer
 
         // ALGORITMA LOKAL
         int blocker = blockingCount(dataStructure);
         Piece piece = findPrimary(dataStructure);
-        Board board = dataStructure.getBoard();
         if (piece.getOrientation() == 0) {
-            int row = piece.getCoordinates().get(0).getY();
             int rig = piece.getCoordinates().stream().mapToInt(Point::getX).max().orElseThrow();
             return blocker + dataStructure.getExit().getX() - rig - 1;
         } else {
-            int col = piece.getCoordinates().get(0).getX();
             int bot = piece.getCoordinates().stream().mapToInt(Point::getY).max().orElseThrow();
             return blocker + dataStructure.getExit().getY() - bot - 1;
         }
