@@ -90,7 +90,7 @@ public class Reader {
                 for (int j = 0; j < width; j++) {
                     char c = (j < row.length()) ? row.charAt(j) : '.';
                     grid[i][j] = c;
-                    board.setCell(i, j, c);
+                    board.setCell(j , i , c);
                 }
             }
     
@@ -123,13 +123,13 @@ public class Reader {
             char type = entry.getKey();
             List<Point> coords = entry.getValue();
 
-            for (Point point : coords) {
-                int newY = (point.getY() + height - 1);
-                if (newY >= height) {
-                    newY -= ((newY - (height - 1))*2);
-                }
-                point.setY(newY);
-            }
+            // for (Point point : coords) {
+            //     int newY = (point.getY() + height - 1);
+            //     if (newY >= height) {
+            //         newY -= ((newY - (height - 1))*2);
+            //     }
+            //     point.setY(newY);
+            // }
         
             int orientation = determineOrientation(coords);
         

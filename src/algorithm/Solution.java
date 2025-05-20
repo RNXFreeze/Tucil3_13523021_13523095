@@ -419,7 +419,7 @@ public final class Solution {
             System.out.print(this.path.get(0).getBoard().toString());
         } else {
             for (int i = 0 ; i < this.moves.size() ; i++) {
-                System.out.printf("\nMOVE %d : %STATE\n" , (i + 1) , this.moves.get(i));
+                System.out.printf("\nMOVE %d : %s\n" , (i + 1) , this.moves.get(i));
                 System.out.print(this.path.get(i + 1).getBoard().toString());
             }
         }

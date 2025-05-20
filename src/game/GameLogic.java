@@ -145,13 +145,13 @@ public final class GameLogic {
 
             // ALGORITMA SUBCLASS LOKAL
             String res = this.idType + " - ";
-            switch (this.direction) {
-                case LEFT : res += "LEFT ";
-                case RIGHT : res += "RIGHT ";
-                case UP : res += "UP ";
-                case DOWN : res += "DOWN ";
-                default : res += "UNKNOWN ";
-            }
+            res += switch (this.direction) {
+                case LEFT -> "LEFT ";
+                case RIGHT -> "RIGHT ";
+                case UP -> "UP ";
+                case DOWN -> "DOWN ";
+                default -> "UNKNOWN ";
+            };
             res = res + "(" + this.stepCount + " STEP)";
             return res;
         }
@@ -247,13 +247,18 @@ public final class GameLogic {
             for (Point point : movedPiece.getCoordinates()) {
                 int nx = point.getX();
                 int ny = point.getY();
-                switch (move.direction) {
-                    case LEFT : nx -= move.stepCount;
-                    case RIGHT : nx += move.stepCount;
-                    case UP : ny -= move.stepCount;
-                    case DOWN : ny += move.stepCount;
-                    default : /*None*/;
-                }
+                nx += switch (move.direction) {
+                    case LEFT -> -move.stepCount;
+                    case RIGHT -> move.stepCount;
+                    case UP -> 0;
+                    case DOWN -> 0;
+                };
+                ny += switch (move.direction) {
+                    case LEFT -> 0;
+                    case RIGHT -> 0; 
+                    case UP -> -move.stepCount;
+                    case DOWN -> move.stepCount;
+                };
                 newCoordinates.add(new Point(nx , ny));
                 newBoard.setCell(nx , ny , move.idType);
             }
@@ -278,6 +283,14 @@ public final class GameLogic {
         int mnx = piece.getCoordinates().stream().mapToInt(Point::getX).min().orElseThrow();
         int mxx = piece.getCoordinates().stream().mapToInt(Point::getX).max().orElseThrow();
         int cnt = 1;
+        // System.out.println();
+        // for (int i = 0 ; i < grid.length ; i++) {
+        //     for (int j = 0 ; j < grid[0].length ; j++) {
+        //         System.out.print(grid[i][j] + " ");
+        //     }
+        //     System.out.println();
+        // }
+        // System.out.println();
         if (direction == Direction.LEFT) {
             for (int x = mnx - 1 ; x >= 0 ; x--) {
                 if (grid[row][x] == '.') {
@@ -316,8 +329,8 @@ public final class GameLogic {
         int mny = piece.getCoordinates().stream().mapToInt(Point::getY).min().orElseThrow();
         int mxy = piece.getCoordinates().stream().mapToInt(Point::getY).max().orElseThrow();
         int cnt = 1;
-        if (direction == Direction.UP) {
-            for (int y = mny - 1 ; y >= 0 ; y--) {
+        if (direction == Direction.DOWN) {
+            for (int y = mxy + 1 ; y < grid.length ; y++) {
                 if (grid[y][col] == '.') {
                     res.add(new Move(piece.getType() , direction , cnt));
                     cnt++;
@@ -326,7 +339,7 @@ public final class GameLogic {
                 }
             }
         } else {
-            for (int y = mxy + 1 ; y < grid.length ; y++) {
+            for (int y = mny - 1 ; y >= 0 ; y--) {
                 if (grid[y][col] == '.') {
                     res.add(new Move(piece.getType() , direction , cnt));
                     cnt++;

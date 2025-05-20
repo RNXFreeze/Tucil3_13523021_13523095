@@ -206,7 +206,7 @@ public class DataStructure {
         System.out.println("Board : ");
         for (int i = 0 ; i < this.height ; i++) {
             for (int j = 0 ; j < this.width ; j++) {
-                System.out.print(board.getCell(i , j) + " ");
+                System.out.print(board.getCell(j , i) + " ");
             }
             System.out.println();
         }

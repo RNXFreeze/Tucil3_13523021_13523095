@@ -61,11 +61,12 @@ public class GBFS {
         pq.add(new Solution.Node(dataStructure , null , 0 , Heuristic.solveHeuristic(dataStructure , num) , null));
         int cnt = 0;
         while (!pq.isEmpty()) {
+            // System.out.println("Count Step : " + cnt + " || Queue Size : " + pq.size());
             Solution.Node cur = pq.poll();
-            System.out.println("Count Step : " + cnt + " || Queue Size : " + pq.size());
             if (visited.add(GameLogic.boardKey(cur.state))) {
+                // Solution.buildSolution("GBFS Trial" , num , cnt , 1 , cur).displaySolution();
                 cnt++;
-                if (GameState.isSolved(cur.state)) {
+                if (GameState.isSolved(cur.state) || cnt == 10) {
                     long endTime = System.nanoTime();
                     double time = (endTime - startTime) / 1000000;
                     return Solution.buildSolution("Greedy Best First Search (GBFS)" , num , cnt , time , cur);

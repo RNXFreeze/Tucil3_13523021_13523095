@@ -91,7 +91,7 @@ public class Board {
         // x , y : Integer
 
         // ALGORITMA LOKAL
-        return this.grid[x][y];
+        return this.grid[y][x];
     }
 
     public int getWidth() {
@@ -134,9 +134,10 @@ public class Board {
         // KAMUS LOKAL
         // grid : Matrix of Character
         // x , y : Integer
+        // value : Character
 
         // ALGORITMA LOKAL
-        this.grid[x][y] = value;
+        this.grid[y][x] = value;
     }
 
     public void setWidth(int width) {
