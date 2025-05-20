@@ -505,14 +505,14 @@ public final class Solution {
                     
                     // Warna untuk piece P
                     if (cell == 'P') {
-                        System.out.print(ANSI_BOLD + ANSI_GREEN + cell + " " + ANSI_RESET);
+                        System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
                     } 
                     // Posisi lama dari piece yang bergerak
                     else if (prevData != null && oldPositions.contains(currentPoint) && !newPositions.contains(currentPoint)) {
-                        System.out.print(ANSI_BACKGROUND_RED + "  " + ANSI_RESET + " ");
+                        System.out.print(ANSI_BACKGROUND_RED + " " + ANSI_RESET + " ");
                     } 
                     // Posisi baru dari piece yang bergerak
-                    else if (prevData != null && newPositions.contains(currentPoint) && !oldPositions.contains(currentPoint)) {
+                    else if (prevData != null && newPositions.contains(currentPoint)) {
                         System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
                     }
                     // Warna default
@@ -529,12 +529,12 @@ public final class Solution {
                     char cell = board.getCell(j, i);
                     
                     if (cell == 'P') {
-                        System.out.print(ANSI_BOLD + ANSI_GREEN + cell + " " + ANSI_RESET);
+                        System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
                     } 
                     else if (prevData != null && oldPositions.contains(currentPoint) && !newPositions.contains(currentPoint)) {
-                        System.out.print(ANSI_BACKGROUND_RED + "  " + ANSI_RESET + " ");
+                        System.out.print(ANSI_BACKGROUND_RED + " " + ANSI_RESET + " ");
                     } 
-                    else if (prevData != null && newPositions.contains(currentPoint) && !oldPositions.contains(currentPoint)) {
+                    else if (prevData != null && newPositions.contains(currentPoint)) {
                         System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
                     }
                     else {
@@ -558,12 +558,12 @@ public final class Solution {
                     char cell = board.getCell(j, i);
                     
                     if (cell == 'P') {
-                        System.out.print(ANSI_BOLD + ANSI_GREEN + cell + " " + ANSI_RESET);
+                        System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
                     } 
                     else if (prevData != null && oldPositions.contains(currentPoint) && !newPositions.contains(currentPoint)) {
-                        System.out.print(ANSI_BACKGROUND_RED + "  " + ANSI_RESET + " ");
+                        System.out.print(ANSI_BACKGROUND_RED + " " + ANSI_RESET + " ");
                     } 
-                    else if (prevData != null && newPositions.contains(currentPoint) && !oldPositions.contains(currentPoint)) {
+                    else if (prevData != null && newPositions.contains(currentPoint)) {
                         System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
                     }
                     else {
@@ -579,12 +579,12 @@ public final class Solution {
                     char cell = board.getCell(j, i);
                     
                     if (cell == 'P') {
-                        System.out.print(ANSI_BOLD + ANSI_GREEN + cell + " " + ANSI_RESET);
+                        System.out.print(ANSI_BOLD + ANSI_CYAN + cell + " " + ANSI_RESET);
                     } 
                     else if (prevData != null && oldPositions.contains(currentPoint) && !newPositions.contains(currentPoint)) {
-                        System.out.print(ANSI_BACKGROUND_RED + "  " + ANSI_RESET + " ");
+                        System.out.print(ANSI_BACKGROUND_RED + " " + ANSI_RESET + " ");
                     } 
-                    else if (prevData != null && newPositions.contains(currentPoint) && !oldPositions.contains(currentPoint)) {
+                    else if (prevData != null && newPositions.contains(currentPoint)) {
                         System.out.print(ANSI_BACKGROUND_GREEN + cell + " " + ANSI_RESET);
                     }
                     else {
@@ -598,20 +598,13 @@ public final class Solution {
             }
         }
     }
-    
-    /**
-     * Menampilkan board terakhir dengan warna
-     */
-    private void displayLastBoardColored(DataStructure data) {
-        displayColoredBoard(data, null, null);
-    }
 
     private void displayBoardWithHighlight(DataStructure prevBoard, DataStructure currentBoard, GameLogic.Move move) {
         displayColoredBoard(currentBoard, prevBoard, move);
         System.out.println("\nKeterangan:");
-        System.out.println(ANSI_BACKGROUND_RED + "  " + ANSI_RESET + " : Posisi lama dari piece " + move.getIdType());
+        System.out.println(ANSI_BACKGROUND_RED + " " + ANSI_RESET + " : Posisi lama dari piece " + move.getIdType());
         System.out.println(ANSI_BACKGROUND_GREEN + move.getIdType() + " " + ANSI_RESET + " : Posisi baru dari piece " + move.getIdType());
-        System.out.println(ANSI_BOLD + ANSI_GREEN + "P" + ANSI_RESET + " : Piece yang harus keluar");
+        System.out.println(ANSI_BOLD + ANSI_CYAN + "P" + ANSI_RESET + " : Piece yang harus keluar");
         System.out.println(ANSI_BOLD + ANSI_PURPLE + "K" + ANSI_RESET + " : Posisi pintu keluar");
     }
 }
