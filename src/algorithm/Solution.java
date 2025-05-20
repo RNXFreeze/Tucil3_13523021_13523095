@@ -3,7 +3,7 @@
 /* NIM - 1    : K01 - 13523021 - Teknik Informatika (IF-Ganesha) ITB             */
 /* Nama - 2   : Rafif Farras                                                     */
 /* NIM - 2    : K02 - 13523095 - Teknik Informatika (IF-Ganesha) ITB             */
-/* Tanggal    : Selasa, 20 Mei 2025                                              */
+/* Tanggal    : Rabu, 21 Mei 2025                                                */
 /* Tugas      : Tugas Kecil 3 - Strategi Algoritma (IF2211-24)                   */
 /* File Path  : Tucil3_13523021_13523095/src/algorithm/Solution.java             */
 /* Deskripsi  : F06 - Solution Pathfinding Algorithm                             */
@@ -429,7 +429,7 @@ public final class Solution {
                 System.out.printf("\nMOVE %d : %s\n" , (i + 1) , this.moves.get(i));
                 this.path.get(i + 1).displayBoard();
             }
-            System.out.printf("\nMOVE %d : OUT %s (%d STEP)\n" , this.moves.size() + 1 , switch (this.moves.get(this.moves.size() - 1).getDirection()) {
+            System.out.printf("\nMOVE %d : P - OUT %s (%d STEP)\n" , this.moves.size() + 1 , switch (this.moves.get(this.moves.size() - 1).getDirection()) {
                 case UP -> "UP";
                 case DOWN -> "DOWN";
                 case RIGHT -> "RIGHT";
