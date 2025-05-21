@@ -1,0 +1,139 @@
+==================================================
+INFORMATION SOLUTION RESULT :
+File Path In  : test/input/test3.txt
+File Path Out : test/output/output3.txt
+Algorithm     : Uniform Cost Search (UCS)
+Heuristic     : 0
+Step Count    : 11 Step
+Visited Node  : 18417 Node
+Time Usage    : 298 ms
+Success      : YES
+==================================================
+Display Board Awal :
+A A B . . F . 
+. P B C D F N 
+G P . C D F N 
+G H H I I I . 
+G . J . . O O 
+L L J M M . . 
+  K
+
+MOVE 1 : B - DOWN (1 STEP)
+A A . . . F . 
+. P B C D F N 
+G P B C D F N 
+G H H I I I . 
+G . J . . O O 
+L L J M M . . 
+  K
+
+MOVE 2 : M - RIGHT (2 STEP)
+A A . . . F . 
+. P B C D F N 
+G P B C D F N 
+G H H I I I . 
+G . J . . O O 
+L L J . . M M 
+  K
+
+MOVE 3 : A - RIGHT (2 STEP)
+. . A A . F . 
+. P B C D F N 
+G P B C D F N 
+G H H I I I . 
+G . J . . O O 
+L L J . . M M 
+  K
+
+MOVE 4 : G - UP (2 STEP)
+G . A A . F . 
+G P B C D F N 
+G P B C D F N 
+. H H I I I . 
+. . J . . O O 
+L L J . . M M 
+  K
+
+MOVE 5 : I - RIGHT (1 STEP)
+G . A A . F . 
+G P B C D F N 
+G P B C D F N 
+. H H . I I I 
+. . J . . O O 
+L L J . . M M 
+  K
+
+MOVE 6 : H - LEFT (1 STEP)
+G . A A . F . 
+G P B C D F N 
+G P B C D F N 
+H H . . I I I 
+. . J . . O O 
+L L J . . M M 
+  K
+
+MOVE 7 : J - UP (1 STEP)
+G . A A . F . 
+G P B C D F N 
+G P B C D F N 
+H H J . I I I 
+. . J . . O O 
+L L . . . M M 
+  K
+
+MOVE 8 : L - RIGHT (3 STEP)
+G . A A . F . 
+G P B C D F N 
+G P B C D F N 
+H H J . I I I 
+. . J . . O O 
+. . . L L M M 
+  K
+
+MOVE 9 : J - DOWN (1 STEP)
+G . A A . F . 
+G P B C D F N 
+G P B C D F N 
+H H . . I I I 
+. . J . . O O 
+. . J L L M M 
+  K
+
+MOVE 10 : H - RIGHT (2 STEP)
+G . A A . F . 
+G P B C D F N 
+G P B C D F N 
+. . H H I I I 
+. . J . . O O 
+. . J L L M M 
+  K
+
+MOVE 11 : P - DOWN (3 STEP)
+G . A A . F . 
+G . B C D F N 
+G . B C D F N 
+. . H H I I I 
+. P J . . O O 
+. P J L L M M 
+  K
+
+MOVE 12 : P - OUT DOWN (2 STEP)
+G . A A . F . 
+G . B C D F N 
+G . B C D F N 
+. . H H I I I 
+. . J . . O O 
+. . J L L M M 
+  P
+  P
+==================================================
+RECALL INFORMATION SOLUTION RESULT :
+File Path In  : test/input/test3.txt
+File Path Out : test/output/output3.txt
+Algorithm     : Uniform Cost Search (UCS)
+Heuristic     : 0
+Step Count    : 11 Step
+Visited Node  : 18417 Node
+Time Usage    : 298 ms
+Success      : YES
+==================================================

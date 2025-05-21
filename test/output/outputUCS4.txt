@@ -1,0 +1,67 @@
+==================================================
+INFORMATION SOLUTION RESULT :
+File Path In  : test/input/test4.txt
+File Path Out : test/output/outputUCS4.txt
+Algorithm     : Uniform Cost Search (UCS)
+Heuristic     : 0
+Step Count    : 3 Step
+Visited Node  : 229 Node
+Time Usage    : 3 ms
+Success      : YES
+==================================================
+Display Board Awal :
+  K
+A A B . . F . 
+. P B C D F N 
+G P . C D F N 
+G H H I I I . 
+G . J . . O O 
+L L J M M . . 
+
+MOVE 1 : B - DOWN (1 STEP)
+  K
+A A . . . F . 
+. P B C D F N 
+G P B C D F N 
+G H H I I I . 
+G . J . . O O 
+L L J M M . . 
+
+MOVE 2 : A - RIGHT (2 STEP)
+  K
+. . A A . F . 
+. P B C D F N 
+G P B C D F N 
+G H H I I I . 
+G . J . . O O 
+L L J M M . . 
+
+MOVE 3 : P - UP (1 STEP)
+  K
+. P A A . F . 
+. P B C D F N 
+G . B C D F N 
+G H H I I I . 
+G . J . . O O 
+L L J M M . . 
+
+MOVE 4 : P - OUT UP (2 STEP)
+  P
+  P
+. . A A . F . 
+. . B C D F N 
+G . B C D F N 
+G H H I I I . 
+G . J . . O O 
+L L J M M . . 
+==================================================
+RECALL INFORMATION SOLUTION RESULT :
+File Path In  : test/input/test4.txt
+File Path Out : test/output/outputUCS4.txt
+Algorithm     : Uniform Cost Search (UCS)
+Heuristic     : 0
+Step Count    : 3 Step
+Visited Node  : 229 Node
+Time Usage    : 3 ms
+Success      : YES
+==================================================

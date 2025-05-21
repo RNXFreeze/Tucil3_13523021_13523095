@@ -1,10 +1,12 @@
 ==================================================
 INFORMATION SOLUTION RESULT :
-Algorithm    : Uniform Cost Search (UCS)
-Heuristic    : 0
-Step Count   : 7 Step
-Visited Node : 5834 Node
-Time Usage   : 190 ms
+File Path In  : test/input/test2.txt
+File Path Out : test/output/output2.txt
+Algorithm     : Uniform Cost Search (UCS)
+Heuristic     : 0
+Step Count    : 7 Step
+Visited Node  : 5833 Node
+Time Usage    : 139 ms
 Success      : YES
 ==================================================
 Display Board Awal :
@@ -70,12 +72,22 @@ G . . . . P P K
 G H I I I F . 
 G H J O O F N 
 L L J M M F N 
+
+MOVE 8 : P - OUT RIGHT (2 STEP)
+A A B C D . . 
+. . B C D . . 
+G . . . . . . P P 
+G H I I I F . 
+G H J O O F N 
+L L J M M F N 
 ==================================================
 RECALL INFORMATION SOLUTION RESULT :
-Algorithm    : Uniform Cost Search (UCS)
-Heuristic    : 0
-Step Count   : 7 Step
-Visited Node : 5834 Node
-Time Usage   : 190 ms
+File Path In  : test/input/test2.txt
+File Path Out : test/output/output2.txt
+Algorithm     : Uniform Cost Search (UCS)
+Heuristic     : 0
+Step Count    : 7 Step
+Visited Node  : 5833 Node
+Time Usage    : 139 ms
 Success      : YES
 ==================================================

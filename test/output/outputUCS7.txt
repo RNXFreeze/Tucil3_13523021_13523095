@@ -1,0 +1,30 @@
+==================================================
+INFORMATION SOLUTION RESULT :
+File Path In  : test/input/test7.txt
+File Path Out : test/output/outputUCS7.txt
+Algorithm     : Uniform Cost Search (UCS)
+Heuristic     : 0
+Step Count    : 0 Step
+Visited Node  : 117024 Node
+Time Usage    : 1434 ms
+Success      : NO
+==================================================
+
+Display Board Awal & Akhir :
+A A B . . F . 
+. . B C D F N 
+G P P C D F N 
+G H . I I I . 
+G H J . . O O K
+L L J M M . . 
+==================================================
+RECALL INFORMATION SOLUTION RESULT :
+File Path In  : test/input/test7.txt
+File Path Out : test/output/outputUCS7.txt
+Algorithm     : Uniform Cost Search (UCS)
+Heuristic     : 0
+Step Count    : 0 Step
+Visited Node  : 117024 Node
+Time Usage    : 1434 ms
+Success      : NO
+==================================================

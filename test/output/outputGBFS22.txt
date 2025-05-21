@@ -1,0 +1,565 @@
+==================================================
+INFORMATION SOLUTION RESULT :
+File Path In  : test/input/test2.txt
+File Path Out : test/output/outputGBFS22.txt
+Algorithm     : Greedy Best First Search (GBFS)
+Heuristic     : 2
+Step Count    : 66 Step
+Visited Node  : 12732 Node
+Time Usage    : 216 ms
+Success      : YES
+==================================================
+Display Board Awal :
+A A B . . F . 
+. . B C D F N 
+G P P C D F N K
+G H . I I I . 
+G H J . . O O 
+L L J M M . . 
+
+MOVE 1 : C - UP (1 STEP)
+A A B C . F . 
+. . B C D F N 
+G P P . D F N K
+G H . I I I . 
+G H J . . O O 
+L L J M M . . 
+
+MOVE 2 : P - RIGHT (1 STEP)
+A A B C . F . 
+. . B C D F N 
+G . P P D F N K
+G H . I I I . 
+G H J . . O O 
+L L J M M . . 
+
+MOVE 3 : J - UP (1 STEP)
+A A B C . F . 
+. . B C D F N 
+G . P P D F N K
+G H J I I I . 
+G H J . . O O 
+L L . M M . . 
+
+MOVE 4 : D - UP (1 STEP)
+A A B C D F . 
+. . B C D F N 
+G . P P . F N K
+G H J I I I . 
+G H J . . O O 
+L L . M M . . 
+
+MOVE 5 : P - RIGHT (1 STEP)
+A A B C D F . 
+. . B C D F N 
+G . . P P F N K
+G H J I I I . 
+G H J . . O O 
+L L . M M . . 
+
+MOVE 6 : H - UP (2 STEP)
+A A B C D F . 
+. H B C D F N 
+G H . P P F N K
+G . J I I I . 
+G . J . . O O 
+L L . M M . . 
+
+MOVE 7 : N - DOWN (1 STEP)
+A A B C D F . 
+. H B C D F . 
+G H . P P F N K
+G . J I I I N 
+G . J . . O O 
+L L . M M . . 
+
+MOVE 8 : B - DOWN (1 STEP)
+A A . C D F . 
+. H B C D F . 
+G H B P P F N K
+G . J I I I N 
+G . J . . O O 
+L L . M M . . 
+
+MOVE 9 : N - UP (1 STEP)
+A A . C D F . 
+. H B C D F N 
+G H B P P F N K
+G . J I I I . 
+G . J . . O O 
+L L . M M . . 
+
+MOVE 10 : O - LEFT (2 STEP)
+A A . C D F . 
+. H B C D F N 
+G H B P P F N K
+G . J I I I . 
+G . J O O . . 
+L L . M M . . 
+
+MOVE 11 : G - UP (1 STEP)
+A A . C D F . 
+G H B C D F N 
+G H B P P F N K
+G . J I I I . 
+. . J O O . . 
+L L . M M . . 
+
+MOVE 12 : O - RIGHT (2 STEP)
+A A . C D F . 
+G H B C D F N 
+G H B P P F N K
+G . J I I I . 
+. . J . . O O 
+L L . M M . . 
+
+MOVE 13 : H - DOWN (1 STEP)
+A A . C D F . 
+G . B C D F N 
+G H B P P F N K
+G H J I I I . 
+. . J . . O O 
+L L . M M . . 
+
+MOVE 14 : B - UP (1 STEP)
+A A B C D F . 
+G . B C D F N 
+G H . P P F N K
+G H J I I I . 
+. . J . . O O 
+L L . M M . . 
+
+MOVE 15 : O - LEFT (1 STEP)
+A A B C D F . 
+G . B C D F N 
+G H . P P F N K
+G H J I I I . 
+. . J . O O . 
+L L . M M . . 
+
+MOVE 16 : N - DOWN (2 STEP)
+A A B C D F . 
+G . B C D F . 
+G H . P P F . K
+G H J I I I N 
+. . J . O O N 
+L L . M M . . 
+
+MOVE 17 : J - UP (1 STEP)
+A A B C D F . 
+G . B C D F . 
+G H J P P F . K
+G H J I I I N 
+. . . . O O N 
+L L . M M . . 
+
+MOVE 18 : O - LEFT (2 STEP)
+A A B C D F . 
+G . B C D F . 
+G H J P P F . K
+G H J I I I N 
+. . O O . . N 
+L L . M M . . 
+
+MOVE 19 : O - LEFT (1 STEP)
+A A B C D F . 
+G . B C D F . 
+G H J P P F . K
+G H J I I I N 
+. O O . . . N 
+L L . M M . . 
+
+MOVE 20 : N - DOWN (1 STEP)
+A A B C D F . 
+G . B C D F . 
+G H J P P F . K
+G H J I I I . 
+. O O . . . N 
+L L . M M . N 
+
+MOVE 21 : N - UP (4 STEP)
+A A B C D F N 
+G . B C D F N 
+G H J P P F . K
+G H J I I I . 
+. O O . . . . 
+L L . M M . . 
+
+MOVE 22 : O - RIGHT (4 STEP)
+A A B C D F N 
+G . B C D F N 
+G H J P P F . K
+G H J I I I . 
+. . . . . O O 
+L L . M M . . 
+
+MOVE 23 : O - LEFT (5 STEP)
+A A B C D F N 
+G . B C D F N 
+G H J P P F . K
+G H J I I I . 
+O O . . . . . 
+L L . M M . . 
+
+MOVE 24 : O - RIGHT (2 STEP)
+A A B C D F N 
+G . B C D F N 
+G H J P P F . K
+G H J I I I . 
+. . O O . . . 
+L L . M M . . 
+
+MOVE 25 : N - DOWN (4 STEP)
+A A B C D F . 
+G . B C D F . 
+G H J P P F . K
+G H J I I I . 
+. . O O . . N 
+L L . M M . N 
+
+MOVE 26 : O - RIGHT (1 STEP)
+A A B C D F . 
+G . B C D F . 
+G H J P P F . K
+G H J I I I . 
+. . . O O . N 
+L L . M M . N 
+
+MOVE 27 : O - LEFT (3 STEP)
+A A B C D F . 
+G . B C D F . 
+G H J P P F . K
+G H J I I I . 
+O O . . . . N 
+L L . M M . N 
+
+MOVE 28 : N - UP (3 STEP)
+A A B C D F . 
+G . B C D F N 
+G H J P P F N K
+G H J I I I . 
+O O . . . . . 
+L L . M M . . 
+
+MOVE 29 : J - DOWN (1 STEP)
+A A B C D F . 
+G . B C D F N 
+G H . P P F N K
+G H J I I I . 
+O O J . . . . 
+L L . M M . . 
+
+MOVE 30 : N - DOWN (3 STEP)
+A A B C D F . 
+G . B C D F . 
+G H . P P F . K
+G H J I I I . 
+O O J . . . N 
+L L . M M . N 
+
+MOVE 31 : N - UP (4 STEP)
+A A B C D F N 
+G . B C D F N 
+G H . P P F . K
+G H J I I I . 
+O O J . . . . 
+L L . M M . . 
+
+MOVE 32 : H - UP (1 STEP)
+A A B C D F N 
+G H B C D F N 
+G H . P P F . K
+G . J I I I . 
+O O J . . . . 
+L L . M M . . 
+
+MOVE 33 : N - DOWN (4 STEP)
+A A B C D F . 
+G H B C D F . 
+G H . P P F . K
+G . J I I I . 
+O O J . . . N 
+L L . M M . N 
+
+MOVE 34 : N - UP (3 STEP)
+A A B C D F . 
+G H B C D F N 
+G H . P P F N K
+G . J I I I . 
+O O J . . . . 
+L L . M M . . 
+
+MOVE 35 : N - DOWN (1 STEP)
+A A B C D F . 
+G H B C D F . 
+G H . P P F N K
+G . J I I I N 
+O O J . . . . 
+L L . M M . . 
+
+MOVE 36 : H - DOWN (1 STEP)
+A A B C D F . 
+G . B C D F . 
+G H . P P F N K
+G H J I I I N 
+O O J . . . . 
+L L . M M . . 
+
+MOVE 37 : B - DOWN (1 STEP)
+A A . C D F . 
+G . B C D F . 
+G H B P P F N K
+G H J I I I N 
+O O J . . . . 
+L L . M M . . 
+
+MOVE 38 : N - DOWN (2 STEP)
+A A . C D F . 
+G . B C D F . 
+G H B P P F . K
+G H J I I I . 
+O O J . . . N 
+L L . M M . N 
+
+MOVE 39 : N - UP (3 STEP)
+A A . C D F . 
+G . B C D F N 
+G H B P P F N K
+G H J I I I . 
+O O J . . . . 
+L L . M M . . 
+
+MOVE 40 : N - DOWN (2 STEP)
+A A . C D F . 
+G . B C D F . 
+G H B P P F . K
+G H J I I I N 
+O O J . . . N 
+L L . M M . . 
+
+MOVE 41 : H - UP (1 STEP)
+A A . C D F . 
+G H B C D F . 
+G H B P P F . K
+G . J I I I N 
+O O J . . . N 
+L L . M M . . 
+
+MOVE 42 : N - UP (3 STEP)
+A A . C D F N 
+G H B C D F N 
+G H B P P F . K
+G . J I I I . 
+O O J . . . . 
+L L . M M . . 
+
+MOVE 43 : N - DOWN (1 STEP)
+A A . C D F . 
+G H B C D F N 
+G H B P P F N K
+G . J I I I . 
+O O J . . . . 
+L L . M M . . 
+
+MOVE 44 : M - RIGHT (1 STEP)
+A A . C D F . 
+G H B C D F N 
+G H B P P F N K
+G . J I I I . 
+O O J . . . . 
+L L . . M M . 
+
+MOVE 45 : N - DOWN (3 STEP)
+A A . C D F . 
+G H B C D F . 
+G H B P P F . K
+G . J I I I . 
+O O J . . . N 
+L L . . M M N 
+
+MOVE 46 : N - UP (4 STEP)
+A A . C D F N 
+G H B C D F N 
+G H B P P F . K
+G . J I I I . 
+O O J . . . . 
+L L . . M M . 
+
+MOVE 47 : N - DOWN (2 STEP)
+A A . C D F . 
+G H B C D F . 
+G H B P P F N K
+G . J I I I N 
+O O J . . . . 
+L L . . M M . 
+
+MOVE 48 : M - RIGHT (1 STEP)
+A A . C D F . 
+G H B C D F . 
+G H B P P F N K
+G . J I I I N 
+O O J . . . . 
+L L . . . M M 
+
+MOVE 49 : N - UP (2 STEP)
+A A . C D F N 
+G H B C D F N 
+G H B P P F . K
+G . J I I I . 
+O O J . . . . 
+L L . . . M M 
+
+MOVE 50 : N - DOWN (3 STEP)
+A A . C D F . 
+G H B C D F . 
+G H B P P F . K
+G . J I I I N 
+O O J . . . N 
+L L . . . M M 
+
+MOVE 51 : H - DOWN (1 STEP)
+A A . C D F . 
+G . B C D F . 
+G H B P P F . K
+G H J I I I N 
+O O J . . . N 
+L L . . . M M 
+
+MOVE 52 : N - UP (2 STEP)
+A A . C D F . 
+G . B C D F N 
+G H B P P F N K
+G H J I I I . 
+O O J . . . . 
+L L . . . M M 
+
+MOVE 53 : B - UP (1 STEP)
+A A B C D F . 
+G . B C D F N 
+G H . P P F N K
+G H J I I I . 
+O O J . . . . 
+L L . . . M M 
+
+MOVE 54 : H - UP (1 STEP)
+A A B C D F . 
+G H B C D F N 
+G H . P P F N K
+G . J I I I . 
+O O J . . . . 
+L L . . . M M 
+
+MOVE 55 : I - RIGHT (1 STEP)
+A A B C D F . 
+G H B C D F N 
+G H . P P F N K
+G . J . I I I 
+O O J . . . . 
+L L . . . M M 
+
+MOVE 56 : J - DOWN (1 STEP)
+A A B C D F . 
+G H B C D F N 
+G H . P P F N K
+G . . . I I I 
+O O J . . . . 
+L L J . . M M 
+
+MOVE 57 : H - DOWN (1 STEP)
+A A B C D F . 
+G . B C D F N 
+G H . P P F N K
+G H . . I I I 
+O O J . . . . 
+L L J . . M M 
+
+MOVE 58 : M - LEFT (2 STEP)
+A A B C D F . 
+G . B C D F N 
+G H . P P F N K
+G H . . I I I 
+O O J . . . . 
+L L J M M . . 
+
+MOVE 59 : M - RIGHT (1 STEP)
+A A B C D F . 
+G . B C D F N 
+G H . P P F N K
+G H . . I I I 
+O O J . . . . 
+L L J . M M . 
+
+MOVE 60 : I - LEFT (2 STEP)
+A A B C D F . 
+G . B C D F N 
+G H . P P F N K
+G H I I I . . 
+O O J . . . . 
+L L J . M M . 
+
+MOVE 61 : M - LEFT (1 STEP)
+A A B C D F . 
+G . B C D F N 
+G H . P P F N K
+G H I I I . . 
+O O J . . . . 
+L L J M M . . 
+
+MOVE 62 : F - DOWN (2 STEP)
+A A B C D . . 
+G . B C D . N 
+G H . P P F N K
+G H I I I F . 
+O O J . . F . 
+L L J M M . . 
+
+MOVE 63 : F - DOWN (1 STEP)
+A A B C D . . 
+G . B C D . N 
+G H . P P . N K
+G H I I I F . 
+O O J . . F . 
+L L J M M F . 
+
+MOVE 64 : P - RIGHT (1 STEP)
+A A B C D . . 
+G . B C D . N 
+G H . . P P N K
+G H I I I F . 
+O O J . . F . 
+L L J M M F . 
+
+MOVE 65 : N - UP (1 STEP)
+A A B C D . N 
+G . B C D . N 
+G H . . P P . K
+G H I I I F . 
+O O J . . F . 
+L L J M M F . 
+
+MOVE 66 : P - RIGHT (1 STEP)
+A A B C D . N 
+G . B C D . N 
+G H . . . P P K
+G H I I I F . 
+O O J . . F . 
+L L J M M F . 
+
+MOVE 67 : P - OUT RIGHT (2 STEP)
+A A B C D . N 
+G . B C D . N 
+G H . . . . . P P 
+G H I I I F . 
+O O J . . F . 
+L L J M M F . 
+==================================================
+RECALL INFORMATION SOLUTION RESULT :
+File Path In  : test/input/test2.txt
+File Path Out : test/output/outputGBFS22.txt
+Algorithm     : Greedy Best First Search (GBFS)
+Heuristic     : 2
+Step Count    : 66 Step
+Visited Node  : 12732 Node
+Time Usage    : 216 ms
+Success      : YES
+==================================================

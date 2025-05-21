@@ -1,0 +1,30 @@
+==================================================
+INFORMATION SOLUTION RESULT :
+File Path In  : test/input/test6.txt
+File Path Out : test/output/outputGBFS62.txt
+Algorithm     : Greedy Best First Search (GBFS)
+Heuristic     : 2
+Step Count    : 0 Step
+Visited Node  : 95839 Node
+Time Usage    : 1916 ms
+Success      : NO
+==================================================
+
+Display Board Awal & Akhir :
+A A B . . F . 
+. . B C . F O 
+G P P C D D O K
+G H . I I I . 
+G H J . . N N 
+L L J M M . . 
+==================================================
+RECALL INFORMATION SOLUTION RESULT :
+File Path In  : test/input/test6.txt
+File Path Out : test/output/outputGBFS62.txt
+Algorithm     : Greedy Best First Search (GBFS)
+Heuristic     : 2
+Step Count    : 0 Step
+Visited Node  : 95839 Node
+Time Usage    : 1916 ms
+Success      : NO
+==================================================
