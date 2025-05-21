@@ -1,0 +1,59 @@
+==================================================
+INFORMATION SOLUTION RESULT :
+Algorithm    : A-Star Search (A*)
+Heuristic    : 2
+Step Count   : 5 Step
+Visited Node : 31 Node
+Time Usage   : 23 ms
+Success      : YES
+==================================================
+Display Board Awal :
+  A D D D 
+K A P P . 
+  E E . C 
+  B B B C 
+
+MOVE 1 : E - RIGHT (1 STEP)
+  A D D D 
+K A P P . 
+  . E E C 
+  B B B C 
+
+MOVE 2 : C - UP (1 STEP)
+  A D D D 
+K A P P C 
+  . E E C 
+  B B B . 
+
+MOVE 3 : B - RIGHT (1 STEP)
+  A D D D 
+K A P P C 
+  . E E C 
+  . B B B 
+
+MOVE 4 : A - DOWN (2 STEP)
+  . D D D 
+K . P P C 
+  A E E C 
+  A B B B 
+
+MOVE 5 : P - LEFT (1 STEP)
+  . D D D 
+K P P . C 
+  A E E C 
+  A B B B 
+
+MOVE 6 : P - OUT LEFT (2 STEP)
+    . D D D 
+P P . . . C 
+    A E E C 
+    A B B B 
+==================================================
+RECALL INFORMATION SOLUTION RESULT :
+Algorithm    : A-Star Search (A*)
+Heuristic    : 2
+Step Count   : 5 Step
+Visited Node : 31 Node
+Time Usage   : 23 ms
+Success      : YES
+==================================================

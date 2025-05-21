@@ -3,8 +3,8 @@ INFORMATION SOLUTION RESULT :
 Algorithm    : Uniform Cost Search (UCS)
 Heuristic    : 0
 Step Count   : 5 Step
-Visited Node : 218 Node
-Time Usage   : 44 ms
+Visited Node : 217 Node
+Time Usage   : 39 ms
 Success      : YES
 ==================================================
 Display Board Awal :
@@ -67,7 +67,7 @@ RECALL INFORMATION SOLUTION RESULT :
 Algorithm    : Uniform Cost Search (UCS)
 Heuristic    : 0
 Step Count   : 5 Step
-Visited Node : 218 Node
-Time Usage   : 44 ms
+Visited Node : 217 Node
+Time Usage   : 39 ms
 Success      : YES
 ==================================================

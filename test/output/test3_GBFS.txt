@@ -1,0 +1,95 @@
+==================================================
+INFORMATION SOLUTION RESULT :
+Algorithm    : Greedy Best First Search (GBFS)
+Heuristic    : 3
+Step Count   : 9 Step
+Visited Node : 19 Node
+Time Usage   : 9 ms
+Success      : YES
+==================================================
+Display Board Awal :
+A A . . B B . 
+P E E E . . F 
+P . . D . . F 
+C C C D . . . 
+K
+
+MOVE 1 : F - DOWN (1 STEP)
+A A . . B B . 
+P E E E . . . 
+P . . D . . F 
+C C C D . . F 
+K
+
+MOVE 2 : F - UP (2 STEP)
+A A . . B B F 
+P E E E . . F 
+P . . D . . . 
+C C C D . . . 
+K
+
+MOVE 3 : E - RIGHT (1 STEP)
+A A . . B B F 
+P . E E E . F 
+P . . D . . . 
+C C C D . . . 
+K
+
+MOVE 4 : E - RIGHT (1 STEP)
+A A . . B B F 
+P . . E E E F 
+P . . D . . . 
+C C C D . . . 
+K
+
+MOVE 5 : F - DOWN (2 STEP)
+A A . . B B . 
+P . . E E E . 
+P . . D . . F 
+C C C D . . F 
+K
+
+MOVE 6 : E - RIGHT (1 STEP)
+A A . . B B . 
+P . . . E E E 
+P . . D . . F 
+C C C D . . F 
+K
+
+MOVE 7 : D - UP (1 STEP)
+A A . . B B . 
+P . . D E E E 
+P . . D . . F 
+C C C . . . F 
+K
+
+MOVE 8 : C - RIGHT (1 STEP)
+A A . . B B . 
+P . . D E E E 
+P . . D . . F 
+. C C C . . F 
+K
+
+MOVE 9 : P - DOWN (1 STEP)
+A A . . B B . 
+. . . D E E E 
+P . . D . . F 
+P C C C . . F 
+K
+
+MOVE 10 : P - OUT DOWN (2 STEP)
+A A . . B B . 
+. . . D E E E 
+. . . D . . F 
+. C C C . . F 
+P
+P
+==================================================
+RECALL INFORMATION SOLUTION RESULT :
+Algorithm    : Greedy Best First Search (GBFS)
+Heuristic    : 3
+Step Count   : 9 Step
+Visited Node : 19 Node
+Time Usage   : 9 ms
+Success      : YES
+==================================================

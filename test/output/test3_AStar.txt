@@ -1,0 +1,67 @@
+==================================================
+INFORMATION SOLUTION RESULT :
+Algorithm    : A-Star Search (A*)
+Heuristic    : 3
+Step Count   : 5 Step
+Visited Node : 741 Node
+Time Usage   : 30 ms
+Success      : YES
+==================================================
+Display Board Awal :
+A A . . B B . 
+P E E E . . F 
+P . . D . . F 
+C C C D . . . 
+K
+
+MOVE 1 : F - DOWN (1 STEP)
+A A . . B B . 
+P E E E . . . 
+P . . D . . F 
+C C C D . . F 
+K
+
+MOVE 2 : E - RIGHT (3 STEP)
+A A . . B B . 
+P . . . E E E 
+P . . D . . F 
+C C C D . . F 
+K
+
+MOVE 3 : D - UP (1 STEP)
+A A . . B B . 
+P . . D E E E 
+P . . D . . F 
+C C C . . . F 
+K
+
+MOVE 4 : C - RIGHT (1 STEP)
+A A . . B B . 
+P . . D E E E 
+P . . D . . F 
+. C C C . . F 
+K
+
+MOVE 5 : P - DOWN (1 STEP)
+A A . . B B . 
+. . . D E E E 
+P . . D . . F 
+P C C C . . F 
+K
+
+MOVE 6 : P - OUT DOWN (2 STEP)
+A A . . B B . 
+. . . D E E E 
+. . . D . . F 
+. C C C . . F 
+P
+P
+==================================================
+RECALL INFORMATION SOLUTION RESULT :
+Algorithm    : A-Star Search (A*)
+Heuristic    : 3
+Step Count   : 5 Step
+Visited Node : 741 Node
+Time Usage   : 30 ms
+Success      : YES
+==================================================
