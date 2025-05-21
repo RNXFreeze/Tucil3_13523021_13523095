@@ -38,72 +38,6 @@ public final class Saver {
         // None
     }
 
-    public static void saveFile(String filePath , Solution solution) throws IOException {
-        // DESKRIPSI LOKAL
-        // Melakukan write solution pada file yang telah ditentukan pathnya.
-        
-        // KAMUS LOKAL
-        // filePath : String
-        // solution : Class Solution
-        // writer : Java IO BufferedWriter
-        // piece : Class Piece
-        // primaryPieceSize , i , j : Integer
-
-        // ALGORITMA LOKAL
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            writer.write("==================================================\n");
-            writer.write("INFORMATION SOLUTION RESULT :\n");
-            writer.write(String.format("Algorithm    : %s\n" , solution.getAlgorithm()));
-            writer.write(String.format("Heuristic    : %d\n" , solution.getHeuristicId()));
-            writer.write(String.format("Step Count   : %d Step\n" , solution.getStepCount()));
-            writer.write(String.format("Visited Node : %d Node\n" , solution.getNodesVisited()));
-            writer.write(String.format("Time Usage   : %d ms\n" , (int) solution.getTime()));
-            if (solution.getMoves().isEmpty()) {
-                writer.write("Success      : NO\n");
-            } else {
-                writer.write("Success      : YES\n");
-            }
-            writer.write("==================================================\n");
-            if (solution.getMoves().isEmpty()) {
-                writer.write("\nDisplay Board Awal & Akhir :\n");
-                writeBoard(writer , solution.getPath().get(0));
-            } else {
-                writer.write("Display Board Awal :\n");
-                writeBoard(writer , solution.getPath().get(0));
-                for (int i = 0 ; i < solution.getMoves().size() ; i++) {
-                    writer.write(String.format("\nMOVE %d : %s\n" , (i + 1) , solution.getMoves().get(i)));
-                    writeBoard(writer , solution.getPath().get(i + 1));
-                }
-                if (!solution.getMoves().isEmpty()) {
-                    GameLogic.Move last = solution.getMoves().get(solution.getMoves().size() - 1);
-                    String direction = switch (last.getDirection()) {
-                        case UP    -> "UP";
-                        case DOWN  -> "DOWN";
-                        case LEFT  -> "LEFT";
-                        case RIGHT -> "RIGHT";
-                        default    -> "UNKNOWN";
-                    };
-                    int primaryPieceSize = solution.getPath().get(0).getPieces().stream().filter(piece -> piece.getType() == 'P').findFirst().orElseThrow().solveSize();
-                    writer.write(String.format("\nMOVE %d : P - OUT %s (%d STEP)\n" , solution.getMoves().size() + 1 , direction , primaryPieceSize));
-                    writeLastBoard(writer , solution.getPath().get(solution.getMoves().size() - 1));
-                }
-            }
-            writer.write("==================================================\n");
-            writer.write("RECALL INFORMATION SOLUTION RESULT :\n");
-            writer.write(String.format("Algorithm    : %s\n" , solution.getAlgorithm()));
-            writer.write(String.format("Heuristic    : %d\n" , solution.getHeuristicId()));
-            writer.write(String.format("Step Count   : %d Step\n" , solution.getStepCount()));
-            writer.write(String.format("Visited Node : %d Node\n" , solution.getNodesVisited()));
-            writer.write(String.format("Time Usage   : %d ms\n" , (int) solution.getTime()));
-            if (solution.getMoves().isEmpty()) {
-                writer.write("Success      : NO\n");
-            } else {
-                writer.write("Success      : YES\n");
-            }
-            writer.write("==================================================\n");
-        }
-    }
-
     private static void writeBoard(BufferedWriter writer , DataStructure dataStructure) throws IOException {
         // DESKRIPSI LOKAL
         // Menulis Board Puzzle Ke Writer
@@ -253,6 +187,76 @@ public final class Saver {
                 }
                 writer.newLine();
             }
+        }
+    }
+
+    public static void saveFile(String filePath , Solution solution) throws IOException {
+        // DESKRIPSI LOKAL
+        // Melakukan write solution pada file yang telah ditentukan pathnya.
+        
+        // KAMUS LOKAL
+        // filePath : String
+        // solution : Class Solution
+        // writer : Java IO BufferedWriter
+        // piece : Class Piece
+        // primaryPieceSize , i , j : Integer
+
+        // ALGORITMA LOKAL
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            writer.write("==================================================\n");
+            writer.write("INFORMATION SOLUTION RESULT :\n");
+            writer.write(String.format("File Path In  : %s\n" , solution.getFilePath()));
+            writer.write(String.format("File Path Out : %s\n" , filePath));
+            writer.write(String.format("Algorithm     : %s\n" , solution.getAlgorithm()));
+            writer.write(String.format("Heuristic     : %d\n" , solution.getHeuristicId()));
+            writer.write(String.format("Step Count    : %d Step\n" , solution.getStepCount()));
+            writer.write(String.format("Visited Node  : %d Node\n" , solution.getNodesVisited()));
+            writer.write(String.format("Time Usage    : %d ms\n" , (int) solution.getTime()));
+            if (solution.getMoves().isEmpty()) {
+                writer.write("Success      : NO\n");
+            } else {
+                writer.write("Success      : YES\n");
+            }
+            writer.write("==================================================\n");
+            if (solution.getMoves().isEmpty()) {
+                writer.write("\nDisplay Board Awal & Akhir :\n");
+                writeBoard(writer , solution.getPath().get(0));
+            } else {
+                writer.write("Display Board Awal :\n");
+                writeBoard(writer , solution.getPath().get(0));
+                for (int i = 0 ; i < solution.getMoves().size() ; i++) {
+                    writer.write(String.format("\nMOVE %d : %s\n" , (i + 1) , solution.getMoves().get(i)));
+                    writeBoard(writer , solution.getPath().get(i + 1));
+                }
+                if (!solution.getMoves().isEmpty()) {
+                    GameLogic.Move last = solution.getMoves().get(solution.getMoves().size() - 1);
+                    String direction = switch (last.getDirection()) {
+                        case UP    -> "UP";
+                        case DOWN  -> "DOWN";
+                        case LEFT  -> "LEFT";
+                        case RIGHT -> "RIGHT";
+                        default    -> "UNKNOWN";
+                    };
+                    int primaryPieceSize = solution.getPath().get(0).getPieces().stream().filter(piece -> piece.getType() == 'P').findFirst().orElseThrow().solveSize();
+                    writer.write(String.format("\nMOVE %d : P - OUT %s (%d STEP)\n" , solution.getMoves().size() + 1 , direction , primaryPieceSize));
+                    writeLastBoard(writer , solution.getPath().get(solution.getMoves().size() - 1));
+                }
+            }
+            writer.write("==================================================\n");
+            writer.write("RECALL INFORMATION SOLUTION RESULT :\n");
+            writer.write(String.format("File Path In  : %s\n" , solution.getFilePath()));
+            writer.write(String.format("File Path Out : %s\n" , filePath));
+            writer.write(String.format("Algorithm     : %s\n" , solution.getAlgorithm()));
+            writer.write(String.format("Heuristic     : %d\n" , solution.getHeuristicId()));
+            writer.write(String.format("Step Count    : %d Step\n" , solution.getStepCount()));
+            writer.write(String.format("Visited Node  : %d Node\n" , solution.getNodesVisited()));
+            writer.write(String.format("Time Usage    : %d ms\n" , (int) solution.getTime()));
+            if (solution.getMoves().isEmpty()) {
+                writer.write("Success      : NO\n");
+            } else {
+                writer.write("Success      : YES\n");
+            }
+            writer.write("==================================================\n");
         }
     }
 }

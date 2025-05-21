@@ -57,23 +57,21 @@ public class GBFS {
         // ALGORITMA LOKAL
         long startTime = System.nanoTime();
         int cnt = 0;
-        if (Heuristic.solveHeuristic(dataStructure , 9) == 1) {
-            Set<String> visited = new HashSet<>();
-            PriorityQueue<Solution.Node> pq = new PriorityQueue<>(Comparator.comparingInt(node -> node.hValue));
-            pq.add(new Solution.Node(dataStructure , null , 0 , Heuristic.solveHeuristic(dataStructure , num) , null));
-            while (!pq.isEmpty()) {
-                Solution.Node cur = pq.poll();
-                if (visited.add(GameLogic.boardKey(cur.state))) {
-                    cnt++;
-                    if (GameState.isSolved(cur.state)) {
-                        long endTime = System.nanoTime();
-                        double time = (endTime - startTime) / 1000000;
-                        return Solution.buildSolution(filePath , "Greedy Best First Search (GBFS)" , num , cnt , time , cur);
-                    } else {
-                        for (GameLogic.Move move : GameLogic.generateMoves(cur.state)) {
-                            DataStructure nxt = GameLogic.applyMove(cur.state , move);
-                            pq.add(new Solution.Node(nxt , move , 0 , Heuristic.solveHeuristic(nxt , num) , cur));
-                        }
+        Set<String> visited = new HashSet<>();
+        PriorityQueue<Solution.Node> pq = new PriorityQueue<>(Comparator.comparingInt(node -> node.hValue));
+        pq.add(new Solution.Node(dataStructure , null , 0 , Heuristic.solveHeuristic(dataStructure , num) , null));
+        while (!pq.isEmpty()) {
+            Solution.Node cur = pq.poll();
+            if (visited.add(GameLogic.boardKey(cur.state))) {
+                cnt++;
+                if (GameState.isSolved(cur.state)) {
+                    long endTime = System.nanoTime();
+                    double time = (endTime - startTime) / 1000000;
+                    return Solution.buildSolution(filePath , "Greedy Best First Search (GBFS)" , num , cnt , time , cur);
+                } else {
+                    for (GameLogic.Move move : GameLogic.generateMoves(cur.state)) {
+                        DataStructure nxt = GameLogic.applyMove(cur.state , move);
+                        pq.add(new Solution.Node(nxt , move , 0 , Heuristic.solveHeuristic(nxt , num) , cur));
                     }
                 }
             }
