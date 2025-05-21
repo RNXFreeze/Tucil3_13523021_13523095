@@ -1,0 +1,27 @@
+==================================================
+INFORMATION SOLUTION RESULT :
+Algorithm    : A-Star Search (A*)
+Heuristic    : 2
+Step Count   : 0 Step
+Visited Node : 31122 Node
+Time Usage   : 292 ms
+Success      : NO
+==================================================
+
+Display Board Awal & Akhir :
+        K
+A A B . . F . 
+. . B C D F N 
+G . . C D F N 
+G H H I I I . 
+G . J . P O O 
+L L J . P M M 
+==================================================
+RECALL INFORMATION SOLUTION RESULT :
+Algorithm    : A-Star Search (A*)
+Heuristic    : 2
+Step Count   : 0 Step
+Visited Node : 31122 Node
+Time Usage   : 292 ms
+Success      : NO
+==================================================

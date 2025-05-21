@@ -1,0 +1,81 @@
+==================================================
+INFORMATION SOLUTION RESULT :
+Algorithm    : A-Star Search (A*)
+Heuristic    : 1
+Step Count   : 6 Step
+Visited Node : 25157 Node
+Time Usage   : 242 ms
+Success      : YES
+==================================================
+Display Board Awal :
+A A B . . F 
+. . B C D F 
+G P P C D F K
+G H . I I I 
+G H J . . . 
+L L J M M . 
+
+MOVE 1 : C - UP (1 STEP)
+A A B C . F 
+. . B C D F 
+G P P . D F K
+G H . I I I 
+G H J . . . 
+L L J M M . 
+
+MOVE 2 : D - UP (1 STEP)
+A A B C D F 
+. . B C D F 
+G P P . . F K
+G H . I I I 
+G H J . . . 
+L L J M M . 
+
+MOVE 3 : P - RIGHT (2 STEP)
+A A B C D F 
+. . B C D F 
+G . . P P F K
+G H . I I I 
+G H J . . . 
+L L J M M . 
+
+MOVE 4 : I - LEFT (1 STEP)
+A A B C D F 
+. . B C D F 
+G . . P P F K
+G H I I I . 
+G H J . . . 
+L L J M M . 
+
+MOVE 5 : F - DOWN (3 STEP)
+A A B C D . 
+. . B C D . 
+G . . P P . K
+G H I I I F 
+G H J . . F 
+L L J M M F 
+
+MOVE 6 : P - RIGHT (1 STEP)
+A A B C D . 
+. . B C D . 
+G . . . P P K
+G H I I I F 
+G H J . . F 
+L L J M M F 
+
+MOVE 7 : P - OUT RIGHT (2 STEP)
+A A B C D . 
+. . B C D . 
+G . . . . . P P 
+G H I I I F 
+G H J . . F 
+L L J M M F 
+==================================================
+RECALL INFORMATION SOLUTION RESULT :
+Algorithm    : A-Star Search (A*)
+Heuristic    : 1
+Step Count   : 6 Step
+Visited Node : 25157 Node
+Time Usage   : 242 ms
+Success      : YES
+==================================================

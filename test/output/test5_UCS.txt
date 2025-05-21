@@ -1,0 +1,65 @@
+==================================================
+INFORMATION SOLUTION RESULT :
+Algorithm    : Uniform Cost Search (UCS)
+Heuristic    : 0
+Step Count   : 4 Step
+Visited Node : 712 Node
+Time Usage   : 49 ms
+Success      : YES
+==================================================
+Display Board Awal :
+  A A B . . F . 
+  . . B C D F N 
+K G P P C D F N 
+  G H . I I I . 
+  G H J . . O O 
+  L L J M M . . 
+
+MOVE 1 : J - UP (1 STEP)
+  A A B . . F . 
+  . . B C D F N 
+K G P P C D F N 
+  G H J I I I . 
+  G H J . . O O 
+  L L . M M . . 
+
+MOVE 2 : L - RIGHT (1 STEP)
+  A A B . . F . 
+  . . B C D F N 
+K G P P C D F N 
+  G H J I I I . 
+  G H J . . O O 
+  . L L M M . . 
+
+MOVE 3 : G - DOWN (1 STEP)
+  A A B . . F . 
+  . . B C D F N 
+K . P P C D F N 
+  G H J I I I . 
+  G H J . . O O 
+  G L L M M . . 
+
+MOVE 4 : P - LEFT (1 STEP)
+  A A B . . F . 
+  . . B C D F N 
+K P P . C D F N 
+  G H J I I I . 
+  G H J . . O O 
+  G L L M M . . 
+
+MOVE 5 : P - OUT LEFT (2 STEP)
+    A A B . . F . 
+    . . B C D F N 
+P P . . . C D F N 
+    G H J I I I . 
+    G H J . . O O 
+    G L L M M . . 
+==================================================
+RECALL INFORMATION SOLUTION RESULT :
+Algorithm    : Uniform Cost Search (UCS)
+Heuristic    : 0
+Step Count   : 4 Step
+Visited Node : 712 Node
+Time Usage   : 49 ms
+Success      : YES
+==================================================
